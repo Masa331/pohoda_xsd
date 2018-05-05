@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-			xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-			xmlns:con="http://www.stormware.cz/schema/version_2/contract.xsd"
-			xmlns:lCon="http://www.stormware.cz/schema/version_2/list_contract.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/list_contract.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/list_contract.xsd"
-			elementFormDefault="qualified"
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+      xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
+      xmlns:con="http://www.stormware.cz/schema/version_2/contract.xsd"
+      xmlns:lCon="http://www.stormware.cz/schema/version_2/list_contract.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/list_contract.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/list_contract.xsd"
+      elementFormDefault="qualified"
 >
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
@@ -20,24 +20,24 @@
 <xsd:element name="listContractRequest" type="lCon:listRequestContractType"/>
 
 <xsd:complexType name="listRequestContractType">
-	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
-		<xsd:element name="requestContract" type="ftr:requestContractType"/>
-	</xsd:sequence>
-	<xsd:attribute name="version" type="lCon:listRequestContractVerType" use="required"/>
-	<xsd:attribute name="contractVersion" type="con:conVersionType" use="required">
-		<xsd:annotation>
-			<xsd:documentation>Požadovaná verze contract dokumentu.</xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>	
+  <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    <xsd:element name="requestContract" type="ftr:requestContractType"/>
+  </xsd:sequence>
+  <xsd:attribute name="version" type="lCon:listRequestContractVerType" use="required"/>
+  <xsd:attribute name="contractVersion" type="con:conVersionType" use="required">
+    <xsd:annotation>
+      <xsd:documentation>PoĹľadovanĂˇ verze contract dokumentu.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>  
 </xsd:complexType>
 
 <xsd:simpleType name="listRequestContractVerType">
-	<xsd:annotation>
-		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
-	</xsd:annotation>
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="2.0"/>		
-	</xsd:restriction>
+  <xsd:annotation>
+    <xsd:documentation>Verze, kterĂ© jsou dostupnĂ© k tomuto dokladu. Podrobnosti k jednotlivĂ˝m verzĂ­m najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>    
+  </xsd:restriction>
 </xsd:simpleType>
 
 
@@ -46,13 +46,13 @@
 <xsd:element name="listContract" type="lCon:listContractType"/>
 
 <xsd:complexType name="listContractType">
-	<xsd:complexContent>
-		<xsd:extension base="rdc:listVersionType">
-			<xsd:choice>
-				<xsd:element name="contract" type="con:contractType" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:choice>
-		</xsd:extension>
-	</xsd:complexContent>
+  <xsd:complexContent>
+    <xsd:extension base="rdc:listVersionType">
+      <xsd:choice>
+        <xsd:element name="contract" type="con:contractType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:extension>
+  </xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

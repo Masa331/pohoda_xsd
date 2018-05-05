@@ -1,45 +1,45 @@
-<?xml version="1.0" encoding="Windows-1250"?>
-<!--  Jmené prostory používané v dokladech --> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  JmenĂ© prostory pouĹľĂ­vanĂ© v dokladech --> 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd"
-			xmlns:vch="http://www.stormware.cz/schema/version_2/voucher.xsd"
-			xmlns:int="http://www.stormware.cz/schema/version_2/intDoc.xsd"
-			xmlns:stk="http://www.stormware.cz/schema/version_2/stock.xsd"
-			xmlns:ord="http://www.stormware.cz/schema/version_2/order.xsd"
-			xmlns:enq="http://www.stormware.cz/schema/version_2/enquiry.xsd"
-			xmlns:ofr="http://www.stormware.cz/schema/version_2/offer.xsd"
-			xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
-			xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-			xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd"
-			xmlns:lCon="http://www.stormware.cz/schema/version_2/list_contract.xsd"
-			xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd"			
-			xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
-			xmlns:vyd="http://www.stormware.cz/schema/version_2/vydejka.xsd"
-			xmlns:pri="http://www.stormware.cz/schema/version_2/prijemka.xsd"
-			xmlns:pre="http://www.stormware.cz/schema/version_2/prevodka.xsd"
-			xmlns:vyr="http://www.stormware.cz/schema/version_2/vyroba.xsd"
-			xmlns:pro="http://www.stormware.cz/schema/version_2/prodejka.xsd"
-			xmlns:adb="http://www.stormware.cz/schema/version_2/addressbook.xsd"
-			xmlns:prm="http://www.stormware.cz/schema/version_2/parameter.xsd"
-			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-			xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"
-			xmlns:bal="http://www.stormware.cz/schema/version_2/balance.xsd"
-			xmlns:con="http://www.stormware.cz/schema/version_2/contract.xsd"
-			xmlns:sto="http://www.stormware.cz/schema/version_2/store.xsd"
+      xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd"
+      xmlns:vch="http://www.stormware.cz/schema/version_2/voucher.xsd"
+      xmlns:int="http://www.stormware.cz/schema/version_2/intDoc.xsd"
+      xmlns:stk="http://www.stormware.cz/schema/version_2/stock.xsd"
+      xmlns:ord="http://www.stormware.cz/schema/version_2/order.xsd"
+      xmlns:enq="http://www.stormware.cz/schema/version_2/enquiry.xsd"
+      xmlns:ofr="http://www.stormware.cz/schema/version_2/offer.xsd"
+      xmlns:lst="http://www.stormware.cz/schema/version_2/list.xsd"
+      xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
+      xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd"
+      xmlns:lCon="http://www.stormware.cz/schema/version_2/list_contract.xsd"
+      xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd"      
+      xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
+      xmlns:vyd="http://www.stormware.cz/schema/version_2/vydejka.xsd"
+      xmlns:pri="http://www.stormware.cz/schema/version_2/prijemka.xsd"
+      xmlns:pre="http://www.stormware.cz/schema/version_2/prevodka.xsd"
+      xmlns:vyr="http://www.stormware.cz/schema/version_2/vyroba.xsd"
+      xmlns:pro="http://www.stormware.cz/schema/version_2/prodejka.xsd"
+      xmlns:adb="http://www.stormware.cz/schema/version_2/addressbook.xsd"
+      xmlns:prm="http://www.stormware.cz/schema/version_2/parameter.xsd"
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"
+      xmlns:bal="http://www.stormware.cz/schema/version_2/balance.xsd"
+      xmlns:con="http://www.stormware.cz/schema/version_2/contract.xsd"
+      xmlns:sto="http://www.stormware.cz/schema/version_2/store.xsd"
       xmlns:str="http://www.stormware.cz/schema/version_2/storage.xsd"
       xmlns:ctg="http://www.stormware.cz/schema/version_2/category.xsd"
       xmlns:prn="http://www.stormware.cz/schema/version_2/print.xsd"
       xmlns:sEET="http://www.stormware.cz/schema/version_2/sendEET.xsd"
-			xmlns:grs="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
+      xmlns:grs="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
       xmlns:ilt="http://www.stormware.cz/schema/version_2/inventoryLists.xsd"
       xmlns:ipm="http://www.stormware.cz/schema/version_2/intParam.xsd"
       xmlns:nms="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
       xmlns:pay="http://www.stormware.cz/schema/version_2/payment.xsd"
       xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/data.xsd"
-			
-			targetNamespace="http://www.stormware.cz/schema/version_2/data.xsd"
-			elementFormDefault="qualified">
+      xmlns="http://www.stormware.cz/schema/version_2/data.xsd"
+      
+      targetNamespace="http://www.stormware.cz/schema/version_2/data.xsd"
+      elementFormDefault="qualified">
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/invoice.xsd" schemaLocation="invoice.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/voucher.xsd" schemaLocation="voucher.xsd"/>
@@ -76,171 +76,171 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/mKasa.xsd" schemaLocation="mKasa.xsd"/>
 
 <!-- **************************************************************************
-		root element must be <dataPack>
-	 ************************************************************************** -->
+    root element must be <dataPack>
+   ************************************************************************** -->
 
 <xsd:element name="dataPack" type="dataPackType"/>
 
 <!-- **************************************************************************
-		package
-	 ************************************************************************** -->
+    package
+   ************************************************************************** -->
 
 <xsd:complexType name="dataPackType">
-	<xsd:sequence>
-		<xsd:element name="transformation" type="dat:transformationType" minOccurs="0">
-		<xsd:annotation>
-				<xsd:documentation>Transformace vstupu a výstupu (od verze "1.1" elementu "dataPack").
-					Transformaci pro včechny zpracovávané soubory lze nastavit v INI souboru.
-					Nejdříve se provede transformace zadané v INI souboru, poté transformace zadaná v XML.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="dataPackItem" type="dat:dataPackItemType" minOccurs="1" maxOccurs="unbounded"/>
-	</xsd:sequence>
-	<xsd:attribute name="version" type="dat:dataPackVersionType" use="required"/>
-	<xsd:attribute name="id" type="typ:string64" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				ID dokladu, podle této hodnoty a hodnoty "id" v "dataPackItem" se kontolují duplicity importovaných dokladů.   				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
-	<xsd:attribute name="ico" type="typ:icoType" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				IČ firmy, pro kterou je XML určeno. Hodnota musí souhlasit s IČ zadané firmy.    				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
+  <xsd:sequence>
+    <xsd:element name="transformation" type="dat:transformationType" minOccurs="0">
+    <xsd:annotation>
+        <xsd:documentation>Transformace vstupu a vĂ˝stupu (od verze "1.1" elementu "dataPack").
+          Transformaci pro vÄŤechny zpracovĂˇvanĂ© soubory lze nastavit v INI souboru.
+          NejdĹ™Ă­ve se provede transformace zadanĂ© v INI souboru, potĂ© transformace zadanĂˇ v XML.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="dataPackItem" type="dat:dataPackItemType" minOccurs="1" maxOccurs="unbounded"/>
+  </xsd:sequence>
+  <xsd:attribute name="version" type="dat:dataPackVersionType" use="required"/>
+  <xsd:attribute name="id" type="typ:string64" use="required">
+    <xsd:annotation>
+      <xsd:documentation>
+        ID dokladu, podle tĂ©to hodnoty a hodnoty "id" v "dataPackItem" se kontolujĂ­ duplicity importovanĂ˝ch dokladĹŻ.          
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+  <xsd:attribute name="ico" type="typ:icoType" use="required">
+    <xsd:annotation>
+      <xsd:documentation>
+        IÄŚ firmy, pro kterou je XML urÄŤeno. Hodnota musĂ­ souhlasit s IÄŚ zadanĂ© firmy.           
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
   <xsd:attribute name="period" type="typ:periodType">
     <xsd:annotation>
       <xsd:documentation>
-        Hodnota účetního období vybrané účetní jednotky v programu Pohoda. Pokud nebude atribut použit, bude XML import dat proveden do aktuálně nastavené účetního období přihlášeného uživatele. Pokud bude atribut uveden, bude při importu dat proveden kontrola nastaveného účetního období. Jestliže nebude období shodné, XML komunikace bude ukončena.
+        Hodnota ĂşÄŤetnĂ­ho obdobĂ­ vybranĂ© ĂşÄŤetnĂ­ jednotky v programu Pohoda. Pokud nebude atribut pouĹľit, bude XML import dat proveden do aktuĂˇlnÄ› nastavenĂ© ĂşÄŤetnĂ­ho obdobĂ­ pĹ™ihlĂˇĹˇenĂ©ho uĹľivatele. Pokud bude atribut uveden, bude pĹ™i importu dat proveden kontrola nastavenĂ©ho ĂşÄŤetnĂ­ho obdobĂ­. JestliĹľe nebude obdobĂ­ shodnĂ©, XML komunikace bude ukonÄŤena.
       </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
   <xsd:attribute name="application" type="typ:string100" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				Textový popis, hodnota se zobrazí v poli "Aplikace" v agendě XML Import.    				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
+    <xsd:annotation>
+      <xsd:documentation>
+        TextovĂ˝ popis, hodnota se zobrazĂ­ v poli "Aplikace" v agendÄ› XML Import.            
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
   <xsd:attribute name="programVersion" type="xsd:string"/>
-	<xsd:attribute name="note" type="xsd:string" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				 Textová poznámka, hodnota se zobrazí v záložce "Poznámky" v agendě XML Import.   				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
+  <xsd:attribute name="note" type="xsd:string" use="required">
+    <xsd:annotation>
+      <xsd:documentation>
+         TextovĂˇ poznĂˇmka, hodnota se zobrazĂ­ v zĂˇloĹľce "PoznĂˇmky" v agendÄ› XML Import.           
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
 </xsd:complexType>
 
 <xsd:simpleType name="dataPackVersionType">
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="2.0"/>
-	</xsd:restriction>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
 </xsd:simpleType>
 
 <!-- ************************************************************************** -->
 
   <xsd:complexType name="transformationType">
-	<xsd:all>
-		<xsd:element name="input" type="xsd:string" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>Cesta k vstupní transformaci. Výsledkem bude nový soubor s koncovkou "_trn_i2.xml", který se použije pro zpracování.
-						Název je zadán včetně cesty, buď abslolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
-						nebo relativně - vztaženo k adresáři Pohody (např: "Info/XSL/export.xsl")."
-				 </xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="output" type="xsd:string" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>Cesta k výstupní transformaci. Výsledkem bude nový soubor s koncovkou "_trn_o2.xml".
-						Název je zadán včetně cesty, buď abslolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
-						nebo relativně - vztaženo k adresáři Pohody (např: "Info/XSL/export.xsl")."
-				 </xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-	</xsd:all>
+  <xsd:all>
+    <xsd:element name="input" type="xsd:string" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Cesta k vstupnĂ­ transformaci. VĂ˝sledkem bude novĂ˝ soubor s koncovkou "_trn_i2.xml", kterĂ˝ se pouĹľije pro zpracovĂˇnĂ­.
+            NĂˇzev je zadĂˇn vÄŤetnÄ› cesty, buÄŹ abslolutnÄ› (napĹ™: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
+            nebo relativnÄ› - vztaĹľeno k adresĂˇĹ™i Pohody (napĹ™: "Info/XSL/export.xsl")."
+         </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="output" type="xsd:string" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Cesta k vĂ˝stupnĂ­ transformaci. VĂ˝sledkem bude novĂ˝ soubor s koncovkou "_trn_o2.xml".
+            NĂˇzev je zadĂˇn vÄŤetnÄ› cesty, buÄŹ abslolutnÄ› (napĹ™: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
+            nebo relativnÄ› - vztaĹľeno k adresĂˇĹ™i Pohody (napĹ™: "Info/XSL/export.xsl")."
+         </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:all>
 </xsd:complexType>
 
 <!-- validuje verze datePackItem: 1.0 -->
 <xsd:complexType name="dataPackItemType">
-	<xsd:choice minOccurs="1" maxOccurs="1">
-		<!--  import dokladů -->
-		<xsd:element ref="adb:addressbook"/>
-		<xsd:element ref="enq:enquiry"/>
-		<xsd:element ref="int:intDoc"/>		
-		<xsd:element ref="inv:invoice"/>		
-		<xsd:element ref="ofr:offer"/>
-		<xsd:element ref="ord:order"/>		
-		<xsd:element ref="pro:prodejka"/>
-		<xsd:element ref="pri:prijemka"/>
-		<xsd:element ref="pre:prevodka"/>
-		<xsd:element ref="stk:stock"/>
-		<xsd:element ref="vch:voucher"/>
-		<xsd:element ref="vyd:vydejka"/>
-		<xsd:element ref="vyr:vyroba"/>
-		<xsd:element ref="con:contract"/>
-		<xsd:element ref="sto:store"/>
-		<xsd:element ref="grs:groupStocks"/>
+  <xsd:choice minOccurs="1" maxOccurs="1">
+    <!--  import dokladĹŻ -->
+    <xsd:element ref="adb:addressbook"/>
+    <xsd:element ref="enq:enquiry"/>
+    <xsd:element ref="int:intDoc"/>   
+    <xsd:element ref="inv:invoice"/>    
+    <xsd:element ref="ofr:offer"/>
+    <xsd:element ref="ord:order"/>    
+    <xsd:element ref="pro:prodejka"/>
+    <xsd:element ref="pri:prijemka"/>
+    <xsd:element ref="pre:prevodka"/>
+    <xsd:element ref="stk:stock"/>
+    <xsd:element ref="vch:voucher"/>
+    <xsd:element ref="vyd:vydejka"/>
+    <xsd:element ref="vyr:vyroba"/>
+    <xsd:element ref="con:contract"/>
+    <xsd:element ref="sto:store"/>
+    <xsd:element ref="grs:groupStocks"/>
     <xsd:element ref="str:storage"/>
     <xsd:element ref="ctg:categoryDetail"/>
-  	<xsd:element ref="prm:parameter"/>
+    <xsd:element ref="prm:parameter"/>
     <xsd:element ref="ipm:intParamDetail"/>
-   	<xsd:element ref="ilt:inventoryLists"/>
+    <xsd:element ref="ilt:inventoryLists"/>
     <xsd:element ref="nms:numericalSeries"/>
-		<!--  export dokladů -->
+    <!--  export dokladĹŻ -->
     <xsd:element ref="lst:listAccountancyRequest"/>
-		<xsd:element ref="lAdb:listAddressBookRequest"/>
-		<xsd:element ref="lst:listInvoiceRequest"/>
-		<xsd:element ref="lst:listEnquiryRequest"/>		
-		<xsd:element ref="lst:listOfferRequest"/>
-		<xsd:element ref="lst:listOrderRequest"/>		
-		<xsd:element ref="lStk:listStockRequest"/>
-		<xsd:element ref="lst:listParameterRequest"/>
-		<xsd:element ref="lst:listVydejkaRequest"/>
-		<xsd:element ref="lst:listPrijemkaRequest"/>
-		<xsd:element ref="lst:listBalanceRequest"/>
-		<!--  vytvoření nového záznamu  -->
-		<xsd:element ref="lst:createAccountingDoubleEntry"/>
-		<xsd:element ref="lst:listUserCode"/>
-		<!--  export seznamů -->
-		<xsd:element ref="acu:listAccountingUnitRequest"/>
-		<xsd:element ref="lst:listAccountingDoubleEntryRequest"/>
-		<xsd:element ref="lst:listAccountingSingleEntryRequest"/>		
-		<xsd:element ref="lst:listAccountRequest"/>
-		<xsd:element ref="lst:listActivityRequest"/>		
-		<xsd:element ref="lst:listCashRequest"/>
-		<xsd:element ref="lst:listCashRegisterRequest"/>
-		<xsd:element ref="lst:listBankAccountRequest"/>
-		<xsd:element ref="lCon:listContractRequest"/>
-		<xsd:element ref="lst:listCentreRequest"/>		
-		<xsd:element ref="lst:listNumericSeriesRequest"/>		
-		<xsd:element ref="lst:listUserCodeRequest"/>
-		<xsd:element ref="lst:listStorageRequest"/>
-		<xsd:element ref="lst:listSellingPriceRequest"/>
-		<xsd:element ref="lst:listCategoryRequest"/>
-		<xsd:element ref="lst:listIntParamRequest"/>
-		<xsd:element ref="lst:listStoreRequest"/>
-		<xsd:element ref="lst:listGroupStocksRequest"/>
-		<xsd:element ref="lst:listActionPriceRequest"/>
+    <xsd:element ref="lAdb:listAddressBookRequest"/>
+    <xsd:element ref="lst:listInvoiceRequest"/>
+    <xsd:element ref="lst:listEnquiryRequest"/>   
+    <xsd:element ref="lst:listOfferRequest"/>
+    <xsd:element ref="lst:listOrderRequest"/>   
+    <xsd:element ref="lStk:listStockRequest"/>
+    <xsd:element ref="lst:listParameterRequest"/>
+    <xsd:element ref="lst:listVydejkaRequest"/>
+    <xsd:element ref="lst:listPrijemkaRequest"/>
+    <xsd:element ref="lst:listBalanceRequest"/>
+    <!--  vytvoĹ™enĂ­ novĂ©ho zĂˇznamu  -->
+    <xsd:element ref="lst:createAccountingDoubleEntry"/>
+    <xsd:element ref="lst:listUserCode"/>
+    <!--  export seznamĹŻ -->
+    <xsd:element ref="acu:listAccountingUnitRequest"/>
+    <xsd:element ref="lst:listAccountingDoubleEntryRequest"/>
+    <xsd:element ref="lst:listAccountingSingleEntryRequest"/>   
+    <xsd:element ref="lst:listAccountRequest"/>
+    <xsd:element ref="lst:listActivityRequest"/>    
+    <xsd:element ref="lst:listCashRequest"/>
+    <xsd:element ref="lst:listCashRegisterRequest"/>
+    <xsd:element ref="lst:listBankAccountRequest"/>
+    <xsd:element ref="lCon:listContractRequest"/>
+    <xsd:element ref="lst:listCentreRequest"/>    
+    <xsd:element ref="lst:listNumericSeriesRequest"/>   
+    <xsd:element ref="lst:listUserCodeRequest"/>
+    <xsd:element ref="lst:listStorageRequest"/>
+    <xsd:element ref="lst:listSellingPriceRequest"/>
+    <xsd:element ref="lst:listCategoryRequest"/>
+    <xsd:element ref="lst:listIntParamRequest"/>
+    <xsd:element ref="lst:listStoreRequest"/>
+    <xsd:element ref="lst:listGroupStocksRequest"/>
+    <xsd:element ref="lst:listActionPriceRequest"/>
     <xsd:element ref="lst:listPaymentRequest"/>
     <xsd:element ref="lst:listNumericalSeriesRequest"/>
     <xsd:element ref="mKasa:mKasaRequest"/>
-  	<xsd:element ref="prn:print"/>
+    <xsd:element ref="prn:print"/>
     <xsd:element ref="sEET:sendEET"/>
-	</xsd:choice>
+  </xsd:choice>
   <xsd:attribute name="version" type="dat:dataPackItemVersionType" use="required"/>
-	<xsd:attribute name="id" type="typ:string64" use="required"/>
+  <xsd:attribute name="id" type="typ:string64" use="required"/>
 </xsd:complexType>
 
 <xsd:simpleType name="dataPackItemVersionType">
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="1.0"/>
-		<xsd:enumeration value="2.0"/>
-	</xsd:restriction>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="1.0"/>
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
 </xsd:simpleType>
 
 </xsd:schema>

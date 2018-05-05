@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-			xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
-			xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/mKasa.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/mKasa.xsd"
-			elementFormDefault="qualified"
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+      xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
+      xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      elementFormDefault="qualified"
 >
 
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
@@ -41,9 +41,9 @@
       <xsd:element name="overwriteDeviceGuid" type="typ:boolean">
         <xsd:annotation>
           <xsd:documentation>
-            Má se aktualizovat Guid zařížení, na kterém se používá mKasa.
+            MĂˇ se aktualizovat Guid zaĹ™Ă­ĹľenĂ­, na kterĂ©m se pouĹľĂ­vĂˇ mKasa.
             Guid se aktualizuje jen pokud je agenda Kasa.
-            Pokud se Guid liší a element je false nebo agenda není Kasa, vrací se chyba.
+            Pokud se Guid liĹˇĂ­ a element je false nebo agenda nenĂ­ Kasa, vracĂ­ se chyba.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -51,8 +51,8 @@
       <xsd:element name="myLastId" type="xsd:int">
         <xsd:annotation>
           <xsd:documentation>
-            Nejvyšší ID, které mKasa obdržela za danou agendu. Nenulová hodnota má význam jen u agend AD, SKz.
-            Používá se pro stránkovaní. Poslední stránka neobsahuje žádné záznamy z požadované agendy.
+            NejvyĹˇĹˇĂ­ ID, kterĂ© mKasa obdrĹľela za danou agendu. NenulovĂˇ hodnota mĂˇ vĂ˝znam jen u agend AD, SKz.
+            PouĹľĂ­vĂˇ se pro strĂˇnkovanĂ­. PoslednĂ­ strĂˇnka neobsahuje ĹľĂˇdnĂ© zĂˇznamy z poĹľadovanĂ© agendy.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -67,8 +67,8 @@
       <xsd:element name="overwriteDeviceGuid" type="typ:boolean">
         <xsd:annotation>
           <xsd:documentation>
-            Má se aktualizovat Guid zařížení, na kterém se používá mKasa.
-            Pokud se Guid liší a element je false, vrací se chyba.
+            MĂˇ se aktualizovat Guid zaĹ™Ă­ĹľenĂ­, na kterĂ©m se pouĹľĂ­vĂˇ mKasa.
+            Pokud se Guid liĹˇĂ­ a element je false, vracĂ­ se chyba.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
