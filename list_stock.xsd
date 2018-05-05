@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="Windows-1250"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			xmlns:stk="http://www.stormware.cz/schema/version_2/stock.xsd"
+			xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
+			xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/list_stock.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/list_stock.xsd"
+			elementFormDefault="qualified"
+>
+
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd" schemaLocation="filter.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/stock.xsd" schemaLocation="stock.xsd"/>
+
+
+<!-- ************************************************************************** -->
+<!-- REQUEST -->
+<xsd:element name="listStockRequest" type="lStk:listRequestStockType"/>
+
+<xsd:complexType name="listRequestStockType">
+	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+		<xsd:element name="requestStock" type="ftr:requestStockType">
+			<xsd:annotation>
+				<xsd:documentation>Atributy určují filtr pro export zásob. Pokud není zadán žádný filtr, vyexportují se všechny zásoby.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:sequence>
+	<xsd:attribute name="version" type="lStk:listRequestStockVerType" use="required"/>
+	<xsd:attribute name="stockVersion" type="stk:stkVersionType" use="required">
+		<xsd:annotation>
+			<xsd:documentation>Požadovaná verze dokladu.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+</xsd:complexType>
+
+<xsd:simpleType name="listRequestStockVerType">
+	<xsd:annotation>
+		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+	</xsd:annotation>
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="2.0"/>
+	</xsd:restriction>
+</xsd:simpleType>
+
+
+<!-- ************************************************************************** -->
+<!-- RESPONSE -->
+<xsd:element name="listStock" type="lStk:listStockType"/>
+
+<xsd:complexType name="listStockType">
+	<xsd:complexContent>
+		<xsd:extension base="rdc:listVersionType">
+			<xsd:choice>
+				<xsd:element name="stock" type="stk:stockType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:choice>
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>
