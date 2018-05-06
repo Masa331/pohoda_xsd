@@ -1,45 +1,45 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
       xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-			xmlns:idp="http://www.stormware.cz/schema/version_2/individualPrice.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/individualPrice.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/individualPrice.xsd"
-			elementFormDefault="qualified">
+      xmlns:idp="http://www.stormware.cz/schema/version_2/individualPrice.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/individualPrice.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/individualPrice.xsd"
+      elementFormDefault="qualified">
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"	schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
 
 
 <!-- **************************************************************************
-		Individuální slevy zásoby dle Adresáře
-	 ************************************************************************** -->
+    IndividuĂˇlnĂ­ slevy zĂˇsoby dle AdresĂˇĹ™e
+   ************************************************************************** -->
 
   <xsd:element name="individualPrice" type="idp:individualPriceType"/>
 
 <xsd:complexType name="individualPriceType">
-	<xsd:sequence>
-	   <xsd:element name="partnerIdentity" type="idp:address" minOccurs="1">
+  <xsd:sequence>
+     <xsd:element name="partnerIdentity" type="idp:address" minOccurs="1">
       <xsd:annotation>
        <xsd:documentation>Identifikace partnera.</xsd:documentation>
       </xsd:annotation>
      </xsd:element>
      <xsd:element name="setPrices" type="idp:setPricesType" minOccurs="1">
       <xsd:annotation>
-        <xsd:documentation>Individuální ceny partnera.</xsd:documentation>
+        <xsd:documentation>IndividuĂˇlnĂ­ ceny partnera.</xsd:documentation>
       </xsd:annotation>
      </xsd:element>  
-	</xsd:sequence>
-	<xsd:attribute name="version" type="idp:idpVersionType" use="required"/>
+  </xsd:sequence>
+  <xsd:attribute name="version" type="idp:idpVersionType" use="required"/>
 </xsd:complexType>
 
 <xsd:simpleType name="idpVersionType">
-	<xsd:annotation>
-		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
-	</xsd:annotation>
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="2.0"/>
-	</xsd:restriction>
+  <xsd:annotation>
+    <xsd:documentation>Verze, kterĂ© jsou dostupnĂ© k tomuto dokladu. Podrobnosti k jednotlivĂ˝m verzĂ­m najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
 </xsd:simpleType>
 
 
@@ -50,134 +50,134 @@
   <xsd:sequence>
       <xsd:element name="id" type="typ:idType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Odkaz na ID záznamu.</xsd:documentation>
+          <xsd:documentation>Odkaz na ID zĂˇznamu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="extId" type="typ:extIdType" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>
-            Externí ID záznamu. Odkaz na záznam v externí databázi. V databázi se nachází speciální tabulka obsahující vazbu mezi agendou a externí databází.
+            ExternĂ­ ID zĂˇznamu. Odkaz na zĂˇznam v externĂ­ databĂˇzi. V databĂˇzi se nachĂˇzĂ­ speciĂˇlnĂ­ tabulka obsahujĂ­cĂ­ vazbu mezi agendou a externĂ­ databĂˇzĂ­.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>  
     </xsd:sequence>
 </xsd:complexType>      
 
-<!-- individuální ceny partnera -->
+<!-- individuĂˇlnĂ­ ceny partnera -->
 <xsd:complexType name="setPricesType">
   <xsd:all>
       <xsd:element name="stocks" type="idp:stocksType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Individuální ceny zásob.</xsd:documentation>
+          <xsd:documentation>IndividuĂˇlnĂ­ ceny zĂˇsob.</xsd:documentation>
         </xsd:annotation>
       </xsd:element> 
-			<xsd:element name="priceGroups" type="idp:priceGroupsType" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation>Individuální ceny cenových skupin.</xsd:documentation>
-				</xsd:annotation>	
-			</xsd:element>
-        </xsd:all>	
+      <xsd:element name="priceGroups" type="idp:priceGroupsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>IndividuĂˇlnĂ­ ceny cenovĂ˝ch skupin.</xsd:documentation>
+        </xsd:annotation> 
+      </xsd:element>
+        </xsd:all>  
 </xsd:complexType>
 
 
 
 <xsd:complexType name="stocksType">
-	<xsd:sequence>
-		<xsd:element name="stockItem" type="idp:stockItemType" minOccurs="0" maxOccurs="unbounded">
-			<xsd:annotation>
-				<xsd:documentation>Individuální cena zásoby</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-	</xsd:sequence>
+  <xsd:sequence>
+    <xsd:element name="stockItem" type="idp:stockItemType" minOccurs="0" maxOccurs="unbounded">
+      <xsd:annotation>
+        <xsd:documentation>IndividuĂˇlnĂ­ cena zĂˇsoby</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:sequence>
 </xsd:complexType>
 
 
 <xsd:complexType name="priceGroupsType">
-	<xsd:sequence>
-		<xsd:element name="priceGroupItem" type="idp:priceGroupItemType" minOccurs="0" maxOccurs="unbounded">
-			<xsd:annotation>
-				<xsd:documentation>Individuální cena cenové skupiny.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-	</xsd:sequence>
+  <xsd:sequence>
+    <xsd:element name="priceGroupItem" type="idp:priceGroupItemType" minOccurs="0" maxOccurs="unbounded">
+      <xsd:annotation>
+        <xsd:documentation>IndividuĂˇlnĂ­ cena cenovĂ© skupiny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:sequence>
 </xsd:complexType>
 
 
-<!-- individuální cena zásoby -->
+<!-- individuĂˇlnĂ­ cena zĂˇsoby -->
 <xsd:complexType name="stockItemType">
-	<xsd:all>
-		<xsd:element name="id" type="typ:idType" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>ID skladové zásoby.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="ids" type="typ:stockIdsType" minOccurs="1" maxOccurs="1">
-		    <xsd:annotation>
-				<xsd:documentation>Kód skladové zásoby.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>	
-		<xsd:element name="name" type="typ:string90" minOccurs="0" maxOccurs="1">
-			<xsd:annotation>
-				<xsd:documentation>Název skladové zásoby.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="storage" type="typ:refTypeStorage" minOccurs="0"  maxOccurs="1">
-			<xsd:annotation>
-				<xsd:documentation>Členění skladu.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="price" type="typ:currencyType" minOccurs="0"  maxOccurs="1">
-			<xsd:annotation>
-				<xsd:documentation>Cena skladové zásoby.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="discountPercentage" type="typ:typePercentage" minOccurs="0">
-	  		<xsd:annotation>
-	  			<xsd:documentation>Sleva v procentech.</xsd:documentation>
-	  		</xsd:annotation>
-	  	</xsd:element>
-		<xsd:element name="individualPrice" type="typ:currencyType" minOccurs="0"  maxOccurs="1">
-			<xsd:annotation>
-				<xsd:documentation>Individuální cena skladové zásoby.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="currency" type="typ:refType" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>ID - odkaz na cizí měnu, IDS - kod měny.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="payVAT" type="typ:boolean" minOccurs="0" default="false">
-	  		<xsd:annotation>
-	  			<xsd:documentation>Cena je uvedena: bez DPH, včetně DPH.</xsd:documentation>
-	  		</xsd:annotation>
-	  	</xsd:element>		
-	</xsd:all>
+  <xsd:all>
+    <xsd:element name="id" type="typ:idType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>ID skladovĂ© zĂˇsoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="ids" type="typ:stockIdsType" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+        <xsd:documentation>KĂłd skladovĂ© zĂˇsoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>  
+    <xsd:element name="name" type="typ:string90" minOccurs="0" maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>NĂˇzev skladovĂ© zĂˇsoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="storage" type="typ:refTypeStorage" minOccurs="0"  maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>ÄŚlenÄ›nĂ­ skladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="price" type="typ:currencyType" minOccurs="0"  maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>Cena skladovĂ© zĂˇsoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="discountPercentage" type="typ:typePercentage" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Sleva v procentech.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    <xsd:element name="individualPrice" type="typ:currencyType" minOccurs="0"  maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>IndividuĂˇlnĂ­ cena skladovĂ© zĂˇsoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="currency" type="typ:refType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>ID - odkaz na cizĂ­ mÄ›nu, IDS - kod mÄ›ny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="payVAT" type="typ:boolean" minOccurs="0" default="false">
+        <xsd:annotation>
+          <xsd:documentation>Cena je uvedena: bez DPH, vÄŤetnÄ› DPH.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>    
+  </xsd:all>
 </xsd:complexType>
 
-<!-- individuální cena cenové skupiny -->
+<!-- individuĂˇlnĂ­ cena cenovĂ© skupiny -->
 <xsd:complexType name="priceGroupItemType">
-	<xsd:all>
-		<xsd:element name="id" type="typ:idType" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>ID cenové skupiny.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="name" type="typ:string64" minOccurs="1" maxOccurs="1">
-			<xsd:annotation>
-				<xsd:documentation>Název cenové skupiny</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="description" type="typ:string90" minOccurs="0" maxOccurs="1">
-			<xsd:annotation>
-				<xsd:documentation>Popis cenové skupiny.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-	    <xsd:element name="discountPercentage" type="typ:typePercentage" minOccurs="0">
-	  		<xsd:annotation>
-	  			<xsd:documentation>Sleva v procentech.</xsd:documentation>
-	  		</xsd:annotation>
-	  	</xsd:element>	
-	</xsd:all>
+  <xsd:all>
+    <xsd:element name="id" type="typ:idType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>ID cenovĂ© skupiny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="name" type="typ:string64" minOccurs="1" maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>NĂˇzev cenovĂ© skupiny</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="description" type="typ:string90" minOccurs="0" maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>Popis cenovĂ© skupiny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+      <xsd:element name="discountPercentage" type="typ:typePercentage" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Sleva v procentech.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>  
+  </xsd:all>
 </xsd:complexType>
 
 
@@ -185,15 +185,15 @@
 <!-- RESPONSE -->
 
 <xsd:element name="individualPriceResponse" type="idp:individualPriceResponseType">
-	<xsd:annotation>
-		<xsd:documentation>Odpověď na import individuálncíh cen. Obsahuje podrobnosti zpracování.</xsd:documentation>
-	</xsd:annotation>
+  <xsd:annotation>
+    <xsd:documentation>OdpovÄ›ÄŹ na import individuĂˇlncĂ­h cen. Obsahuje podrobnosti zpracovĂˇnĂ­.</xsd:documentation>
+  </xsd:annotation>
 </xsd:element>
 
 <xsd:complexType name="individualPriceResponseType">
-	<xsd:complexContent>
-		<xsd:extension  base="rdc:documentResponseType"/>
-	</xsd:complexContent>
+  <xsd:complexContent>
+    <xsd:extension  base="rdc:documentResponseType"/>
+  </xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

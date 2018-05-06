@@ -1,126 +1,126 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-			xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/data.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/data.xsd"
-			elementFormDefault="qualified"
+      xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/data.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/data.xsd"
+      elementFormDefault="qualified"
 >
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
 
 <!-- **************************************************************************
-		root element must be <dataPack>
-	 ************************************************************************** -->
+    root element must be <dataPack>
+   ************************************************************************** -->
 <xsd:element name="dataPack" type="dataPackType"/>
 
 <!-- **************************************************************************
-		<dataPack id="string" ico="string" application="string" note="string">
-			<dataPackItem id="string"> any content </dataPackItem>
-			<dataPackItem id="string"> any content </dataPackItem>
-			.
-			.
-			.
-		</dataPack>
-	 ************************************************************************** -->
+    <dataPack id="string" ico="string" application="string" note="string">
+      <dataPackItem id="string"> any content </dataPackItem>
+      <dataPackItem id="string"> any content </dataPackItem>
+      .
+      .
+      .
+    </dataPack>
+   ************************************************************************** -->
 
 <xsd:complexType name="dataPackType">
-	<xsd:sequence>
-		<xsd:element name="transformation" type="dat:transformationType" minOccurs="0">
-		<xsd:annotation>
-				<xsd:documentation>Transformace vstupu a výstupu (od verze "1.1" elementu "dataPack").
-					Transformaci pro včechny zpracovávané soubory lze nastavit v INI souboru.
-					Nejdříve se provede transformace zadané v INI souboru, poté transformace zadaná v XML.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="dataPackItem" type="dat:dataPackItemType" minOccurs="1" maxOccurs="unbounded"/>
-	</xsd:sequence>
-	<xsd:attribute name="version" type="dat:dataPackVersionType" use="required"/>
-	<xsd:attribute name="id" type="typ:string64" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				ID dokladu, podle této hodnoty a hodnoty "id" v "dataPackItem" se kontolují duplicity importovaných dokladů.   				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
-	<xsd:attribute name="ico" type="typ:icoType" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				IČ firmy, pro kterou je XML určeno. Hodnota musí souhlasit s IČ zadané firmy.    				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
+  <xsd:sequence>
+    <xsd:element name="transformation" type="dat:transformationType" minOccurs="0">
+    <xsd:annotation>
+        <xsd:documentation>Transformace vstupu a vĂ˝stupu (od verze "1.1" elementu "dataPack").
+          Transformaci pro vÄŤechny zpracovĂˇvanĂ© soubory lze nastavit v INI souboru.
+          NejdĹ™Ă­ve se provede transformace zadanĂ© v INI souboru, potĂ© transformace zadanĂˇ v XML.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="dataPackItem" type="dat:dataPackItemType" minOccurs="1" maxOccurs="unbounded"/>
+  </xsd:sequence>
+  <xsd:attribute name="version" type="dat:dataPackVersionType" use="required"/>
+  <xsd:attribute name="id" type="typ:string64" use="required">
+    <xsd:annotation>
+      <xsd:documentation>
+        ID dokladu, podle tĂ©to hodnoty a hodnoty "id" v "dataPackItem" se kontolujĂ­ duplicity importovanĂ˝ch dokladĹŻ.          
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+  <xsd:attribute name="ico" type="typ:icoType" use="required">
+    <xsd:annotation>
+      <xsd:documentation>
+        IÄŚ firmy, pro kterou je XML urÄŤeno. Hodnota musĂ­ souhlasit s IÄŚ zadanĂ© firmy.           
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
   <xsd:attribute name="period" type="typ:periodType">
     <xsd:annotation>
       <xsd:documentation>
-        Hodnota účetního období vybrané účetní jednotky v programu Pohoda. Pokud nebude atribut použit, bude XML import dat proveden do aktuálně nastavené účetního období přihlášeného uživatele. Pokud bude atribut uveden, bude při importu dat proveden kontrola nastaveného účetního období. Jestliže nebude období shodné, XML komunikace bude ukončena.
+        Hodnota ĂşÄŤetnĂ­ho obdobĂ­ vybranĂ© ĂşÄŤetnĂ­ jednotky v programu Pohoda. Pokud nebude atribut pouĹľit, bude XML import dat proveden do aktuĂˇlnÄ› nastavenĂ© ĂşÄŤetnĂ­ho obdobĂ­ pĹ™ihlĂˇĹˇenĂ©ho uĹľivatele. Pokud bude atribut uveden, bude pĹ™i importu dat proveden kontrola nastavenĂ©ho ĂşÄŤetnĂ­ho obdobĂ­. JestliĹľe nebude obdobĂ­ shodnĂ©, XML komunikace bude ukonÄŤena.
       </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
-	<xsd:attribute name="application" type="typ:string100" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				Textový popis, hodnota se zobrazí v poli "Aplikace" v agendě XML Import.    				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
+  <xsd:attribute name="application" type="typ:string100" use="required">
+    <xsd:annotation>
+      <xsd:documentation>
+        TextovĂ˝ popis, hodnota se zobrazĂ­ v poli "Aplikace" v agendÄ› XML Import.            
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
   <xsd:attribute name="programVersion" type="xsd:string"/>
-	<xsd:attribute name="note" type="xsd:string" use="required">
-		<xsd:annotation>
-			<xsd:documentation>
-				 Textová poznámka, hodnota se zobrazí v záložce "Poznámky" v agendě XML Import.   				
-			 </xsd:documentation>
-		</xsd:annotation>
-	</xsd:attribute>
+  <xsd:attribute name="note" type="xsd:string" use="required">
+    <xsd:annotation>
+      <xsd:documentation>
+         TextovĂˇ poznĂˇmka, hodnota se zobrazĂ­ v zĂˇloĹľce "PoznĂˇmky" v agendÄ› XML Import.           
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
 </xsd:complexType>
 
 <xsd:simpleType name="dataPackVersionType">
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="1.0"/>
-		<xsd:enumeration value="1.1"/>
-		<xsd:enumeration value="1.2"/>
-		<xsd:enumeration value="2.0"/>
-	</xsd:restriction>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="1.0"/>
+    <xsd:enumeration value="1.1"/>
+    <xsd:enumeration value="1.2"/>
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
 </xsd:simpleType>
 
 <!-- ************************************************************************** -->
   
 <xsd:complexType name="transformationType">
-	<xsd:all>
-		<xsd:element name="input" type="xsd:string" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>Cesta k vstupní transformaci. Výsledkem bude nový soubor s koncovkou "_trn_i2.xml", který se použije pro zpracování.
-						Název je zadán včetně cesty, buď abslolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
-						nebo relativně - vztaženo k adresáři Pohody (např: "Info/XSL/export.xsl")."
-				 </xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-		<xsd:element name="output" type="xsd:string" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>Cesta k výstupní transformaci. Výsledkem bude nový soubor s koncovkou "_trn_o2.xml".
-						Název je zadán včetně cesty, buď abslolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
-						nebo relativně - vztaženo k adresáři Pohody (např: "Info/XSL/export.xsl")."
-				 </xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
-	</xsd:all>
+  <xsd:all>
+    <xsd:element name="input" type="xsd:string" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Cesta k vstupnĂ­ transformaci. VĂ˝sledkem bude novĂ˝ soubor s koncovkou "_trn_i2.xml", kterĂ˝ se pouĹľije pro zpracovĂˇnĂ­.
+            NĂˇzev je zadĂˇn vÄŤetnÄ› cesty, buÄŹ abslolutnÄ› (napĹ™: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
+            nebo relativnÄ› - vztaĹľeno k adresĂˇĹ™i Pohody (napĹ™: "Info/XSL/export.xsl")."
+         </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="output" type="xsd:string" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Cesta k vĂ˝stupnĂ­ transformaci. VĂ˝sledkem bude novĂ˝ soubor s koncovkou "_trn_o2.xml".
+            NĂˇzev je zadĂˇn vÄŤetnÄ› cesty, buÄŹ abslolutnÄ› (napĹ™: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
+            nebo relativnÄ› - vztaĹľeno k adresĂˇĹ™i Pohody (napĹ™: "Info/XSL/export.xsl")."
+         </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:all>
 </xsd:complexType>
 
 <xsd:complexType name="dataPackItemType">
-	<xsd:sequence>
-		<xsd:any minOccurs="1" maxOccurs="1" processContents="skip"/>
-	</xsd:sequence>
-	<xsd:attribute name="version" type="dat:dataPackItemVersionType" use="required"/>
-	<xsd:attribute name="id" type="typ:string64" use="required"/>
-	<xsd:anyAttribute processContents="skip"/>
+  <xsd:sequence>
+    <xsd:any minOccurs="1" maxOccurs="1" processContents="skip"/>
+  </xsd:sequence>
+  <xsd:attribute name="version" type="dat:dataPackItemVersionType" use="required"/>
+  <xsd:attribute name="id" type="typ:string64" use="required"/>
+  <xsd:anyAttribute processContents="skip"/>
 </xsd:complexType>
 
 <xsd:simpleType name="dataPackItemVersionType">
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="1.0"/>
-		<xsd:enumeration value="2.0"/>
-	</xsd:restriction>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="1.0"/>
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
 </xsd:simpleType>
 
 </xsd:schema>

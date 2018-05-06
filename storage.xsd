@@ -1,83 +1,83 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-			xmlns:str="http://www.stormware.cz/schema/version_2/storage.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/storage.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/storage.xsd"
-			elementFormDefault="qualified">
-					
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+      xmlns:str="http://www.stormware.cz/schema/version_2/storage.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/storage.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/storage.xsd"
+      elementFormDefault="qualified">
+          
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" 	schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"   schemaLocation="documentresponse.xsd"/>
 
 <!-- **************************************************************************
-		Členění skladů
-	 ************************************************************************** -->
+    ÄŚlenÄ›nĂ­ skladĹŻ
+   ************************************************************************** -->
 
 <!-- REQUEST -->
 <xsd:element name="storage" type="str:storageType"/>
 
 <xsd:complexType name="storageType">
-		  <xsd:sequence minOccurs="1" maxOccurs="1">
-				<xsd:element name="itemStorage" type="str:itemStorageType" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		<xsd:attribute name="version" type="str:strVersionType" use="required"/>
+      <xsd:sequence minOccurs="1" maxOccurs="1">
+        <xsd:element name="itemStorage" type="str:itemStorageType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    <xsd:attribute name="version" type="str:strVersionType" use="required"/>
 </xsd:complexType>
 
 <xsd:simpleType name="strVersionType">
-	<xsd:annotation>
-		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
-	</xsd:annotation>
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="2.0"/>
-	</xsd:restriction>
+  <xsd:annotation>
+    <xsd:documentation>Verze, kterĂ© jsou dostupnĂ© k tomuto dokladu. Podrobnosti k jednotlivĂ˝m verzĂ­m najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
 </xsd:simpleType>
 
 
 <xsd:complexType name="itemStorageType">
-	<xsd:annotation>
-		<xsd:documentation>Položky členění skladů.</xsd:documentation>
-	</xsd:annotation>
-	<xsd:sequence>
-		<xsd:element name="subStorages" type="str:subStoragesType" minOccurs="0"/>
-	</xsd:sequence>		
-  	<xsd:attribute name="id" type="xsd:integer">
-	  	<xsd:annotation>
-				<xsd:documentation>ID záznamu, pokud zadaný uzel v seznamu členění neexistuje obsahuje hodnotu "0".(Pouze pro export)</xsd:documentation>
-			</xsd:annotation>
-	  </xsd:attribute>
-  	<xsd:attribute name="code" type="xsd:string" use="required">
-	  	<xsd:annotation>
-				<xsd:documentation>Název skladu do kterého členění patří.U první úroveně členění se jedná o název skladu, u dalších větvení se jedná o název členění.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="idStore" type="typ:idType">
-	  	<xsd:annotation>
-				<xsd:documentation>ID skladu do kterého členění patří. Pokud je uveden atribut "idStore", znamená to, že se jedná o první úroveň členění, tedy o sklad. V ostastních případech se jedná o větvení členění.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>  	
-		<xsd:attribute name="name" type="xsd:string">
-	  	<xsd:annotation>
-				<xsd:documentation>Název členění.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="note" type="xsd:string">
-	  	<xsd:annotation>
-				<xsd:documentation>Poznámka.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="offerTo" type="typ:boolean">
-			<xsd:annotation>
-				<xsd:documentation>Nabízet dynamickými záložkami.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
+  <xsd:annotation>
+    <xsd:documentation>PoloĹľky ÄŤlenÄ›nĂ­ skladĹŻ.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+    <xsd:element name="subStorages" type="str:subStoragesType" minOccurs="0"/>
+  </xsd:sequence>   
+    <xsd:attribute name="id" type="xsd:integer">
+      <xsd:annotation>
+        <xsd:documentation>ID zĂˇznamu, pokud zadanĂ˝ uzel v seznamu ÄŤlenÄ›nĂ­ neexistuje obsahuje hodnotu "0".(Pouze pro export)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="code" type="xsd:string" use="required">
+      <xsd:annotation>
+        <xsd:documentation>NĂˇzev skladu do kterĂ©ho ÄŤlenÄ›nĂ­ patĹ™Ă­.U prvnĂ­ ĂşrovenÄ› ÄŤlenÄ›nĂ­ se jednĂˇ o nĂˇzev skladu, u dalĹˇĂ­ch vÄ›tvenĂ­ se jednĂˇ o nĂˇzev ÄŤlenÄ›nĂ­.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="idStore" type="typ:idType">
+      <xsd:annotation>
+        <xsd:documentation>ID skladu do kterĂ©ho ÄŤlenÄ›nĂ­ patĹ™Ă­. Pokud je uveden atribut "idStore", znamenĂˇ to, Ĺľe se jednĂˇ o prvnĂ­ ĂşroveĹ ÄŤlenÄ›nĂ­, tedy o sklad. V ostastnĂ­ch pĹ™Ă­padech se jednĂˇ o vÄ›tvenĂ­ ÄŤlenÄ›nĂ­.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>    
+    <xsd:attribute name="name" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>NĂˇzev ÄŤlenÄ›nĂ­.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="note" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>PoznĂˇmka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="offerTo" type="typ:boolean">
+      <xsd:annotation>
+        <xsd:documentation>NabĂ­zet dynamickĂ˝mi zĂˇloĹľkami.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
 </xsd:complexType>
 
 <xsd:complexType name="subStoragesType">
-	<xsd:sequence>
-		<xsd:element name="itemStorage" type="str:itemStorageType" maxOccurs="1"/>
-	</xsd:sequence>
+  <xsd:sequence>
+    <xsd:element name="itemStorage" type="str:itemStorageType" maxOccurs="1"/>
+  </xsd:sequence>
 </xsd:complexType>
 
 
@@ -86,9 +86,9 @@
 <xsd:element name="storageResponse" type="str:storageResponseType"/>
 
 <xsd:complexType name="storageResponseType">
-	<xsd:complexContent>
-		<xsd:extension  base="rdc:documentResponseType"/>
-	</xsd:complexContent>
+  <xsd:complexContent>
+    <xsd:extension  base="rdc:documentResponseType"/>
+  </xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

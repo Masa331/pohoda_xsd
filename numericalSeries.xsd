@@ -1,60 +1,60 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-			xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-			xmlns:nms="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
-			elementFormDefault="qualified">
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
+      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+      xmlns:nms="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
+      elementFormDefault="qualified">
 
-	<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-	<xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd" schemaLocation="filter.xsd"/>
-	<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
+  <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
+  <xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd" schemaLocation="filter.xsd"/>
+  <xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
 
   <!-- **************************************************************************
-		 Číselné řady
-	 ************************************************************************** -->
+     ÄŚĂ­selnĂ© Ĺ™ady
+   ************************************************************************** -->
   
-	<!-- REQUEST -->
-	<xsd:element name="numericalSeries" type="nms:numericalSeriesType"/>
+  <!-- REQUEST -->
+  <xsd:element name="numericalSeries" type="nms:numericalSeriesType"/>
 
-	<xsd:complexType name="numericalSeriesType">
-		<xsd:sequence>
-			<xsd:element name="numericalSeriesHeader" type="nms:numericalSeriesHeaderType" minOccurs="0"/>
-		</xsd:sequence>
-		<xsd:attribute name="version" type="nms:nmsVersionType" use="required"/>
-	</xsd:complexType>
+  <xsd:complexType name="numericalSeriesType">
+    <xsd:sequence>
+      <xsd:element name="numericalSeriesHeader" type="nms:numericalSeriesHeaderType" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="nms:nmsVersionType" use="required"/>
+  </xsd:complexType>
 
-	<xsd:simpleType name="nmsVersionType">
-		<xsd:annotation>
-			<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml.</xsd:documentation>
-		</xsd:annotation>
-		<xsd:restriction base="xsd:string">
-			<xsd:enumeration value="2.0"/>
-		</xsd:restriction>
-	</xsd:simpleType>
+  <xsd:simpleType name="nmsVersionType">
+    <xsd:annotation>
+      <xsd:documentation>Verze, kterĂ© jsou dostupnĂ© k tomuto dokladu. Podrobnosti k jednotlivĂ˝m verzĂ­m najdete na www.stormware.cz/xml.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="2.0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
 
-	<xsd:complexType name="numericalSeriesHeaderType">
-		<xsd:all>
-			<xsd:element name="id" type="typ:idType" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation>ID záznamu (pouze pro export).</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-      
-			<xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
-				<xsd:annotation>
-					<xsd:documentation>
-						Odkaz na záznam v externí databázi. V databázi se nachází speciální tabulka obsahující
-						vazbu mezi agendou a externí databází.
-					</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-      
-		  <xsd:element name="prefix" minOccurs="1">
+  <xsd:complexType name="numericalSeriesHeaderType">
+    <xsd:all>
+      <xsd:element name="id" type="typ:idType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Prefix číselné řady.</xsd:documentation>
+          <xsd:documentation>ID zĂˇznamu (pouze pro export).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
+        <xsd:annotation>
+          <xsd:documentation>
+            Odkaz na zĂˇznam v externĂ­ databĂˇzi. V databĂˇzi se nachĂˇzĂ­ speciĂˇlnĂ­ tabulka obsahujĂ­cĂ­
+            vazbu mezi agendou a externĂ­ databĂˇzĂ­.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="prefix" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Prefix ÄŤĂ­selnĂ© Ĺ™ady.</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
           <xsd:restriction base="typ:nonEmptyString">
@@ -63,26 +63,26 @@
         </xsd:simpleType>
       </xsd:element>
         
-			<xsd:element name="number" minOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Číslo.</xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:maxLength value="5"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
+      <xsd:element name="number" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>ÄŚĂ­slo.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="5"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
 
       <xsd:element name="topNumber" type="typ:string32NotEmpty" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Nejvyšší číslo v dané číselné řadě (pouze pro export).</xsd:documentation>
+          <xsd:documentation>NejvyĹˇĹˇĂ­ ÄŤĂ­slo v danĂ© ÄŤĂ­selnĂ© Ĺ™adÄ› (pouze pro export).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       
       <xsd:element name="name" minOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Název (popis).</xsd:documentation>
+          <xsd:documentation>NĂˇzev (popis).</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
           <xsd:restriction base="typ:nonEmptyString">
@@ -99,66 +99,66 @@
 
       <xsd:element name="typeOfDocument" type="nms:typeOfDocumentType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Typ dokladu. Tento element je vyžadován při vytvoření číselné řady pro agendu, které má více typů dokladů.</xsd:documentation>
+          <xsd:documentation>Typ dokladu. Tento element je vyĹľadovĂˇn pĹ™i vytvoĹ™enĂ­ ÄŤĂ­selnĂ© Ĺ™ady pro agendu, kterĂ© mĂˇ vĂ­ce typĹŻ dokladĹŻ.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="cashAccount" type="typ:refType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Pokladna. Tento element je vyžadován při vytvoření číselné řady pro agendu "Pokladna".</xsd:documentation>
+          <xsd:documentation>Pokladna. Tento element je vyĹľadovĂˇn pĹ™i vytvoĹ™enĂ­ ÄŤĂ­selnĂ© Ĺ™ady pro agendu "Pokladna".</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="cashbox" type="typ:refType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Kasa. Tento element je vyžadován při vytvoření číselné řady pro agendu "Prodejky".</xsd:documentation>
+          <xsd:documentation>Kasa. Tento element je vyĹľadovĂˇn pĹ™i vytvoĹ™enĂ­ ÄŤĂ­selnĂ© Ĺ™ady pro agendu "Prodejky".</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="period" type="nms:periodType" minOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Období plastnosti číselné řady.</xsd:documentation>
+          <xsd:documentation>ObdobĂ­ plastnosti ÄŤĂ­selnĂ© Ĺ™ady.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="periodAccountUnit" type="nms:periodAccountUnitType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Období plastnosti účetní jednotky.</xsd:documentation>
+          <xsd:documentation>ObdobĂ­ plastnosti ĂşÄŤetnĂ­ jednotky.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
        
       <xsd:element name="unitPZD" type="typ:refType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Jednotka PZD. Nastavení vlastníka číselné řady v režimu „Pobočkové zpracování dat“.</xsd:documentation>
+          <xsd:documentation>Jednotka PZD. NastavenĂ­ vlastnĂ­ka ÄŤĂ­selnĂ© Ĺ™ady v reĹľimu â€žPoboÄŤkovĂ© zpracovĂˇnĂ­ datâ€ś.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="year" type="xsd:gYear" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Rok běžného nebo přechodné období. V případě, že ještě nedošlo k přepnutí přechodného období, řada do následujícího období se nenaimportuje.</xsd:documentation>
+          <xsd:documentation>Rok bÄ›ĹľnĂ©ho nebo pĹ™echodnĂ© obdobĂ­. V pĹ™Ă­padÄ›, Ĺľe jeĹˇtÄ› nedoĹˇlo k pĹ™epnutĂ­ pĹ™echodnĂ©ho obdobĂ­, Ĺ™ada do nĂˇsledujĂ­cĂ­ho obdobĂ­ se nenaimportuje.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       
-			<xsd:element name="note" type="xsd:string" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation>Poznámka.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
+      <xsd:element name="note" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>PoznĂˇmka.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
 
       <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
         <xsd:annotation>
-          <xsd:documentation>Označení záznamu v programu POHODA, sloupec "X". Výchozí hodnota je "označený záznam".</xsd:documentation>
+          <xsd:documentation>OznaÄŤenĂ­ zĂˇznamu v programu POHODA, sloupec "X". VĂ˝chozĂ­ hodnota je "oznaÄŤenĂ˝ zĂˇznam".</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="parameters" type="typ:parametersType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Volitelný parametr.</xsd:documentation>
+          <xsd:documentation>VolitelnĂ˝ parametr.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       
-		</xsd:all>
-	</xsd:complexType>
+    </xsd:all>
+  </xsd:complexType>
 
   <!--Typ dokladu-->
   <xsd:simpleType name="typeOfDocumentType">
@@ -192,10 +192,10 @@
   </xsd:simpleType>
 
 
-  <!--Období platnosti číselné řady-->
+  <!--ObdobĂ­ platnosti ÄŤĂ­selnĂ© Ĺ™ady-->
   <xsd:simpleType name="periodType">
     <xsd:annotation>
-      <xsd:documentation>Období plastnosti číselné řady.</xsd:documentation>
+      <xsd:documentation>ObdobĂ­ plastnosti ÄŤĂ­selnĂ© Ĺ™ady.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="permanent"/>
@@ -204,10 +204,10 @@
   </xsd:simpleType>
 
   
-  <!--Období plastnosti účetní jednotky-->
+  <!--ObdobĂ­ plastnosti ĂşÄŤetnĂ­ jednotky-->
   <xsd:complexType name="periodAccountUnitType">
     <xsd:annotation>
-      <xsd:documentation>Období platnosti účetní jednotky (pouze pro export).</xsd:documentation>
+      <xsd:documentation>ObdobĂ­ platnosti ĂşÄŤetnĂ­ jednotky (pouze pro export).</xsd:documentation>
     </xsd:annotation>
     <xsd:all>
       <xsd:element name="dateFrom" type="xsd:date" minOccurs="1">
@@ -227,12 +227,12 @@
 
   <!-- RESPONSE -->
 
-	<xsd:element name="numericalSeriesResponse" type="nms:numericalSeriesResponseType"/>
+  <xsd:element name="numericalSeriesResponse" type="nms:numericalSeriesResponseType"/>
 
-	<xsd:complexType name="numericalSeriesResponseType">
-		<xsd:complexContent>
-			<xsd:extension  base="rdc:documentResponseType"/>
-		</xsd:complexContent>
-	</xsd:complexType>
+  <xsd:complexType name="numericalSeriesResponseType">
+    <xsd:complexContent>
+      <xsd:extension  base="rdc:documentResponseType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
  
 </xsd:schema>

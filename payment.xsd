@@ -1,68 +1,68 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"    
-			xmlns:pay="http://www.stormware.cz/schema/version_2/payment.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/payment.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/payment.xsd"
-			elementFormDefault="qualified"
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"    
+      xmlns:pay="http://www.stormware.cz/schema/version_2/payment.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/payment.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/payment.xsd"
+      elementFormDefault="qualified"
 >
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" 	schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"   schemaLocation="documentresponse.xsd"/>
 
 <!-- **************************************************************************
-		Agenda Formy úhrady
-	 ************************************************************************** -->
-	 
+    Agenda Formy Ăşhrady
+   ************************************************************************** -->
+   
 <xsd:element name="payment" type="pay:paymentTypeRoot"/>
 
 <xsd:complexType name="paymentTypeRoot">
-	<xsd:sequence minOccurs="1" maxOccurs="1">
-		<xsd:element name="paymentHeader" type="pay:paymentHeaderType" minOccurs="0"/>		
-	</xsd:sequence>
-	<xsd:attribute name="version" type="pay:payVersionType" use="required"/>
+  <xsd:sequence minOccurs="1" maxOccurs="1">
+    <xsd:element name="paymentHeader" type="pay:paymentHeaderType" minOccurs="0"/>    
+  </xsd:sequence>
+  <xsd:attribute name="version" type="pay:payVersionType" use="required"/>
 </xsd:complexType>
 
 <xsd:simpleType name="payVersionType">
-	<xsd:annotation>
-		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
-	</xsd:annotation>
-	<xsd:restriction base="xsd:string">
-		<xsd:enumeration value="2.0"/>
-	</xsd:restriction>
+  <xsd:annotation>
+    <xsd:documentation>Verze, kterĂ© jsou dostupnĂ© k tomuto dokladu. Podrobnosti k jednotlivĂ˝m verzĂ­m najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
 </xsd:simpleType>
 
 <xsd:complexType name="paymentHeaderType">
-	<xsd:all>
-		<xsd:element name="id" type="typ:idType" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>ID záznamu.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>
+  <xsd:all>
+    <xsd:element name="id" type="typ:idType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>ID zĂˇznamu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="name" type="typ:string20" minOccurs="1">
       <xsd:annotation>
-        <xsd:documentation>Název formy úhrady.</xsd:documentation>
+        <xsd:documentation>NĂˇzev formy Ăşhrady.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="text" type="typ:string255" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Popis formy úhrady.</xsd:documentation>
+        <xsd:documentation>Popis formy Ăşhrady.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="paymentType" type="pay:paymentBasicType" minOccurs="1" >    
       <xsd:annotation>
-        <xsd:documentation>Typ formy úhrady. Na základě zvoleného typu se bude provádět i její zaúčtování.</xsd:documentation>
+        <xsd:documentation>Typ formy Ăşhrady. Na zĂˇkladÄ› zvolenĂ©ho typu se bude provĂˇdÄ›t i jejĂ­ zaĂşÄŤtovĂˇnĂ­.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="paymentTypeFM" type="pay:paymentBasicFMType" minOccurs="0" >
       <xsd:annotation>
-        <xsd:documentation>Typ formy úhrady pro FM.</xsd:documentation>
+        <xsd:documentation>Typ formy Ăşhrady pro FM.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="foreignCurrency" type="pay:foreignCurrencyType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Cizí měna.</xsd:documentation>
+        <xsd:documentation>CizĂ­ mÄ›na.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="ticket" type="pay:ticketType" minOccurs="0">
@@ -77,12 +77,12 @@
     </xsd:element>
     <xsd:element name="useInSales" type="typ:boolean" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Použít v agendách prodejek. Zadaná forma úhrady je nabízena v agendě Prodejky, Kasa a v modulu POHODA Kasa Offline. .</xsd:documentation>
+        <xsd:documentation>PouĹľĂ­t v agendĂˇch prodejek. ZadanĂˇ forma Ăşhrady je nabĂ­zena v agendÄ› Prodejky, Kasa a v modulu POHODA Kasa Offline. .</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="useInOtherAgendas" type="typ:boolean" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Použít v ostatních agendách. Zvolená forma úhrady je nabízena v ostatních agendách.</xsd:documentation>
+        <xsd:documentation>PouĹľĂ­t v ostatnĂ­ch agendĂˇch. ZvolenĂˇ forma Ăşhrady je nabĂ­zena v ostatnĂ­ch agendĂˇch.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>    
     <xsd:element name="eet" type="typ:boolean" minOccurs="0">
@@ -90,19 +90,19 @@
         <xsd:documentation>Vstupuje do EET.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>    
-		<xsd:element name="note" type="xsd:string" minOccurs="0">
-			<xsd:annotation>
-				<xsd:documentation>Poznámka.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:element>		
-	</xsd:all>
+    <xsd:element name="note" type="xsd:string" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>PoznĂˇmka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>    
+  </xsd:all>
 </xsd:complexType>
 
 <xsd:complexType name="cashDefaultType">
   <xsd:all>
     <xsd:element name="default" type="typ:boolean" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Úhrada je automaticky nabízena při vytváření nových dokladů v agendě Prodejky. Volba se nabízí pouze u Formy úhrady Hotovost.</xsd:documentation>
+        <xsd:documentation>Ăšhrada je automaticky nabĂ­zena pĹ™i vytvĂˇĹ™enĂ­ novĂ˝ch dokladĹŻ v agendÄ› Prodejky. Volba se nabĂ­zĂ­ pouze u Formy Ăşhrady Hotovost.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>
@@ -122,27 +122,27 @@
   <xsd:all>
     <xsd:element name="currency" type="typ:refType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>ID - odkaz na cizí měnu, IDS - kod měny.</xsd:documentation>
+        <xsd:documentation>ID - odkaz na cizĂ­ mÄ›nu, IDS - kod mÄ›ny.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="rate" type="xsd:float">
       <xsd:annotation>
-        <xsd:documentation>Kurz pro přepočet cizí měny na české koruny.</xsd:documentation>
+        <xsd:documentation>Kurz pro pĹ™epoÄŤet cizĂ­ mÄ›ny na ÄŤeskĂ© koruny.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="amount" type="xsd:integer">
       <xsd:annotation>
-        <xsd:documentation>Množství cizí měny pro kursový přepočet.</xsd:documentation>
+        <xsd:documentation>MnoĹľstvĂ­ cizĂ­ mÄ›ny pro kursovĂ˝ pĹ™epoÄŤet.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="rateAutomaticaly" type="typ:boolean" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Nastavit kurz automaticky. Kurz je automaticky načten při prvním otevření účetní jednotky toho dne z agendy Kurzový lístek.</xsd:documentation>
+        <xsd:documentation>Nastavit kurz automaticky. Kurz je automaticky naÄŤten pĹ™i prvnĂ­m otevĹ™enĂ­ ĂşÄŤetnĂ­ jednotky toho dne z agendy KurzovĂ˝ lĂ­stek.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="useYesterdayRate" type="typ:boolean" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Použít včerejší kurz. Při načtení kurzu použit vždy kurz zveřejněný ČNB předchozí den. Jen CZ verze.</xsd:documentation>
+        <xsd:documentation>PouĹľĂ­t vÄŤerejĹˇĂ­ kurz. PĹ™i naÄŤtenĂ­ kurzu pouĹľit vĹľdy kurz zveĹ™ejnÄ›nĂ˝ ÄŚNB pĹ™edchozĂ­ den. Jen CZ verze.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>
@@ -150,12 +150,12 @@
 
 <xsd:simpleType name="paymentBasicType">
   <xsd:annotation>
-    <xsd:documentation>Základní typy formy úhrady.</xsd:documentation>
+    <xsd:documentation>ZĂˇkladnĂ­ typy formy Ăşhrady.</xsd:documentation>
   </xsd:annotation>
   <xsd:restriction base="xsd:string">
     <xsd:enumeration value="foreignCurrency">
       <xsd:annotation>
-        <xsd:documentation>Cizí měna.</xsd:documentation>
+        <xsd:documentation>CizĂ­ mÄ›na.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="cash">
@@ -165,17 +165,17 @@
     </xsd:enumeration>
     <xsd:enumeration value="other">
       <xsd:annotation>
-        <xsd:documentation>Ostatní.</xsd:documentation>
+        <xsd:documentation>OstatnĂ­.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="creditCard">
       <xsd:annotation>
-        <xsd:documentation>Platební karta.</xsd:documentation>
+        <xsd:documentation>PlatebnĂ­ karta.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="transfer">
       <xsd:annotation>
-        <xsd:documentation>Převodem.</xsd:documentation>
+        <xsd:documentation>PĹ™evodem.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="ticket">
@@ -185,17 +185,17 @@
     </xsd:enumeration>
     <xsd:enumeration value="cheque">
       <xsd:annotation>
-        <xsd:documentation>Šekem.</xsd:documentation>
+        <xsd:documentation>Ĺ ekem.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="advance">
       <xsd:annotation>
-        <xsd:documentation>Záloha.</xsd:documentation>
+        <xsd:documentation>ZĂˇloha.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="delivery">
       <xsd:annotation>
-        <xsd:documentation>Dobírka.</xsd:documentation>
+        <xsd:documentation>DobĂ­rka.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
   </xsd:restriction>
@@ -203,7 +203,7 @@
 
 <xsd:simpleType name="paymentBasicFMType">
   <xsd:annotation>
-    <xsd:documentation>Základní typy formy úhrady pro fiskální moduly.</xsd:documentation>
+    <xsd:documentation>ZĂˇkladnĂ­ typy formy Ăşhrady pro fiskĂˇlnĂ­ moduly.</xsd:documentation>
   </xsd:annotation>
   <xsd:restriction base="xsd:string">     
     <xsd:enumeration value="cash">
@@ -213,12 +213,12 @@
     </xsd:enumeration>
     <xsd:enumeration value="other">
       <xsd:annotation>
-        <xsd:documentation>Ostatní.</xsd:documentation>
+        <xsd:documentation>OstatnĂ­.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="creditCard">
       <xsd:annotation>
-        <xsd:documentation>Platební karta.</xsd:documentation>
+        <xsd:documentation>PlatebnĂ­ karta.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>      
     <xsd:enumeration value="ticket">
@@ -228,7 +228,7 @@
     </xsd:enumeration>
     <xsd:enumeration value="cheque">
       <xsd:annotation>
-        <xsd:documentation>Šekem.</xsd:documentation>
+        <xsd:documentation>Ĺ ekem.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>      
   </xsd:restriction>
@@ -239,9 +239,9 @@
 <xsd:element name="paymentResponse" type="pay:paymentResponseType"/>
 
 <xsd:complexType name="paymentResponseType">
-	<xsd:complexContent>
-		<xsd:extension  base="rdc:documentResponseType"/>
-	</xsd:complexContent>
+  <xsd:complexContent>
+    <xsd:extension  base="rdc:documentResponseType"/>
+  </xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

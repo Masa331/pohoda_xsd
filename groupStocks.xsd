@@ -1,76 +1,76 @@
-<?xml version="1.0" encoding="Windows-1250"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
       xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-			xmlns:grs="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
+      xmlns:grs="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
       xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-			xmlns="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
-			targetNamespace="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
-			elementFormDefault="qualified">
+      xmlns="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/groupStocks.xsd"
+      elementFormDefault="qualified">
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"	schemaLocation="documentresponse.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd"	schemaLocation="filter.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd" schemaLocation="filter.xsd"/>
 
   <!-- **************************************************************************
-     Skupiny zásob
-	 ************************************************************************** -->
+     Skupiny zĂˇsob
+   ************************************************************************** -->
   
   <!-- REQUEST -->
 <xsd:element name="groupStocks" type="grs:groupStocksType"/>
 
-	<xsd:complexType name="groupStocksType">
-		<xsd:sequence minOccurs="1" maxOccurs="1">
+  <xsd:complexType name="groupStocksType">
+    <xsd:sequence minOccurs="1" maxOccurs="1">
       <xsd:element name="actionType" type="grs:actionTypeType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Typ práce se záznamem. Výchozí hodnota je přidání nového záznamu.</xsd:documentation>
+          <xsd:documentation>Typ prĂˇce se zĂˇznamem. VĂ˝chozĂ­ hodnota je pĹ™idĂˇnĂ­ novĂ©ho zĂˇznamu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-			<xsd:element name="groupStocksHeader" type="grs:groupStocksHeaderType" minOccurs="0"/>
-			<xsd:element name="groupStocksDetail" type="grs:groupStocksDetailType" minOccurs="0"/>
-		</xsd:sequence>
-		<xsd:attribute name="version" type="grs:grsVersionType" use="required"/>
-	</xsd:complexType>
-	
-	<!--<xsd:complexType name="groupStocksDetailType">
-	<xsd:sequence minOccurs="0" maxOccurs="unbounded">
-		<xsd:element name="groupStocks" type="grs:groupStocksType"/>
-	</xsd:sequence>
-	<xsd:attribute name="version" type="grs:grsVersionType" use="required"/>
+      <xsd:element name="groupStocksHeader" type="grs:groupStocksHeaderType" minOccurs="0"/>
+      <xsd:element name="groupStocksDetail" type="grs:groupStocksDetailType" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="grs:grsVersionType" use="required"/>
+  </xsd:complexType>
+  
+  <!--<xsd:complexType name="groupStocksDetailType">
+  <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="groupStocks" type="grs:groupStocksType"/>
+  </xsd:sequence>
+  <xsd:attribute name="version" type="grs:grsVersionType" use="required"/>
 </xsd:complexType> 
 -->
 <!-- xsd:element name="groupStocks type="grs:groupStocksType"/ -->
   <!-- **************************************************************************
-		groupStocks
-	 ************************************************************************** -->
+    groupStocks
+   ************************************************************************** -->
 
 
   <xsd:complexType name="groupStocksHeaderType">
     <xsd:annotation>
-      <xsd:documentation>Údaje kategorie internetového obchodu.</xsd:documentation>
+      <xsd:documentation>Ăšdaje kategorie internetovĂ©ho obchodu.</xsd:documentation>
     </xsd:annotation>
     <xsd:all>
 
       <xsd:element name="id" type="typ:idType" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>ID záznamu (jen pro export).</xsd:documentation>
+          <xsd:documentation>ID zĂˇznamu (jen pro export).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       
       <xsd:element name="code" minOccurs="1" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Jedinečný "Kód" skupiny zásob.</xsd:documentation>
+          <xsd:documentation>JedineÄŤnĂ˝ "KĂłd" skupiny zĂˇsob.</xsd:documentation>
         </xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="typ:nonEmptyString">
-						<xsd:maxLength value="64"/>
-					</xsd:restriction>
-				</xsd:simpleType>
+        <xsd:simpleType>
+          <xsd:restriction base="typ:nonEmptyString">
+            <xsd:maxLength value="64"/>
+          </xsd:restriction>
+        </xsd:simpleType>
       </xsd:element>
 
       <xsd:element name="name" minOccurs="1" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Název Skupiny zásob.</xsd:documentation>
+          <xsd:documentation>NĂˇzev Skupiny zĂˇsob.</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
           <xsd:restriction base="typ:nonEmptyString">
@@ -81,20 +81,20 @@
 
       <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Textový popis skupiny zásob.</xsd:documentation>
+          <xsd:documentation>TextovĂ˝ popis skupiny zĂˇsob.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
      
       <xsd:element name="internet" type="typ:boolean" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Zobrazení. Určuje, zda je skupina zásob přenášena na internetový obchod.</xsd:documentation>
+          <xsd:documentation>ZobrazenĂ­. UrÄŤuje, zda je skupina zĂˇsob pĹ™enĂˇĹˇena na internetovĂ˝ obchod.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="picture" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Název obrázku. Soubor se musí nacházet v adresáři Dokumenty\firma\Obrázky\. Název obrázku se uvádí bez cesty.</xsd:documentation>
+          <xsd:documentation>NĂˇzev obrĂˇzku. Soubor se musĂ­ nachĂˇzet v adresĂˇĹ™i Dokumenty\firma\ObrĂˇzky\. NĂˇzev obrĂˇzku se uvĂˇdĂ­ bez cesty.</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
           <xsd:restriction base="xsd:string">
@@ -103,12 +103,12 @@
         </xsd:simpleType>
       </xsd:element>
 
-      <!-- Poznámka -->
+      <!-- PoznĂˇmka -->
       <xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"/>
       
       <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
         <xsd:annotation>
-          <xsd:documentation>Označení záznamu v programu POHODA, sloupec "X". Výchozí hodnota je "označený záznam".</xsd:documentation>
+          <xsd:documentation>OznaÄŤenĂ­ zĂˇznamu v programu POHODA, sloupec "X". VĂ˝chozĂ­ hodnota je "oznaÄŤenĂ˝ zĂˇznam".</xsd:documentation>
         </xsd:annotation>
       </xsd:element>      
       
@@ -119,58 +119,58 @@
     <xsd:choice>
       <xsd:element name="add" type="ftr:requestGroupStocksActionType">
         <xsd:annotation>
-          <xsd:documentation>Vložení nového záznamu. Výchozí hodnota.</xsd:documentation>
+          <xsd:documentation>VloĹľenĂ­ novĂ©ho zĂˇznamu. VĂ˝chozĂ­ hodnota.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="update" type="ftr:requestGroupStocksActionType">
         <xsd:annotation>
-          <xsd:documentation>Aktualizace záznamu.</xsd:documentation>
+          <xsd:documentation>Aktualizace zĂˇznamu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="delete" type="ftr:requestGroupStocksType">
         <xsd:annotation>
-          <xsd:documentation>Odstranění záznamu.</xsd:documentation>
+          <xsd:documentation>OdstranÄ›nĂ­ zĂˇznamu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:choice>
   </xsd:complexType>
   
-	<xsd:complexType name="groupStocksDetailType">
-		<xsd:sequence>
-			<xsd:element name="variant" type="grs:variantsItemType" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>Varianta skupiny zásob.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
+  <xsd:complexType name="groupStocksDetailType">
+    <xsd:sequence>
+      <xsd:element name="variant" type="grs:variantsItemType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Varianta skupiny zĂˇsob.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
 
-		</xsd:sequence>
-	</xsd:complexType>
+    </xsd:sequence>
+  </xsd:complexType>
 
-	<xsd:complexType name="variantsItemType">
+  <xsd:complexType name="variantsItemType">
     <xsd:all>
       <xsd:element name="actionType" type="typ:actionTypeItemAddDelete" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Typ práce s položkou. Výchozí hodnota je přidání nové položky.</xsd:documentation>
+          <xsd:documentation>Typ prĂˇce s poloĹľkou. VĂ˝chozĂ­ hodnota je pĹ™idĂˇnĂ­ novĂ© poloĹľky.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Odkaz na skladovou položku.</xsd:documentation>
+          <xsd:documentation>Odkaz na skladovou poloĹľku.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="order" type="xsd:integer" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Pořadí skladových položek (Pouze pro export).</xsd:documentation>
+          <xsd:documentation>PoĹ™adĂ­ skladovĂ˝ch poloĹľek (Pouze pro export).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="name" type="typ:string90" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Název skladové položky. </xsd:documentation>
+          <xsd:documentation>NĂˇzev skladovĂ© poloĹľky. </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="quantity" type="xsd:float" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Množství skladové položky.</xsd:documentation>
+          <xsd:documentation>MnoĹľstvĂ­ skladovĂ© poloĹľky.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:all>
@@ -178,7 +178,7 @@
 
   <xsd:simpleType name="grsVersionType">
     <xsd:annotation>
-      <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+      <xsd:documentation>Verze, kterĂ© jsou dostupnĂ© k tomuto dokladu. Podrobnosti k jednotlivĂ˝m verzĂ­m najdete na www.stormware.cz/xml</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="2.0"/>
@@ -189,7 +189,7 @@
 
   <xsd:element name="groupStocksResponse" type="grs:groupStocksResponseType">
     <xsd:annotation>
-      <xsd:documentation>Odpověď na import Skupiny zásoby.Obsahuje podrobnosti zpracování.</xsd:documentation>
+      <xsd:documentation>OdpovÄ›ÄŹ na import Skupiny zĂˇsoby.Obsahuje podrobnosti zpracovĂˇnĂ­.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
