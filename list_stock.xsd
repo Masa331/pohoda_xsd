@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      xmlns:stk="http://www.stormware.cz/schema/version_2/stock.xsd"
-      xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-      xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/list_stock.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/list_stock.xsd"
-      elementFormDefault="qualified"
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			xmlns:stk="http://www.stormware.cz/schema/version_2/stock.xsd"
+			xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
+			xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/list_stock.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/list_stock.xsd"
+			elementFormDefault="qualified"
 >
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
@@ -21,28 +21,28 @@
 <xsd:element name="listStockRequest" type="lStk:listRequestStockType"/>
 
 <xsd:complexType name="listRequestStockType">
-  <xsd:sequence minOccurs="1" maxOccurs="unbounded">
-    <xsd:element name="requestStock" type="ftr:requestStockType">
-      <xsd:annotation>
-        <xsd:documentation>Atributy urƒçuj√≠ filtr pro export z√°sob. Pokud nen√≠ zad√°n ≈æ√°dn√Ω filtr, vyexportuj√≠ se v≈°echny z√°soby.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:sequence>
-  <xsd:attribute name="version" type="lStk:listRequestStockVerType" use="required"/>
-  <xsd:attribute name="stockVersion" type="stk:stkVersionType" use="required">
-    <xsd:annotation>
-      <xsd:documentation>Po≈æadovan√° verze dokladu.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:attribute>
+	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+		<xsd:element name="requestStock" type="ftr:requestStockType">
+			<xsd:annotation>
+				<xsd:documentation>Atributy urËujÌ filtr pro export z·sob. Pokud nenÌ zad·n û·dn˝ filtr, vyexportujÌ se vöechny z·soby.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:sequence>
+	<xsd:attribute name="version" type="lStk:listRequestStockVerType" use="required"/>
+	<xsd:attribute name="stockVersion" type="stk:stkVersionType" use="required">
+		<xsd:annotation>
+			<xsd:documentation>Poûadovan· verze dokladu.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
 </xsd:complexType>
 
 <xsd:simpleType name="listRequestStockVerType">
-  <xsd:annotation>
-    <xsd:documentation>Verze, kter√© jsou dostupn√© k tomuto dokladu. Podrobnosti k jednotliv√Ωm verz√≠m najdete na www.stormware.cz/xml</xsd:documentation>
-  </xsd:annotation>
-  <xsd:restriction base="xsd:string">
-    <xsd:enumeration value="2.0"/>
-  </xsd:restriction>
+	<xsd:annotation>
+		<xsd:documentation>Verze, kterÈ jsou dostupnÈ k tomuto dokladu. Podrobnosti k jednotliv˝m verzÌm najdete na www.stormware.cz/xml</xsd:documentation>
+	</xsd:annotation>
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="2.0"/>
+	</xsd:restriction>
 </xsd:simpleType>
 
 
@@ -51,13 +51,13 @@
 <xsd:element name="listStock" type="lStk:listStockType"/>
 
 <xsd:complexType name="listStockType">
-  <xsd:complexContent>
-    <xsd:extension base="rdc:listVersionType">
-      <xsd:choice>
-        <xsd:element name="stock" type="stk:stockType" minOccurs="0" maxOccurs="unbounded"/>
-      </xsd:choice>
-    </xsd:extension>
-  </xsd:complexContent>
+	<xsd:complexContent>
+		<xsd:extension base="rdc:listVersionType">
+			<xsd:choice>
+				<xsd:element name="stock" type="stk:stockType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:choice>
+		</xsd:extension>
+	</xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

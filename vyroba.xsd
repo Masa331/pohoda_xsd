@@ -1,160 +1,160 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
       xmlns:prn="http://www.stormware.cz/schema/version_2/print.xsd"
-      xmlns:vyr="http://www.stormware.cz/schema/version_2/vyroba.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/vyroba.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/vyroba.xsd"
-      elementFormDefault="qualified">
+			xmlns:vyr="http://www.stormware.cz/schema/version_2/vyroba.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/vyroba.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/vyroba.xsd"
+			elementFormDefault="qualified">
 
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd"           schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"   schemaLocation="documentresponse.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/print.xsd"          schemaLocation="print.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" 					schemaLocation="type.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" 	schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/print.xsd" 					schemaLocation="print.xsd"/>
 
 <!-- **************************************************************************
-    VÃ½roba
-   ************************************************************************** -->
+		Vıroba
+	 ************************************************************************** -->
 
 <!-- REQUEST -->
 <xsd:element name="vyroba" type="vyr:vyrobaType"/>
 
 <xsd:complexType name="vyrobaType">
-  <xsd:sequence>
-    <xsd:element name="vyrobaHeader" type="vyr:vyrobaHeaderType" minOccurs="0"/>
-    <xsd:element name="vyrobaDetail" type="vyr:vyrobaDetailType" minOccurs="0"/>
+	<xsd:sequence>
+		<xsd:element name="vyrobaHeader" type="vyr:vyrobaHeaderType" minOccurs="0"/>
+	 	<xsd:element name="vyrobaDetail" type="vyr:vyrobaDetailType" minOccurs="0"/>
     <xsd:element name="print" type="prn:agendaPrintType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Po vytvoÅ™enÃ­ zÃ¡znamu se provede jeho tisk.</xsd:documentation>
-      </xsd:annotation>
+				<xsd:documentation>Po vytvoøení záznamu se provede jeho tisk.</xsd:documentation>
+			</xsd:annotation>
     </xsd:element>
-  </xsd:sequence>
-  <xsd:attribute name="version" type="vyr:vyrVersionType" use="required"/>
+	</xsd:sequence>
+	<xsd:attribute name="version" type="vyr:vyrVersionType" use="required"/>
 </xsd:complexType>
 
 <xsd:simpleType name="vyrVersionType">
-  <xsd:annotation>
-    <xsd:documentation>Verze, kterÃ© jsou dostupnÃ© k tomuto dokladu. Podrobnosti k jednotlivÃ½m verzÃ­m najdete na www.stormware.cz/xml</xsd:documentation>
-  </xsd:annotation>
-  <xsd:restriction base="xsd:string">
-    <xsd:enumeration value="2.0"/>
-  </xsd:restriction>
+	<xsd:annotation>
+		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivım verzím najdete na www.stormware.cz/xml</xsd:documentation>
+	</xsd:annotation>
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="2.0"/>
+	</xsd:restriction>
 </xsd:simpleType>
 
 <xsd:complexType name="vyrobaHeaderType">
-  <xsd:all>
-    <xsd:element name="id" type="typ:idType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>ID zÃ¡znamu. PouÅ¾Ã­vÃ¡ se pÅ™i requestu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="number" type="typ:numberType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>EvidenÄnÃ­ ÄÃ­slo dokladu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="date" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Datum vÃ½roby. Pokud hodnota nenÃ­ uvedena pouÅ¾ije se aktuÃ¡lnÃ­ datum.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-      <xsd:element name="time" type="xsd:time" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Zadejte Äas uskuteÄnÄ›nÃ­ vÃ½roby vÃ½robku. Pokud hodnota nenÃ­ uvedena, pouÅ¾ije se aktuÃ¡lnÃ­ Äas.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>    
-    <xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>PÃ¡rovacÃ­ symbol.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="text" type="typ:string48" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Text dokladu. Tento element je vyÅ¾adovÃ¡n pÅ™i vytvoÅ™enÃ­ dokladu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="partnerIdentity" type="typ:address" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>ZÃ¡kaznÃ­kova adresa</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="centreSource" type="typ:refType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>ZdrojovÃ© stÅ™edisko.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="centreDestination" type="typ:refType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>CÃ­lovÃ© stÅ™edisko.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="activity" type="typ:refType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>ÄŒinnost.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="contract" type="typ:refType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>ZakÃ¡zka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="note" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>PoznÃ¡mka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="intNote" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>InternÃ­ poznÃ¡mka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+	<xsd:all>
+		<xsd:element name="id" type="typ:idType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>ID záznamu. Pouívá se pøi requestu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="number" type="typ:numberType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Evidenèní èíslo dokladu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="date" type="xsd:date" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Datum vıroby. Pokud hodnota není uvedena pouije se aktuální datum.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+			<xsd:element name="time" type="xsd:time" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Zadejte èas uskuteènìní vıroby vırobku. Pokud hodnota není uvedena, pouije se aktuální èas.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>		
+		<xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Párovací symbol.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="text" type="typ:string48" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Text dokladu. Tento element je vyadován pøi vytvoøení dokladu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="partnerIdentity" type="typ:address" minOccurs="0">
+		  <xsd:annotation>
+				<xsd:documentation>Zákazníkova adresa</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="centreSource" type="typ:refType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Zdrojové støedisko.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="centreDestination" type="typ:refType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Cílové støedisko.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="activity" type="typ:refType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Èinnost.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="contract" type="typ:refType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Zakázka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="note" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Poznámka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="intNote" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Interní poznámka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
       <xsd:annotation>
-        <xsd:documentation>OznaÄenÃ­ zÃ¡znamu v programu POHODA, sloupec "X". VÃ½chozÃ­ hodnota je "oznaÄenÃ½ zÃ¡znam".</xsd:documentation>
+        <xsd:documentation>Oznaèení záznamu v programu POHODA, sloupec "X". Vıchozí hodnota je "oznaèenı záznam".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="labels" type="typ:labelsType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Å tÃ­tky zÃ¡znamu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="parameters" type="typ:parametersType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>VolitelnÃ½ parametr.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+		<xsd:element name="labels" type="typ:labelsType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Štítky záznamu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="parameters" type="typ:parametersType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Volitelnı parametr.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:complexType>
 
 <xsd:complexType name="vyrobaDetailType">
-  <xsd:sequence>
-    <xsd:element name="vyrobaItem" type="vyr:vyrobaItemType" maxOccurs="unbounded"/>
-  </xsd:sequence>
+	<xsd:sequence>
+		<xsd:element name="vyrobaItem" type="vyr:vyrobaItemType" maxOccurs="unbounded"/>
+	</xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="vyrobaItemType">
-  <xsd:all>
-      <xsd:element name="quantity" type="xsd:float" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>MnoÅ¾stvÃ­.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-    <xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Ãšdaje potÅ™ebnÃ© k nalezenÃ­ skladovÃ© zÃ¡soby vloÅ¾enÃ© do poloÅ¾ky. Pokud zde tento element nenÃ­, jednÃ¡ se o textovou poloÅ¾ku.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="expirationDate" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Datum expirace.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="note" type="typ:string90" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>PoznÃ¡mka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+	<xsd:all>
+	  	<xsd:element name="quantity" type="xsd:float" minOccurs="0">
+	  		<xsd:annotation>
+	  			<xsd:documentation>Mnoství.</xsd:documentation>
+	  		</xsd:annotation>
+	  	</xsd:element>
+		<xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Údaje potøebné k nalezení skladové zásoby vloené do poloky. Pokud zde tento element není, jedná se o textovou poloku.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="expirationDate" type="xsd:date" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Datum expirace.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="note" type="typ:string90" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Poznámka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:complexType>
 
 <!-- RESPONSE -->
@@ -162,9 +162,9 @@
 <xsd:element name="vyrobaResponse" type="vyr:vyrobaResponseType"/>
 
 <xsd:complexType name="vyrobaResponseType">
-  <xsd:complexContent>
-    <xsd:extension  base="rdc:documentResponseType"/>
-  </xsd:complexContent>
+	<xsd:complexContent>
+		<xsd:extension  base="rdc:documentResponseType"/>
+	</xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

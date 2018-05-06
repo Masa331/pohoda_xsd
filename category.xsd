@@ -1,173 +1,173 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
       xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      xmlns:ctg="http://www.stormware.cz/schema/version_2/category.xsd"
+			xmlns:ctg="http://www.stormware.cz/schema/version_2/category.xsd"
       xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/category.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/category.xsd"
-      elementFormDefault="qualified">
+			xmlns="http://www.stormware.cz/schema/version_2/category.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/category.xsd"
+			elementFormDefault="qualified">
 
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd"           schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/list.xsd"           schemaLocation="list.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" 					schemaLocation="type.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/list.xsd" 					schemaLocation="list.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd" schemaLocation="filter.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"   schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" 	schemaLocation="documentresponse.xsd"/>
 
 
   <!-- **************************************************************************
-    Kategorie internetovÃ½ch obchodÅ¯
-   ************************************************************************** -->
+		Kategorie internetovıch obchodù
+	 ************************************************************************** -->
 
 <!-- REQUEST -->
 <xsd:element name="categoryDetail" type="ctg:categoryDetailType"/>
 
 <xsd:complexType name="categoryDetailType">
-  <xsd:sequence minOccurs="0" maxOccurs="unbounded">
-    <xsd:element name="category" type="ctg:categoryType"/>
-  </xsd:sequence>
-  <xsd:attribute name="version" type="ctg:ctgVersionType" use="required"/>
+	<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+		<xsd:element name="category" type="ctg:categoryType"/>
+	</xsd:sequence>
+	<xsd:attribute name="version" type="ctg:ctgVersionType" use="required"/>
 </xsd:complexType> 
 
 <!-- ************************************************************************-->
  <xsd:complexType name="actionTypeType">
-  <xsd:choice>
-    <xsd:element name="add" type="ftr:requestCategoryActionType">
-      <xsd:annotation>
-        <xsd:documentation>VloÅ¾enÃ­ novÃ©ho zÃ¡znamu. VÃ½chozÃ­ hodnota.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+	<xsd:choice>
+		<xsd:element name="add" type="ftr:requestCategoryActionType">
+			<xsd:annotation>
+				<xsd:documentation>Vloení nového záznamu. Vıchozí hodnota.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
     <xsd:element name="update" type="ftr:requestCategoryActionType">
-      <xsd:annotation>
-        <xsd:documentation>Aktualizace dokladu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:choice>
+			<xsd:annotation>
+				<xsd:documentation>Aktualizace dokladu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:choice>
 </xsd:complexType>
 
 <!-- ************************************************************************-->
 
 <xsd:complexType name="categoryType">
-  <xsd:annotation>
-    <xsd:documentation>Ãšdaje kategorie internetovÃ©ho obchodu.</xsd:documentation>
-  </xsd:annotation>
-  <xsd:all>
+	<xsd:annotation>
+		<xsd:documentation>Údaje kategorie internetového obchodu.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:all>
   
     <xsd:element name="parentId" type="typ:idType" minOccurs="0" maxOccurs="1">
       <xsd:annotation>
-        <xsd:documentation>ID nadÅ™azenÃ© kategorie (jen pro import). Pokud hodnota nenÃ­ uvedena, jednÃ¡ se o nejvyÅ¡Å¡Ã­ kategorii. Nelze pouÅ¾Ã­t u subCategories.</xsd:documentation>
-      </xsd:annotation>
+			  <xsd:documentation>ID nadøazené kategorie (jen pro import). Pokud hodnota není uvedena, jedná se o nejvyšší kategorii. Nelze pouít u subCategories.</xsd:documentation>
+		  </xsd:annotation>
     </xsd:element>
       
-    <xsd:element name="id" type="typ:idType" minOccurs="0" maxOccurs="1">
-      <xsd:annotation>
-        <xsd:documentation>ID zÃ¡znamu (jen pro export).</xsd:documentation>
-      </xsd:annotation>    
-    </xsd:element>
-    
-    <xsd:element name="name" minOccurs="1" maxOccurs="1">
-      <xsd:annotation>
-        <xsd:documentation>JedineÄnÃ½ nÃ¡zev Kategorie internetovÃ©ho obchodu (napÅ™. GUID).</xsd:documentation>
-      </xsd:annotation>
+		<xsd:element name="id" type="typ:idType" minOccurs="0" maxOccurs="1">
+			<xsd:annotation>
+				<xsd:documentation>ID záznamu (jen pro export).</xsd:documentation>
+			</xsd:annotation>    
+		</xsd:element>
+		
+		<xsd:element name="name" minOccurs="1" maxOccurs="1">
+			<xsd:annotation>
+				<xsd:documentation>Jedineènı název Kategorie internetového obchodu (napø. GUID).</xsd:documentation>
+			</xsd:annotation>
       <xsd:simpleType>
-        <xsd:restriction base="typ:nonEmptyString">
+				<xsd:restriction base="typ:nonEmptyString">
           <xsd:maxLength value="48"/>
-        </xsd:restriction>
+				</xsd:restriction>
       </xsd:simpleType>
-    </xsd:element>
-    
-    <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
-      <xsd:annotation>
-        <xsd:documentation>TextovÃ½ popis kategorie.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    
-    <xsd:element name="sequence" type="xsd:integer" minOccurs="0" maxOccurs="1" default="0">
-      <xsd:annotation>
-        <xsd:documentation>ProstÅ™ednictvÃ­m pole PoÅ™adÃ­ mÅ¯Å¾ete urÄovat poÅ™adÃ­ kategoriÃ­ v jednotlivÃ½ch vÄ›tvÃ­ch stromu. Kategorie s nejmenÅ¡Ã­ hodnotou je na prvnÃ­m mÃ­stÄ›. 
-          KaÅ¾dÃ¡ zadanÃ¡ kategorie mÃ¡ svoje ID.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+		</xsd:element>
+		
+		<xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+			<xsd:annotation>
+				<xsd:documentation>Textovı popis kategorie.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		
+		<xsd:element name="sequence" type="xsd:integer" minOccurs="0" maxOccurs="1" default="0">
+			<xsd:annotation>
+				<xsd:documentation>Prostøednictvím pole Poøadí mùete urèovat poøadí kategorií v jednotlivıch vìtvích stromu. Kategorie s nejmenší hodnotou je na prvním místì. 
+          Kadá zadaná kategorie má svoje ID.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
 
-    <xsd:element name="displayed" type="typ:boolean" minOccurs="0" maxOccurs="1">
-      <xsd:annotation>
-        <xsd:documentation>ZobrazenÃ­. UrÄuje, zda je kategorie pÅ™enÃ¡Å¡ena na internetovÃ½ obchod.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+		<xsd:element name="displayed" type="typ:boolean" minOccurs="0" maxOccurs="1">
+			<xsd:annotation>
+				<xsd:documentation>Zobrazení. Urèuje, zda je kategorie pøenášena na internetovı obchod.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
 
-    <xsd:element name="picture" minOccurs="0" maxOccurs="1">
-      <xsd:annotation>
-        <xsd:documentation>NÃ¡zev obrÃ¡zku. Soubor se musÃ­ nachÃ¡zet v adresÃ¡Å™i Dokumenty\firma\ObrÃ¡zky\. NÃ¡zev obrÃ¡zku se uvÃ¡dÃ­ bez cesty.</xsd:documentation>
-      </xsd:annotation>
-      <xsd:simpleType>
-        <xsd:restriction base="xsd:string">
-          <xsd:maxLength value="200"/>
-        </xsd:restriction>
-      </xsd:simpleType>
-    </xsd:element>
+		<xsd:element name="picture" minOccurs="0" maxOccurs="1">
+			<xsd:annotation>
+				<xsd:documentation>Název obrázku. Soubor se musí nacházet v adresáøi Dokumenty\firma\Obrázky\. Název obrázku se uvádí bez cesty.</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="200"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:element>
 
-    <!-- PoznÃ¡mka -->
-    <xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		<!-- Poznámka -->
+		<xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"/>
 
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
       <xsd:annotation>
-        <xsd:documentation>OznaÄenÃ­ zÃ¡znamu v programu POHODA, sloupec "X". VÃ½chozÃ­ hodnota je "oznaÄenÃ½ zÃ¡znam".</xsd:documentation>
+        <xsd:documentation>Oznaèení záznamu v programu POHODA, sloupec "X". Vıchozí hodnota je "oznaèenı záznam".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
 
-    <!--Podkategorie--> 
-    <xsd:element name="subCategories" type="ctg:subCategoriesType" minOccurs="0" maxOccurs="1"/>
+		<!--Podkategorie-->	
+		<xsd:element name="subCategories" type="ctg:subCategoriesType" minOccurs="0" maxOccurs="1"/>
     
-    <!-- Parametry zboÅ¾Ã­ v kategorii -->
-    <xsd:element name="internetParams" type="ctg:internetParamsType" minOccurs="0"/>      
+    <!-- Parametry zboí v kategorii -->
+    <xsd:element name="internetParams" type="ctg:internetParamsType" minOccurs="0"/>			
     
-  </xsd:all>
+	</xsd:all>
 </xsd:complexType>  
 
-<xsd:complexType name="internetParamsType"> 
-  <xsd:sequence>
+<xsd:complexType name="internetParamsType">	
+	<xsd:sequence>
     <xsd:choice>
-      <xsd:element name="idInternetParams" type="xsd:string" minOccurs="0" maxOccurs="1">
+  		<xsd:element name="idInternetParams" type="xsd:string" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Verze 2.0, hodnoty ID parametrÅ¯ internetovÃ½ch obchodÅ¯ jsou oddÄ›lenÃ© ÄÃ¡rkou.</xsd:documentation>
-        </xsd:annotation>
+  		    <xsd:documentation>Verze 2.0, hodnoty ID parametrù internetovıch obchodù jsou oddìlené èárkou.</xsd:documentation>
+  	    </xsd:annotation>
       </xsd:element>
       <xsd:element name="intParameter" type="typ:refTypeLong" minOccurs="1" maxOccurs="unbounded">
         <xsd:annotation>
-          <xsd:documentation>Verze 2.1 a vyÅ¡Å¡Ã­, hodnoty parametrÅ¯ internetovÃ½ch obchodÅ¯.</xsd:documentation>
-        </xsd:annotation>
+  		    <xsd:documentation>Verze 2.1 a vyšší, hodnoty parametrù internetovıch obchodù.</xsd:documentation>
+  	    </xsd:annotation>
       </xsd:element>
     </xsd:choice>
-  </xsd:sequence>
+	</xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="subCategoriesType">
-  <xsd:sequence>
-    <xsd:element name="category" type="ctg:categoryType" minOccurs="0" maxOccurs="unbounded"/>
-  </xsd:sequence>
+	<xsd:sequence>
+		<xsd:element name="category" type="ctg:categoryType" minOccurs="0" maxOccurs="unbounded"/>
+	</xsd:sequence>
 </xsd:complexType> 
 
 <xsd:simpleType name="ctgVersionType">
-  <xsd:annotation>
-    <xsd:documentation>Verze, kterÃ© jsou dostupnÃ© k tomuto dokladu. Podrobnosti k jednotlivÃ½m verzÃ­m najdete na www.stormware.cz/xml</xsd:documentation>
-  </xsd:annotation>
-  <xsd:restriction base="xsd:string">
-    <xsd:enumeration value="2.0"/>
+	<xsd:annotation>
+		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivım verzím najdete na www.stormware.cz/xml</xsd:documentation>
+	</xsd:annotation>
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="2.0"/>
         <xsd:enumeration value="2.1"/>
-  </xsd:restriction>
+	</xsd:restriction>
 </xsd:simpleType>
 
 <!-- RESPONSE -->
 
 <xsd:element name="categoryResponse" type="ctg:categoryResponseType">
-  <xsd:annotation>
-    <xsd:documentation>OdpovÄ›Ä na import kategorie. Obsahuje podrobnosti zpracovÃ¡nÃ­.</xsd:documentation>
-  </xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>Odpovìï na import kategorie. Obsahuje podrobnosti zpracování.</xsd:documentation>
+	</xsd:annotation>
 </xsd:element>
 
 <xsd:complexType name="categoryResponseType">
-  <xsd:complexContent>
-    <xsd:extension  base="rdc:documentResponseType"/>
-  </xsd:complexContent>
+	<xsd:complexContent>
+		<xsd:extension  base="rdc:documentResponseType"/>
+	</xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

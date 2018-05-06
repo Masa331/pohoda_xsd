@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
       xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      xmlns:ilt="http://www.stormware.cz/schema/version_2/inventoryLists.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/inventoryLists.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/inventoryLists.xsd"
-      elementFormDefault="qualified">
+			xmlns:ilt="http://www.stormware.cz/schema/version_2/inventoryLists.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/inventoryLists.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/inventoryLists.xsd"
+			elementFormDefault="qualified">
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"	schemaLocation="documentresponse.xsd"/>
 
 <!-- **************************************************************************
-      InventurnÃ­ seznamy
-     ************************************************************************** -->
+	  	Inventurní seznamy
+	   ************************************************************************** -->
 
 <xsd:element name="inventoryLists" type="ilt:inventoryListsType"/>
 
@@ -26,7 +26,7 @@
 
   <xsd:simpleType name="iltVersionType">
     <xsd:annotation>
-      <xsd:documentation>Verze, kterÃ© jsou dostupnÃ© k tomuto dokladu. Podrobnosti k jednotlivÃ½m verzÃ­m najdete na www.stormware.cz/xml</xsd:documentation>
+      <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivım verzím najdete na www.stormware.cz/xml</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="2.0"/>
@@ -34,58 +34,58 @@
   </xsd:simpleType>
   
 <xsd:complexType name="inventoryListsHeaderType">
-  <xsd:all>
+	<xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>ID zÃ¡znamu (pouze pro export).</xsd:documentation>
+        <xsd:documentation>ID záznamu (pouze pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="number" type="typ:numberType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>
-          EvidenÄnÃ­ ÄÃ­slo dokladu. Pokud nenÃ­ hodnota uvedena, pouÅ¾ije se ÄÃ­selnÃ¡ Å™ada pÅ™ednastavenÃ¡
-          v uÅ¾ivatelskÃ©m nastavenÃ­ nebo se nastavÃ­ prvnÃ­ ÄÃ­selnÃ¡ Å™ada pro danÃ½ doklad.
+          Evidenèní èíslo dokladu. Pokud není hodnota uvedena, pouije se èíselná øada pøednastavená
+          v uivatelském nastavení nebo se nastaví první èíselná øada pro danı doklad.
         </xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="date" type="xsd:date" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Datum vystavenÃ­ inventurnÃ­ho seznamu. Pokud nenÃ­ hodnota zadanÃ¡, pouÅ¾ije se aktuÃ¡lnÃ­ datum nebo datum poslednÃ­ho zÃ¡znamu, dle volby v uÅ¾ivatelskÃ©m nastavenÃ­.</xsd:documentation>
+        <xsd:documentation>Datum vystavení inventurního seznamu. Pokud není hodnota zadaná, pouije se aktuální datum nebo datum posledního záznamu, dle volby v uivatelském nastavení.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="text" type="typ:string240" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Text inventurnÃ­ho seznamu.</xsd:documentation>
+        <xsd:documentation>Text inventurního seznamu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="store" type="typ:refType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Sklad. Pokud hodnota nenÃ­ zadanÃ¡, vyberou se vÅ¡echny sklady.</xsd:documentation>
+        <xsd:documentation>Sklad. Pokud hodnota není zadaná, vyberou se všechny sklady.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="centre" type="typ:refType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>StÅ™edisko.</xsd:documentation>
+        <xsd:documentation>Støedisko.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="activity" type="typ:refType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>ÄŒinnost.</xsd:documentation>
+        <xsd:documentation>Èinnost.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="contract" type="typ:refType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>ZakÃ¡zka.</xsd:documentation>
+        <xsd:documentation>Zakázka.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="note" type="xsd:string" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>PoznÃ¡mka.</xsd:documentation>
+        <xsd:documentation>Poznámka.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
       <xsd:annotation>
-        <xsd:documentation>OznaÄenÃ­ zÃ¡znamu v programu POHODA, sloupec "X". VÃ½chozÃ­ hodnota je "oznaÄenÃ½ zÃ¡znam".</xsd:documentation>
+        <xsd:documentation>Oznaèení záznamu v programu POHODA, sloupec "X". Vıchozí hodnota je "oznaèenı záznam".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>
@@ -101,32 +101,32 @@
     <xsd:all>
       <xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Ãšdaje potÅ™ebnÃ© k nalezenÃ­ skladovÃ© zÃ¡soby vloÅ¾enÃ© do poloÅ¾ky. Pokud zde tento element nenÃ­, jednÃ¡ se o textovou poloÅ¾ku.</xsd:documentation>
+          <xsd:documentation>Údaje potøebné k nalezení skladové zásoby vloené do poloky. Pokud zde tento element není, jedná se o textovou poloku.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="code" type="typ:stockIdsType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>KÃ³d poloÅ¾ky.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
+			<xsd:element name="code" type="typ:stockIdsType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Kód poloky.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
       <xsd:element name="text" type="typ:string90" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Text poloÅ¾ky.</xsd:documentation>
+          <xsd:documentation>Text poloky.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="quantity" type="xsd:float" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>MnoÅ¾stvÃ­.</xsd:documentation>
+          <xsd:documentation>Mnoství.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="unit" type="typ:unitType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>MÄ›rnÃ¡ jednotka.</xsd:documentation>
+          <xsd:documentation>Mìrná jednotka.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="isDelivered" type="typ:boolean" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>DodÃ¡no. PouÅ¾Ã­vÃ¡ se jen pÅ™i exportu dokladu.</xsd:documentation>
+          <xsd:documentation>Dodáno. Pouívá se jen pøi exportu dokladu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:all>
@@ -138,15 +138,15 @@
 <!-- RESPONSE -->
 
 <xsd:element name="inventoryListsResponse" type="ilt:inventoryListsResponseType">
-  <xsd:annotation>
-    <xsd:documentation>OdpovÄ›Ä na import inventrunÃ­ch seznamÅ¯. Obsahuje podrobnosti zpracovÃ¡nÃ­.</xsd:documentation>
-  </xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>Odpovìï na import inventruních seznamù. Obsahuje podrobnosti zpracování.</xsd:documentation>
+	</xsd:annotation>
 </xsd:element>
 
 <xsd:complexType name="inventoryListsResponseType">
-  <xsd:complexContent>
-    <xsd:extension  base="rdc:documentResponseType"/>
-  </xsd:complexContent>
+	<xsd:complexContent>
+		<xsd:extension  base="rdc:documentResponseType"/>
+	</xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

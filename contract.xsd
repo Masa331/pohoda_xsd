@@ -1,162 +1,162 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
       xmlns:prn="http://www.stormware.cz/schema/version_2/print.xsd"
-      xmlns:con="http://www.stormware.cz/schema/version_2/contract.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/contract.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/contract.xsd"
-      elementFormDefault="qualified">
+			xmlns:con="http://www.stormware.cz/schema/version_2/contract.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/contract.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/contract.xsd"
+			elementFormDefault="qualified">
 
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"   schemaLocation="documentresponse.xsd"/>
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/print.xsd"          schemaLocation="print.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" 	schemaLocation="documentresponse.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/print.xsd" 					schemaLocation="print.xsd"/>
 
   <!-- **************************************************************************
-    ZakÃ¡zky
-   ************************************************************************** -->
+		Zakázky
+	 ************************************************************************** -->
   
 <!-- REQUEST -->
 <xsd:element name="contract" type="con:contractType"/>
 
 <xsd:complexType name="contractType">
-  <xsd:sequence minOccurs="1" maxOccurs="1">
-    <xsd:element name="contractDesc" type="con:contractDescType"/>    
+	<xsd:sequence minOccurs="1" maxOccurs="1">
+		<xsd:element name="contractDesc" type="con:contractDescType"/>		
     <xsd:element name="print" type="prn:agendaPrintType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Po vytvoÅ™enÃ­ zÃ¡znamu se provede jeho tisk.</xsd:documentation>
-      </xsd:annotation>
+				<xsd:documentation>Po vytvoøení záznamu se provede jeho tisk.</xsd:documentation>
+			</xsd:annotation>
     </xsd:element>
-  </xsd:sequence>
-  <xsd:attribute name="version" type="con:conVersionType" use="required"/>
+	</xsd:sequence>
+	<xsd:attribute name="version" type="con:conVersionType" use="required"/>
 </xsd:complexType>
 
 <xsd:simpleType name="conVersionType">
-  <xsd:annotation>
-    <xsd:documentation>Verze, kterÃ© jsou dostupnÃ© k tomuto dokladu. Podrobnosti k jednotlivÃ½m verzÃ­m najdete na www.stormware.cz/xml</xsd:documentation>
-  </xsd:annotation>
-  <xsd:restriction base="xsd:string">
-    <xsd:enumeration value="2.0"/>
-  </xsd:restriction>
+	<xsd:annotation>
+		<xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivım verzím najdete na www.stormware.cz/xml</xsd:documentation>
+	</xsd:annotation>
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="2.0"/>
+	</xsd:restriction>
 </xsd:simpleType>
 
 <xsd:complexType name="contractDescType">
-  <xsd:all>
-    <xsd:element name="id" type="typ:idType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>PouÅ¾Ã­vÃ¡ se pouze pÅ™i exportu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="number" type="typ:numberTypeContract" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>EvidenÄnÃ­ ÄÃ­slo zakÃ¡zky.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="datePlanStart" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Datum plÃ¡novanÃ©ho zahÃ¡jenÃ­.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="datePlanDelivery" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Datum plÃ¡novanÃ©ho pÅ™edÃ¡nÃ­.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="dateStart" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Datum zahÃ¡jenÃ­.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="dateDelivery" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Datum pÅ™edÃ¡nÃ­.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="dateWarranty" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>ZÃ¡ruka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>    
-    <xsd:element name="text" type="typ:string90" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Text popisu zakÃ¡zky. Tento element je vyÅ¾adovÃ¡n pÅ™i vytvoÅ™enÃ­ dokladu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="partnerIdentity" type="typ:address" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>ZÃ¡kaznÃ­kova adresa.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="responsiblePerson" type="typ:refTypeLong" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>OdpovÄ›dnÃ¡ osoba.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>  
-    <xsd:element name="contractState" type="con:contractStateType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Stav zakÃ¡zky.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="ost1" type="typ:string8" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>OstatnÃ­.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="ost2" type="typ:string8" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Pozn.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="note" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>PoznÃ¡mka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+	<xsd:all>
+		<xsd:element name="id" type="typ:idType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Pouívá se pouze pøi exportu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="number" type="typ:numberTypeContract" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Evidenèní èíslo zakázky.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="datePlanStart" type="xsd:date" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Datum plánovaného zahájení.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="datePlanDelivery" type="xsd:date" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Datum plánovaného pøedání.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="dateStart" type="xsd:date" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Datum zahájení.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="dateDelivery" type="xsd:date" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Datum pøedání.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="dateWarranty" type="xsd:date" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Záruka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>		
+		<xsd:element name="text" type="typ:string90" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Text popisu zakázky. Tento element je vyadován pøi vytvoøení dokladu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="partnerIdentity" type="typ:address" minOccurs="0">
+		  <xsd:annotation>
+				<xsd:documentation>Zákazníkova adresa.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="responsiblePerson" type="typ:refTypeLong" minOccurs="0">
+		  <xsd:annotation>
+				<xsd:documentation>Odpovìdná osoba.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>	
+		<xsd:element name="contractState" type="con:contractStateType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Stav zakázky.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="ost1" type="typ:string8" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Ostatní.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="ost2" type="typ:string8" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Pozn.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="note" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Poznámka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
       <xsd:annotation>
-        <xsd:documentation>OznaÄenÃ­ zÃ¡znamu v programu POHODA, sloupec "X". VÃ½chozÃ­ hodnota je "oznaÄenÃ½ zÃ¡znam".</xsd:documentation>
+        <xsd:documentation>Oznaèení záznamu v programu POHODA, sloupec "X". Vıchozí hodnota je "oznaèenı záznam".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="labels" type="typ:labelsType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Å tÃ­tky zÃ¡znamu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="parameters" type="typ:parametersType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>VolitelnÃ½ parametr.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+		<xsd:element name="labels" type="typ:labelsType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Štítky záznamu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="parameters" type="typ:parametersType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Volitelnı parametr.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:complexType>
 
-<!-- Stav zakÃ¡zky  -->
+<!-- Stav zakázky  -->
 <xsd:simpleType name="contractStateType">
-  <xsd:annotation>
-    <xsd:documentation>Stav zakÃ¡zky.</xsd:documentation>
-  </xsd:annotation>
-  <xsd:restriction base="xsd:string">
-    <xsd:enumeration value="planned">
-      <xsd:annotation>
-        <xsd:documentation>PlÃ¡novanÃ¡ zakÃ¡zka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:enumeration>
-    <xsd:enumeration value="opened">
-      <xsd:annotation>
-        <xsd:documentation>ZahÃ¡jenÃ¡ zakÃ¡zka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:enumeration>
-    <xsd:enumeration value="delivered">
-      <xsd:annotation>
-        <xsd:documentation>PÅ™edanÃ¡ zakÃ¡zka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:enumeration>
-    <xsd:enumeration value="closed">
-      <xsd:annotation>
-        <xsd:documentation>UzavÅ™enÃ¡ zakÃ¡zka.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:enumeration>
-  </xsd:restriction>
+	<xsd:annotation>
+		<xsd:documentation>Stav zakázky.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="planned">
+			<xsd:annotation>
+				<xsd:documentation>Plánovaná zakázka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:enumeration>
+		<xsd:enumeration value="opened">
+			<xsd:annotation>
+				<xsd:documentation>Zahájená zakázka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:enumeration>
+		<xsd:enumeration value="delivered">
+			<xsd:annotation>
+				<xsd:documentation>Pøedaná zakázka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:enumeration>
+		<xsd:enumeration value="closed">
+			<xsd:annotation>
+				<xsd:documentation>Uzavøená zakázka.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:enumeration>
+	</xsd:restriction>
 </xsd:simpleType>
 
 
@@ -165,9 +165,9 @@
 <xsd:element name="contractResponse" type="con:contractResponseType"/>
 
 <xsd:complexType name="contractResponseType">
-  <xsd:complexContent>
-    <xsd:extension  base="rdc:documentResponseType"/>
-  </xsd:complexContent>
+	<xsd:complexContent>
+		<xsd:extension  base="rdc:documentResponseType"/>
+	</xsd:complexContent>
 </xsd:complexType>
 
 </xsd:schema>

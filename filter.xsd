@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-      xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/filter.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/filter.xsd"
-      elementFormDefault="qualified"
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/filter.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/filter.xsd"
+			elementFormDefault="qualified"
 >
 
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd"     schemaLocation="type.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" 		schemaLocation="type.xsd"/>
 
 <!-- ****************************************************************************** -->
 
 <xsd:complexType name="requestCashRegisterType">
   <xsd:group ref="ftr:groupFilter_2"/> 
 </xsd:complexType>
-  
+	
 <!-- ****************************************************************************** -->
 
 <xsd:complexType name="requestBankAccountType">
-  <xsd:group ref="ftr:groupFilter_2"/>
+	<xsd:group ref="ftr:groupFilter_2"/>
 </xsd:complexType>
 
 <!-- ****************************************************************************** -->
-  
+	
 <xsd:complexType name="requestInvoiceType">
   <xsd:group ref="ftr:groupFilter_1"/> 
 </xsd:complexType>
@@ -30,89 +30,89 @@
 <!-- ****************************************************************************** -->
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestIntDocType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestOrderType">
   <xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <xsd:complexType name="deleteOrderType">
-  <xsd:group ref="ftr:deleteFilter"/>
+	<xsd:group ref="ftr:deleteFilter"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestProdejkaType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestVyrobaType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestPrevodkaType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestVoucherType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ --> 
+     Filtr pouívanı pro export záznamù -->	
 <xsd:complexType name="requestOfferType">
   <xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestEnquiryType">
   <xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestVydejkaType">
   <xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestPrijemkaType">
   <xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestAccountancyType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestBankType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-    Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+		Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestStoreType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-  Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+	Filtr pouívanı pro export záznamù -->
 
   <xsd:complexType name="requestGroupStocksActionType">
     <xsd:complexContent>
@@ -123,163 +123,163 @@
   </xsd:complexType>
   
 <xsd:complexType name="requestGroupStocksType">
-  <xsd:group ref="ftr:groupFilter_3"/>
+	<xsd:group ref="ftr:groupFilter_3"/>
 </xsd:complexType>
 
   <xsd:group name="groupFilter_3">
     <xsd:all>
       <xsd:element name="filter" type="ftr:filterGroupStockType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Seznam polÃ­, podle kterÃ½ch se budou filtrovat doklady.</xsd:documentation>
+          <xsd:documentation>Seznam polí, podle kterıch se budou filtrovat doklady.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro filtraci zÃ¡znamÅ¯.</xsd:documentation>
+          <xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro filtraci záznamù.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:all>
   </xsd:group>
 
-  <!-- filtr pro skupiny zÃ¡sob-->
+  <!-- filtr pro skupiny zásob-->
   <xsd:complexType name="filterGroupStockType">
     <xsd:all>
       <xsd:element name="id" type="typ:idType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Filtr podle ID zÃ¡znamu.</xsd:documentation>
+          <xsd:documentation>Filtr podle ID záznamu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="code" type="typ:stockIdsType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Filtr dle kÃ³du skupiny zÃ¡soby.</xsd:documentation>
+          <xsd:documentation>Filtr dle kódu skupiny zásoby.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="name" type="typ:string32" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Filtr dle pole "NÃ¡zev" skupiny zÃ¡soby.</xsd:documentation>
+          <xsd:documentation>Filtr dle pole "Název" skupiny zásoby.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:all>
   </xsd:complexType>
 
     <!-- ******************************************************************************
-  Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy Formy Ãºhrady -->
+	Filtr pouívanı pro export záznamù z agendy Formy úhrady -->
 <xsd:complexType name="requestPaymentType">
   <xsd:group ref="ftr:groupFilter_2"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy ÄŒÃ­selnÃ© Å™ady -->
+Filtr pouívanı pro export záznamù z agendy Èíselné øady -->
 <xsd:complexType name="requestNumericalSeriesType">
   <xsd:all>
     <xsd:element name="filter" type="ftr:filterNumeciralSeriesType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­, podle kterÃ½ch se budou filtrovat zÃ¡znamy.</xsd:documentation>
+        <xsd:documentation>Seznam polí, podle kterıch se budou filtrovat záznamy.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro filtraci zÃ¡znamÅ¯.</xsd:documentation>
+        <xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro filtraci záznamù.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>
 </xsd:complexType>
   
   <!-- ******************************************************************************
-  Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy CenovÃ© akce -->
+	Filtr pouívanı pro export záznamù z agendy Cenové akce -->
 <xsd:complexType name="requestActionPriceType">
   <xsd:group ref="ftr:groupFilter_2"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
+Filtr pouívanı pro export záznamù z agendy Inventurní seznamy -->
 <xsd:complexType name="requestInventoryListsType">
-  <xsd:group ref="ftr:groupFilter_2"/>
+	<xsd:group ref="ftr:groupFilter_2"/>
 </xsd:complexType>
-  
+	
   <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ -->
+     Filtr pouívanı pro export záznamù -->
 <xsd:complexType name="requestContractType">
-  <xsd:group ref="ftr:groupFilter_1"/>
+	<xsd:group ref="ftr:groupFilter_1"/>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro editaci zÃ¡znamÅ¯ nebo pro vyhledÃ¡nÃ­ duplicit pÅ™i pÅ™idÃ¡nÃ­ zÃ¡znamÅ¯ -->   
+     Filtr pouívanı pro editaci záznamù nebo pro vyhledání duplicit pøi pøidání záznamù -->   
 <xsd:complexType name="requestCategoryActionType">
-  <xsd:group ref="ftr:groupFilter_2"/>
+	<xsd:group ref="ftr:groupFilter_2"/>
   <xsd:attributeGroup ref="groupAttributeAction"/>
 </xsd:complexType>
 
 <!-- ****************************************************************************** -->
 <xsd:group name="groupFilter_1">
-  <xsd:all>
-    <xsd:element name="filter" type="ftr:filterDocsType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­, podle kterÃ½ch se budou filtrovat doklady.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro filtraci zÃ¡znamÅ¯.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+	<xsd:all>
+		<xsd:element name="filter" type="ftr:filterDocsType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Seznam polí, podle kterıch se budou filtrovat doklady.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro filtraci záznamù.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:group>     
 
 <!-- ****************************************************************************** -->
 <xsd:group name="groupFilter_2">
-  <xsd:all>
-    <xsd:element name="filter" type="ftr:filterIDType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­, podle kterÃ½ch se budou filtrovat doklady.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro filtraci zÃ¡znamÅ¯.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+	<xsd:all>
+		<xsd:element name="filter" type="ftr:filterIDType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Seznam polí, podle kterıch se budou filtrovat doklady.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro filtraci záznamù.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:group>
 
 <xsd:group name="deleteFilter">
-  <xsd:all>
-    <xsd:element name="filter" type="ftr:filterDocsDeleteType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr pro vÃ½bÄ›r dokladu ke smazÃ¡nÃ­.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+	<xsd:all>
+		<xsd:element name="filter" type="ftr:filterDocsDeleteType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr pro vıbìr dokladu ke smazání.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:group>
 
-  <!-- ****************************************************************************** -->
+	<!-- ****************************************************************************** -->
 <xsd:attributeGroup name="groupAttributeAction"> 
-  <xsd:attribute name="update" type="typ:boolean" default="false">
+	<xsd:attribute name="update" type="typ:boolean" default="false">
     <xsd:annotation>
-      <xsd:documentation>Pokud je hodnota nastavenÃ¡ na'true', pak se v pÅ™Ã­padÄ› nalezenÃ­ stejnÃ©ho zÃ¡znamu v programu POHODA, provede jeho aktualizace. Pokud je hodnota nastavena na 'false', tak se v pÅ™Ã­padÄ› vÃ½skytu stejnÃ©ho zÃ¡znamu nic neprovede.</xsd:documentation>
+      <xsd:documentation>Pokud je hodnota nastavená na'true', pak se v pøípadì nalezení stejného záznamu v programu POHODA, provede jeho aktualizace. Pokud je hodnota nastavena na 'false', tak se v pøípadì vıskytu stejného záznamu nic neprovede.</xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
   <xsd:attribute name="add" type="typ:boolean" default="false">
     <xsd:annotation>
-      <xsd:documentation>Pokud je hodnota nastavenÃ¡ na'true', pak se v pÅ™Ã­padÄ› nenalezenÃ­ stejnÃ©ho zÃ¡znamu v programu POHODA, provede jeho import. Pokud je hodnota nastavena na 'false', tak se v pÅ™Ã­padÄ› nenalezenÃ­ stejnÃ©ho stejnÃ©ho zÃ¡znamu nic neprovede.</xsd:documentation>
+      <xsd:documentation>Pokud je hodnota nastavená na'true', pak se v pøípadì nenalezení stejného záznamu v programu POHODA, provede jeho import. Pokud je hodnota nastavena na 'false', tak se v pøípadì nenalezení stejného stejného záznamu nic neprovede.</xsd:documentation>
     </xsd:annotation>
-  </xsd:attribute>    
+  </xsd:attribute>  	
 </xsd:attributeGroup>     
 
 <!-- ******************************************************************************
-     FiltrovÃ¡nÃ­ zÃ¡znamÅ¯ podle jeho ID                                          -->
+     Filtrování záznamù podle jeho ID                                          -->
 <xsd:complexType name="filterIDType">
-  <xsd:all>
-    <xsd:element name="id" type="typ:idType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle ID zÃ¡znamu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+	<xsd:all>
+		<xsd:element name="id" type="typ:idType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle ID záznamu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:complexType>
  
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pÅ™i editaci zÃ¡znamÅ¯ nebo pro vyhledÃ¡nÃ­ duplicit pÅ™i pÅ™idÃ¡nÃ­ zÃ¡znamÅ¯ (id, extId) -->       
+     Filtr pouívanı pøi editaci záznamù nebo pro vyhledání duplicit pøi pøidání záznamù (id, extId) -->       
 <xsd:complexType name="requestExtIdActionType">
   <xsd:complexContent>
     <xsd:extension base="ftr:requestExtIdType">
@@ -292,89 +292,89 @@ Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
   <xsd:sequence>
     <xsd:element name="filter" type="ftr:filterExtIdType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­ podle kterÃ½ch se bude filtrovat.</xsd:documentation>
+        <xsd:documentation>Seznam polí podle kterıch se bude filtrovat.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="filterExtIdType">
-  <xsd:all>
-    <xsd:element name="id" type="typ:idType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle ID zÃ¡znamu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+	<xsd:all>
+		<xsd:element name="id" type="typ:idType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle ID záznamu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
     <xsd:element name="extId" type="typ:extIdType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Vybere zÃ¡znam dle zadanÃ©ho externÃ­ho identifikÃ¡toru.</xsd:documentation>
+        <xsd:documentation>Vybere záznam dle zadaného externího identifikátoru.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-  </xsd:all>
+	</xsd:all>
 </xsd:complexType>
-  
+	
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ u dokladovÃ½ch agend                                        -->
+     Filtr pouívanı u dokladovıch agend                                        -->
 <xsd:complexType name="filterDocsType">
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle ID záznamu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	  <xsd:element name="dateFrom" type="xsd:date" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Filtr podle ID zÃ¡znamu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="dateFrom" type="xsd:date" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Datum od.</xsd:documentation>
-      </xsd:annotation>
+				<xsd:documentation>Datum od.</xsd:documentation>
+			</xsd:annotation>
     </xsd:element>
     <xsd:element name="dateTill" type="xsd:date" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Datum do.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="selectedNumbers" type="ftr:selectedNumbersType" minOccurs="0"/>
-    <xsd:element name="selectedCompanys" type="ftr:selectedCompanysType" minOccurs="0"/>
-    <xsd:element name="selectedIco" type="ftr:selectedIcoType" minOccurs="0"/>
-    <xsd:element name="lastChanges" type="xsd:dateTime" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Vyexportuje zÃ¡znamy zmÄ›nÄ›nÃ© od zadanÃ©ho data.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+				<xsd:documentation>Datum do.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="selectedNumbers" type="ftr:selectedNumbersType" minOccurs="0"/>
+		<xsd:element name="selectedCompanys" type="ftr:selectedCompanysType" minOccurs="0"/>
+		<xsd:element name="selectedIco" type="ftr:selectedIcoType" minOccurs="0"/>
+		<xsd:element name="lastChanges" type="xsd:dateTime" minOccurs="0">
+		  <xsd:annotation>
+				<xsd:documentation>Vyexportuje záznamy zmìnìné od zadaného data.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
   </xsd:all>
 </xsd:complexType>
 
 <xsd:complexType name="selectedNumbersType">
   <xsd:sequence>
     <xsd:element name="number" type="typ:numberType" maxOccurs="unbounded">
-      <xsd:annotation>
-        <xsd:documentation>EvidenÄnÃ­ ÄÃ­slo dokladu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+    	<xsd:annotation>
+    		<xsd:documentation>Evidenèní èíslo dokladu.</xsd:documentation>
+    	</xsd:annotation>
+  	</xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="selectedCompanysType">
   <xsd:sequence>
     <xsd:element name="company" type="typ:stringCompany" maxOccurs="unbounded">
-      <xsd:annotation>
-        <xsd:documentation>Firma</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+    	<xsd:annotation>
+    		<xsd:documentation>Firma</xsd:documentation>
+    	</xsd:annotation>
+  	</xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="selectedIcoType">
   <xsd:sequence>
     <xsd:element name="ico" type="typ:icoType" maxOccurs="unbounded">
-      <xsd:annotation>
-        <xsd:documentation>ICO</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+    	<xsd:annotation>
+    		<xsd:documentation>ICO</xsd:documentation>
+    	</xsd:annotation>
+  	</xsd:element>
   </xsd:sequence>
 </xsd:complexType>
     
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pÅ™i editaci zÃ¡znamÅ¯ nebo pro vyhledÃ¡nÃ­ duplicit pÅ™i pÅ™idÃ¡nÃ­ zÃ¡znamÅ¯ -->       
+     Filtr pouívanı pøi editaci záznamù nebo pro vyhledání duplicit pøi pøidání záznamù -->       
 <xsd:complexType name="requestStockActionType">
   <xsd:complexContent>
     <xsd:extension base="ftr:requestStockType">
@@ -387,107 +387,107 @@ Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
   <xsd:sequence>
     <xsd:element name="filter" type="ftr:filterStocksType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­ podle kterÃ½ch se bude filtrovat.</xsd:documentation>
+        <xsd:documentation>Seznam polí podle kterıch se bude filtrovat.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro filtraci zÃ¡znamÅ¯.</xsd:documentation>
+        <xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro filtraci záznamù.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="filterStocksType">
-  <xsd:all>
-    <xsd:element name="id" type="typ:idType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle ID zÃ¡znamu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+	<xsd:all>
+		<xsd:element name="id" type="typ:idType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle ID záznamu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
     <xsd:element name="extId" type="typ:extIdType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Vybere zÃ¡znam dle zadanÃ©ho externÃ­ho identifikÃ¡toru.</xsd:documentation>
+        <xsd:documentation>Vybere záznam dle zadaného externího identifikátoru.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="code" type="typ:stockIdsType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle kÃ³du zÃ¡soby.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="EAN" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle ÄÃ­sla ÄÃ¡rovÃ©ho kÃ³du.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="PLU" type="xsd:integer" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle pole kÃ³du zÃ¡soby pro registraÄnÃ­ pokladnu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+		<xsd:element name="code" type="typ:stockIdsType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle kódu zásoby.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="EAN" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle èísla èárového kódu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="PLU" type="xsd:integer" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle pole kódu zásoby pro registraèní pokladnu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
     <xsd:element name="name" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle nÃ¡zvu skladovÃ© poloÅ¾ky.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>    
-    <xsd:element name="storage" type="typ:refTypeStorage" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle ID, nÃ¡zev ÄlenÄ›nÃ­. Je moÅ¾nÃ© takÃ© zadat ÄÃ¡st nÃ¡zvu ÄlenÄ›nÃ­ (zleva) - probÄ›hne vyexportovÃ¡nÃ­ zadanÃ© vÄ›tve a souvisejÃ­cÃ­ch podvÄ›tvÃ­ stromu ÄlenÄ›nÃ­.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="store" type="typ:refType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle ID, nÃ¡zev skladu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="internet" type="typ:boolean" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Hodnota Internet je na zÃ¡sobÄ›  nastavena.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="lastChanges" type="xsd:dateTime" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Vyexportuje zÃ¡znamy zmÄ›nÄ›nÃ© od zadanÃ©ho data.Pouze pro export.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle názvu skladové poloky.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>		
+		<xsd:element name="storage" type="typ:refTypeStorage" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle ID, název èlenìní. Je moné také zadat èást názvu èlenìní (zleva) - probìhne vyexportování zadané vìtve a souvisejících podvìtví stromu èlenìní.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="store" type="typ:refType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle ID, název skladu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="internet" type="typ:boolean" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Hodnota Internet je na zásobì  nastavena.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="lastChanges" type="xsd:dateTime" minOccurs="0">
+		  <xsd:annotation>
+				<xsd:documentation>Vyexportuje záznamy zmìnìné od zadaného data.Pouze pro export.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
 </xsd:complexType>
 
 <!-- ******************************************************************************
-     Filtr pouÅ¾Ã­vanÃ½ pro editaci zÃ¡znamÅ¯ nebo pro vyhledÃ¡nÃ­ duplicit pÅ™i pÅ™idÃ¡nÃ­ zÃ¡znamÅ¯ -->   
+     Filtr pouívanı pro editaci záznamù nebo pro vyhledání duplicit pøi pøidání záznamù -->   
 <xsd:complexType name="requestAddressBookActionType">
-  <xsd:complexContent>    
+	<xsd:complexContent>    
     <xsd:extension base="ftr:requestAddressBookType">
-      <xsd:attributeGroup ref="groupAttributeAction"/>
+    	<xsd:attributeGroup ref="groupAttributeAction"/>
       </xsd:extension>
   </xsd:complexContent>
 </xsd:complexType>
 
 <xsd:complexType name="requestAddressBookType">
-  <xsd:sequence>
-    <xsd:element name="filter" type="ftr:filterAdbsType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­ podle kterÃ½ch se budou filtrovat adresy.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro filtraci zÃ¡znamÅ¯.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:sequence>
+	<xsd:sequence>
+		<xsd:element name="filter" type="ftr:filterAdbsType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Seznam polí podle kterıch se budou filtrovat adresy.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro filtraci záznamù.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:sequence>
 </xsd:complexType>    
 
 <xsd:complexType name="filterAdbsType">
-  <xsd:all>
-    <xsd:element name="id" type="typ:idType" minOccurs="0">
+	<xsd:all>
+		<xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Vybere zÃ¡znam dle zadanÃ©ho ID.</xsd:documentation>
+        <xsd:documentation>Vybere záznam dle zadaného ID.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="extId" type="typ:extIdType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Vybere zÃ¡znam dle zadanÃ©ho externÃ­ho identifikÃ¡toru.</xsd:documentation>
+        <xsd:documentation>Vybere záznam dle zadaného externího identifikátoru.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="company" type="typ:stringCompany" minOccurs="0">
@@ -497,7 +497,7 @@ Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
     </xsd:element>
     <xsd:element name="name" type="typ:string32" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Kontrola duplicity v poli JmÃ©no.</xsd:documentation>
+        <xsd:documentation>Kontrola duplicity v poli Jméno.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="city" type="typ:string45" minOccurs="0">
@@ -512,55 +512,55 @@ Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
     </xsd:element>
     <xsd:element name="zip" type="typ:string15" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Kontrola duplicity v poli PSÄŒ.</xsd:documentation>
+        <xsd:documentation>Kontrola duplicity v poli PSÈ.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="ico" type="typ:icoType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Kontrola duplicity v poli IÄŒ.</xsd:documentation>
+        <xsd:documentation>Kontrola duplicity v poli IÈ.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="dic" type="typ:icDphType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Kontrola duplicity v poli DIÄŒ.</xsd:documentation>
+        <xsd:documentation>Kontrola duplicity v poli DIÈ.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="number" type="typ:numberADType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Kontrola duplicity v poli ÄŒÃ­slo.</xsd:documentation>
+        <xsd:documentation>Kontrola duplicity v poli Èíslo.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="lastChanges" type="xsd:dateTime" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Vyexportuje zÃ¡znamy zmÄ›nÄ›nÃ© od zadanÃ©ho data.Pouze pro export.</xsd:documentation>
+        <xsd:documentation>Vyexportuje záznamy zmìnìné od zadaného data.Pouze pro export.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-  </xsd:all>
+	</xsd:all>
 </xsd:complexType>  
 
 <!-- ************************************************************************
-     FitrovÃ¡nÃ­ zÃ¡znamÅ¯ pro tisk -->
+     Fitrování záznamù pro tisk -->
 <xsd:complexType name="recordPrintType">
-  <xsd:all>                   
-    <xsd:element name="filter" type="ftr:filterIDType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­ podle kterÃ½ch se bude filtrovat.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+  <xsd:all>       		        
+		<xsd:element name="filter" type="ftr:filterIDType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Seznam polí podle kterıch se bude filtrovat.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
     <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro vyfiltovÃ¡nÃ­ zÃ¡znamÅ¯.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>         
-  </xsd:all>
-  <xsd:attribute name="agenda" type="printAgendaType" use="required"/>    
+			<xsd:annotation>
+				<xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro vyfiltování záznamù.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>         
+	</xsd:all>
+  <xsd:attribute name="agenda" type="printAgendaType" use="required"/>		
 </xsd:complexType>   
  
 <xsd:simpleType name="printAgendaType">
-  <xsd:annotation>
-    <xsd:documentation>VÃ½bÄ›r agendy.</xsd:documentation>
-  </xsd:annotation>
-  <xsd:restriction base="xsd:string">
+	<xsd:annotation>
+		<xsd:documentation>Vıbìr agendy.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:restriction base="xsd:string">
     <xsd:enumeration value="adresar"/>
     <xsd:enumeration value="interni_doklady"/>
     <xsd:enumeration value="vydane_nabidky"/>
@@ -569,7 +569,7 @@ Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
     <xsd:enumeration value="ostatni_zavazky"/>
     <xsd:enumeration value="pokladna"/>
     <xsd:enumeration value="vydane_poptavky"/>
-    <xsd:enumeration value="prijate_poptavky"/>
+	  <xsd:enumeration value="prijate_poptavky"/>
     <xsd:enumeration value="prevod"/>
     <xsd:enumeration value="prijemky"/>      
     <xsd:enumeration value="prijate_faktury"/>
@@ -581,15 +581,15 @@ Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
     <xsd:enumeration value="vydane_zalohove_faktury"/>    
     <xsd:enumeration value="vydejky"/>
     <xsd:enumeration value="vyroba"/>
-    <xsd:enumeration value="zakazky"/>        
-  <xsd:enumeration value="zasoby"/>
-  </xsd:restriction>
+    <xsd:enumeration value="zakazky"/>				
+	<xsd:enumeration value="zasoby"/>
+	</xsd:restriction>
 </xsd:simpleType>
 
-  <!--Typ agendy - pro ÄÃ­selnÃ© Å™ady-->
+  <!--Typ agendy - pro èíselné øady-->
   <xsd:simpleType name="CRadyAgendaType">
     <xsd:annotation>
-      <xsd:documentation>VÃ½bÄ›r agendy.</xsd:documentation>
+      <xsd:documentation>Vıbìr agendy.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="adresar"/>
@@ -629,59 +629,59 @@ Filtr pouÅ¾Ã­vanÃ½ pro export zÃ¡znamÅ¯ z agendy InventurnÃ­ seznamy -->
   </xsd:simpleType>
 
 <!-- ************************************************************************
-     FitrovÃ¡nÃ­ zÃ¡znamÅ¯ pro mazÃ¡nÃ­ -->
+     Fitrování záznamù pro mazání -->
 
 <xsd:complexType name="filterDocsDeleteType">
-  <xsd:all>
-    <xsd:element name="id" type="typ:idType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Filtr podle ID zÃ¡znamu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="number" type="typ:string10" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>EvidenÄnÃ­ ÄÃ­slo dokladu.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:all>
-  <xsd:attribute name="agenda" type="printAgendaType" use="required"/>
+	<xsd:all>
+		<xsd:element name="id" type="typ:idType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Filtr podle ID záznamu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="number" type="typ:string10" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Evidenèní èíslo dokladu.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:all>
+	<xsd:attribute name="agenda" type="printAgendaType" use="required"/>
 </xsd:complexType>
 
 <!-- ************************************************************************-->
 <xsd:complexType name="userFilterNameType">
-  <xsd:sequence>
-    <xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>IdentifikÃ¡tor uÅ¾ivatelskÃ©ho filtru v poÅ¾adovanÃ© agendÄ›, kterÃ½ mÃ¡ bÃ½t pouÅ¾it pro filtraci zÃ¡znamÅ¯.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-  </xsd:sequence>
+	<xsd:sequence>
+		<xsd:element name="userFilterName" type="xsd:string" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Identifikátor uivatelského filtru v poadované agendì, kterı má bıt pouit pro filtraci záznamù.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:sequence>
 </xsd:complexType>
 
 <!-- ****************************************************************************** -->
 <xsd:complexType name="requestItemType">
   <xsd:sequence>
-    <xsd:element name="filter" type="ftr:filterIDType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Seznam polÃ­ podle kterÃ½ch se bude filtrovat.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
+		<xsd:element name="filter" type="ftr:filterIDType" minOccurs="0">
+			<xsd:annotation>
+				<xsd:documentation>Seznam polí podle kterıch se bude filtrovat.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
   </xsd:sequence>
 </xsd:complexType>
                         
                         
 <!-- ************************************************************************
-     FiltrovÃ¡nÃ­ zÃ¡znamÅ¯ pro ÄÃ­selnÃ© Å™ady -->
+     Filtrování záznamù pro èíselné øady -->
 <xsd:complexType name="filterNumeciralSeriesType">
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Filtr podle ID zÃ¡znamu.</xsd:documentation>
+        <xsd:documentation>Filtr podle ID záznamu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="period" type="typ:periodType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Typ obdobÃ­ ÃºÄetnÃ­ jednotky (bÄ›Å¾nÃ©/pÅ™echodnÃ©).</xsd:documentation>
+        <xsd:documentation>Typ období úèetní jednotky (bìné/pøechodné).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="agenda" type="ftr:CRadyAgendaType" minOccurs="0">

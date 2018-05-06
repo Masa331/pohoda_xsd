@@ -1,69 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      elementFormDefault="qualified"
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			elementFormDefault="qualified"
 >
 
-<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd"     schemaLocation="type.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" 		schemaLocation="type.xsd"/>
 
 <!-- **************************************************************************
-    DOCUMENT RESPONSE
+		DOCUMENT RESPONSE
      ************************************************************************** -->
-   
+	 
 <xsd:complexType name="documentResponseType">
-  <xsd:sequence>
+	<xsd:sequence>
       <xsd:element name="importDetails"  type="rdc:importDetailsType" minOccurs="0">
-        <xsd:annotation>
-        <xsd:documentation>Chyby a uporoznÄ›nÃ­ vzniklÃ© pÅ™i naÄtenÃ­ dokladu.</xsd:documentation>
-      </xsd:annotation>
+      	<xsd:annotation>
+				<xsd:documentation>Chyby a uporoznìní vzniklé pøi naètení dokladu.</xsd:documentation>
+			</xsd:annotation>
       </xsd:element>
       <xsd:element name="producedDetails"  type="rdc:producedDetailsType" minOccurs="0">
-        <xsd:annotation>
-        <xsd:documentation>Informace o vytvoÅ™enÃ©m dokladu.</xsd:documentation>
-      </xsd:annotation>
+      	<xsd:annotation>
+				<xsd:documentation>Informace o vytvoøeném dokladu.</xsd:documentation>
+			</xsd:annotation>
       </xsd:element>
-      <!--      Do budoucna ....
+      <!-- 			Do budoucna ....
       <xsd:element name="producedDocument"  type="rdc:producedDocumentType">
-        <xsd:annotation>
-        <xsd:documentation>VytvoÅ™enÃ½ dokument.</xsd:documentation>
-      </xsd:annotation>
+      	<xsd:annotation>
+				<xsd:documentation>Vytvoøenı dokument.</xsd:documentation>
+			</xsd:annotation>
       </xsd:element>
       -->
-  </xsd:sequence>
+	</xsd:sequence>
    <xsd:attribute name="state" type="typ:stavType2" use="required"/>
    <xsd:attribute name="version" type="xsd:string" use="required"/>
 </xsd:complexType>
       
 <xsd:complexType name="producedDetailsType">
-  <xsd:sequence>
+	<xsd:sequence>
     <xsd:element name="id"  type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>ID vytvoÅ™enÃ©ho dokladu.</xsd:documentation>
-      </xsd:annotation>
+				<xsd:documentation>ID vytvoøeného dokladu.</xsd:documentation>
+			</xsd:annotation>
     </xsd:element>
     <xsd:element name="number"  type="xsd:string" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>VytvoÅ™enÃ© ÄÃ­slo dokladu.</xsd:documentation>
-      </xsd:annotation>
+				<xsd:documentation>Vytvoøené èíslo dokladu.</xsd:documentation>
+			</xsd:annotation>
     </xsd:element>
     <xsd:element name="code"  type="xsd:string" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>KÃ³d vytvoÅ™enÃ©ho dokladu.</xsd:documentation>
-      </xsd:annotation>
+				<xsd:documentation>Kód vytvoøeného dokladu.</xsd:documentation>
+			</xsd:annotation>
     </xsd:element>
     <xsd:element name="actionType"  type="rdc:actionTypeEnum" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Typ provedenÃ© operace.</xsd:documentation>
+        <xsd:documentation>Typ provedené operace.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="extId"  type="typ:extIdType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>
-          Odkaz na zÃ¡znam v externÃ­ databÃ¡zi. V databÃ¡zi se nachÃ¡zÃ­ speciÃ¡lnÃ­ tabulka obsahujÃ­cÃ­
-          vazbu mezi agendou a externÃ­ databÃ¡zÃ­.
+          Odkaz na záznam v externí databázi. V databázi se nachází speciální tabulka obsahující
+          vazbu mezi agendou a externí databází.
         </xsd:documentation>
       </xsd:annotation>
     </xsd:element>
@@ -82,48 +82,48 @@
   </xsd:simpleType>
 
   <xsd:complexType name="importDetailsType">
-  <xsd:sequence>
+	<xsd:sequence>
       <xsd:element name="detail"  type="rdc:detailType" maxOccurs="unbounded"/>
    </xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="detailType">
-  <xsd:sequence>
-  <xsd:element name="state"  type="typ:stavType">
-    <xsd:annotation>
-      <xsd:documentation>Typ problÃ©mu pÅ™i zpracovÃ¡nÃ­ (ok, warning nebo error).</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:element name="errno"  type="xsd:integer" minOccurs="0">
-    <xsd:annotation>
-      <xsd:documentation>UnikÃ¡tnÃ­ ÄÃ­slo chyby.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:element name="note"  type="xsd:string" minOccurs="0">
-    <xsd:annotation>
-      <xsd:documentation>KomentÃ¡Å™.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:group ref="rdc:myGroupOfValue" minOccurs="0"/>
-  </xsd:sequence>
+	<xsd:sequence>
+	<xsd:element name="state"  type="typ:stavType">
+		<xsd:annotation>
+			<xsd:documentation>Typ problému pøi zpracování (ok, warning nebo error).</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="errno"  type="xsd:integer" minOccurs="0">
+		<xsd:annotation>
+			<xsd:documentation>Unikátní èíslo chyby.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="note"  type="xsd:string" minOccurs="0">
+		<xsd:annotation>
+			<xsd:documentation>Komentáø.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:group ref="rdc:myGroupOfValue" minOccurs="0"/>
+	</xsd:sequence>
 </xsd:complexType>
 
 <xsd:group name="myGroupOfValue">
-  <xsd:sequence>
-    <xsd:element name="XPath"  type="xsd:string">
-        <xsd:annotation>
-        <xsd:documentation>XPath - cesta.</xsd:documentation>
-      </xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="XPath"  type="xsd:string">
+      	<xsd:annotation>
+				<xsd:documentation>XPath - cesta.</xsd:documentation>
+			</xsd:annotation>
       </xsd:element>
       <xsd:element name="valueRequested"  type="xsd:string" minOccurs="0">
-        <xsd:annotation>
-        <xsd:documentation>PoÅ¾adovanÃ¡ hodnota.</xsd:documentation>
-      </xsd:annotation>
+      	<xsd:annotation>
+				<xsd:documentation>Poadovaná hodnota.</xsd:documentation>
+			</xsd:annotation>
       </xsd:element>
       <xsd:element name="valueProduced"  type="xsd:string" minOccurs="0">
-        <xsd:annotation>
-        <xsd:documentation>VytvoÅ™enÃ¡ hodnota.</xsd:documentation>
-      </xsd:annotation>
+      	<xsd:annotation>
+				<xsd:documentation>Vytvoøená hodnota.</xsd:documentation>
+			</xsd:annotation>
       </xsd:element>
   </xsd:sequence>
 </xsd:group>
@@ -131,32 +131,32 @@
 <!-- ****************************************************************************** -->
 
  <xsd:complexType name="listVersionType">
-  <xsd:sequence>
-    <xsd:element name="importDetails"   type="rdc:importDetailsType"  minOccurs="0">
+	<xsd:sequence>
+    <xsd:element name="importDetails"   type="rdc:importDetailsType"	minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Podrobnosti (error/warning) vzniklÃ© pÅ™i zpracovÃ¡nÃ­.</xsd:documentation>
+        <xsd:documentation>Podrobnosti (error/warning) vzniklé pøi zpracování.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="parts" type="rdc:partsType" minOccurs="0" maxOccurs="1">
       <xsd:annotation>
-        <xsd:documentation>Pokud je poÄet exportovanÃ½ch zÃ¡znamÅ¯ vyÅ¡Å¡Ã­ neÅ¾ zadanÃ½ limit, provede se rozdÄ›lenÃ­ dat do vÃ­ce souborÅ¯. V pÅ¯vodnÃ­m souboru je uveden seznam rozdÄ›lenÃ½ch souborÅ¯.</xsd:documentation>
+        <xsd:documentation>Pokud je poèet exportovanıch záznamù vyšší ne zadanı limit, provede se rozdìlení dat do více souborù. V pùvodním souboru je uveden seznam rozdìlenıch souborù.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-  </xsd:sequence>
-    <xsd:attribute name="version" type="xsd:string" use="required"/>
-    <xsd:attribute name="dateTimeStamp" type="xsd:dateTime" use="required"/>
-    <xsd:attribute name="dateValidFrom" type="xsd:date" use="required"/>
-    <xsd:attribute name="state" type="typ:stavType2" use="required"/>
+	</xsd:sequence>
+  	<xsd:attribute name="version" type="xsd:string" use="required"/>
+  	<xsd:attribute name="dateTimeStamp" type="xsd:dateTime" use="required"/>
+  	<xsd:attribute name="dateValidFrom" type="xsd:date" use="required"/>
+  	<xsd:attribute name="state" type="typ:stavType2" use="required"/>
 </xsd:complexType>
 
 
 <xsd:complexType name="partsType">
   <xsd:annotation>
-        <xsd:documentation>NÃ¡zev rozdÄ›lelenÃ©ho souboru.</xsd:documentation>
-  </xsd:annotation>
-  <xsd:sequence>
-    <xsd:element name="part" type="xsd:string"  minOccurs="0"  maxOccurs="unbounded"/>
-  </xsd:sequence>
+				<xsd:documentation>Název rozdìleleného souboru.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="part" type="xsd:string"	minOccurs="0"  maxOccurs="unbounded"/>
+	</xsd:sequence>
 </xsd:complexType>                                                                 
 
   

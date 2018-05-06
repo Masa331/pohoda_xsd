@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      xmlns:sto="http://www.stormware.cz/schema/version_2/store.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/store.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/store.xsd"
-      elementFormDefault="qualified">
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			xmlns:sto="http://www.stormware.cz/schema/version_2/store.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/store.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/store.xsd"
+			elementFormDefault="qualified">
 
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-  <xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd"   schemaLocation="documentresponse.xsd"/>
+  <xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" 	schemaLocation="documentresponse.xsd"/>
   
   <!-- **************************************************************************
-      Agenda sklady
-   ************************************************************************** -->
+	    Agenda sklady
+	 ************************************************************************** -->
   
   <xsd:element name="store" type="sto:storeType"/>  
 
   <xsd:complexType name="storeType">
     
-    <xsd:all>
-      <xsd:element name="id" type="typ:idType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>ID zĂˇznamu (pouze pro export).</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      
+		<xsd:all>
+			<xsd:element name="id" type="typ:idType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID záznamu (pouze pro export).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
       <xsd:element name="name" type="typ:string10" minOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>NĂˇzev skladu.</xsd:documentation>
+          <xsd:documentation>Název skladu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="text" type="typ:string32" minOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>Popis nebo plnĂ˝ nĂˇzev nebo adresa skladu.</xsd:documentation>
+          <xsd:documentation>Popis nebo plný název nebo adresa skladu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="storekeeper" type="typ:refType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>SkladnĂ­k.</xsd:documentation>
+          <xsd:documentation>Skladník.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
@@ -51,40 +51,40 @@
 
       <xsd:element name="note" type="xsd:string" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>PoznĂˇmka.</xsd:documentation>
+          <xsd:documentation>Poznámka.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
       <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
         <xsd:annotation>
-          <xsd:documentation>OznaÄŤenĂ­ zĂˇznamu v programu POHODA, sloupec "X". VĂ˝chozĂ­ hodnota je "oznaÄŤenĂ˝ zĂˇznam".</xsd:documentation>
+          <xsd:documentation>Označení záznamu v programu POHODA, sloupec "X". Výchozí hodnota je "označený záznam".</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
-      <!-- Synchronizace skladĹŻ, pouze pro variantÄ› Pohoda E1 -->
+      <!-- Synchronizace skladů, pouze pro variantě Pohoda E1 -->
       <xsd:element name="sourceStore" type="xsd:boolean" default="false" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>ZdrojovĂ˝ sklad.</xsd:documentation>
+          <xsd:documentation>Zdrojový sklad.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="destinationStore" type="xsd:boolean" default="false" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>CĂ­lovĂ˝ sklad.</xsd:documentation>
+          <xsd:documentation>Cílový sklad.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="createInventoryCard" type="xsd:boolean" default="false" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>ZaloĹľit skladovou zĂˇsobu.</xsd:documentation>
+          <xsd:documentation>Založit skladovou zásobu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
 
-      <xsd:element name="unitPZD" type="typ:refType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Jednotka PZD. NastavenĂ­ vlastnĂ­ka skladu v reĹľimu â€žPoboÄŤkovĂ© zpracovĂˇnĂ­ datâ€ś.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
+			<xsd:element name="unitPZD" type="typ:refType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Jednotka PZD. Nastavení vlastníka skladu v režimu „Pobočkové zpracování dat“.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
 
-      <!-- ĂšÄŤtovĂˇnĂ­ metodou A, pouze pĹ™i nastavenĂ­ Sklady A v programu Pohoda. -->
+			<!-- Účtování metodou A, pouze při nastavení Sklady A v programu Pohoda. -->
       <xsd:element name="accStockA" type="sto:accStockAType" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Sklady A.</xsd:documentation>
@@ -94,22 +94,22 @@
     <xsd:attribute name="version" type="sto:stoVersionType" use="required"/>
  </xsd:complexType>
 
-  <!-- Definice parametrĹŻ pro nastavenĂ­ PLU na skladÄ›.-->
+  <!-- Definice parametrů pro nastavení PLU na skladě.-->
   <xsd:complexType name="PLUtype">
     <xsd:all>
       <xsd:element name="usePLU" type="xsd:boolean" default="false" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>PouĹľĂ­t PLU rozsah</xsd:documentation>
+          <xsd:documentation>Použít PLU rozsah</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="lowerLimit" type="sto:limitPLUType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>DolnĂ­ limit PLU.</xsd:documentation>
+          <xsd:documentation>Dolní limit PLU.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="upperLimit" type="sto:limitPLUType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>HornĂ­ limit PLU.</xsd:documentation>
+          <xsd:documentation>Horní limit PLU.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:all>
@@ -118,7 +118,7 @@
 
   <xsd:simpleType name="limitPLUType">
     <xsd:annotation>
-      <xsd:documentation>MinimĂˇlnĂ­ a maximĂˇlnĂ­ hodnota PLU v programu Pohoda.</xsd:documentation>
+      <xsd:documentation>Minimální a maximální hodnota PLU v programu Pohoda.</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:integer">
       <xsd:minInclusive value="1"/>
@@ -126,22 +126,22 @@
     </xsd:restriction>
   </xsd:simpleType>
 
-  <!-- Definice parametrĹŻ pro ĂşÄŤtovĂˇnĂ­ skladu A. -->
+  <!-- Definice parametrů pro účtování skladu A. -->
   <xsd:complexType name="accStockAType">
     <xsd:all>
       <xsd:element name="material" type="typ:numberAccountType" maxOccurs="1" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>MateriĂˇl.</xsd:documentation>
+          <xsd:documentation>Materiál.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="goods" type="typ:numberAccountType" maxOccurs="1" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>ZboĹľĂ­.</xsd:documentation>
+          <xsd:documentation>Zboží.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="workInProgress" type="typ:numberAccountType" maxOccurs="1" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>NedokonÄŤenĂˇ vĂ˝roba.</xsd:documentation>
+          <xsd:documentation>Nedokončená výroba.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="semiproducts" type="typ:numberAccountType" maxOccurs="1" minOccurs="0">
@@ -151,17 +151,17 @@
       </xsd:element>
       <xsd:element name="products" type="typ:numberAccountType" maxOccurs="1" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>VĂ˝robky.</xsd:documentation>
+          <xsd:documentation>Výrobky.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="animals" type="typ:numberAccountType" maxOccurs="1" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>ZvĂ­Ĺ™ata.</xsd:documentation>
+          <xsd:documentation>Zvířata.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="materialOfOwnProduction" type="typ:numberAccountType" maxOccurs="1" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>MateriĂˇl vl. vĂ˝roby.</xsd:documentation>
+          <xsd:documentation>Materiál vl. výroby.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:all>
@@ -172,7 +172,7 @@
  <!-- Definice verze XML dokumentu. -->
   <xsd:simpleType name="stoVersionType">
     <xsd:annotation>
-      <xsd:documentation>Verze, kterĂ© jsou dostupnĂ© k tomuto dokladu. Podrobnosti k jednotlivĂ˝m verzĂ­m najdete na www.stormware.cz/xml</xsd:documentation>
+      <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="2.0"/>

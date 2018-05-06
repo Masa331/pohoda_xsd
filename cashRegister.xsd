@@ -1,177 +1,177 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="Windows-1250"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
-      xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
-      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
-      xmlns:csh="http://www.stormware.cz/schema/version_2/cashRegister.xsd"
-      xmlns="http://www.stormware.cz/schema/version_2/cashRegister.xsd"
-      targetNamespace="http://www.stormware.cz/schema/version_2/cashRegister.xsd"
-      elementFormDefault="qualified"
+			xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+			xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
+			xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+			xmlns:csh="http://www.stormware.cz/schema/version_2/cashRegister.xsd"
+			xmlns="http://www.stormware.cz/schema/version_2/cashRegister.xsd"
+			targetNamespace="http://www.stormware.cz/schema/version_2/cashRegister.xsd"
+			elementFormDefault="qualified"
 >
 
-  <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
-  <xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd" schemaLocation="filter.xsd"/>
-  <xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
+	<xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
+	<xsd:import namespace="http://www.stormware.cz/schema/version_2/filter.xsd" schemaLocation="filter.xsd"/>
+	<xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
 
-  <!-- **************************************************************************
-    root element must be <cashRegister>
-   ************************************************************************** -->
+	<!-- **************************************************************************
+		root element must be <cashRegister>
+	 ************************************************************************** -->
 
-  <!-- REQUEST -->
+	<!-- REQUEST -->
 
-  <xsd:element name="cashRegister" type="csh:cashRegisterType"/>
+	<xsd:element name="cashRegister" type="csh:cashRegisterType"/>
 
-  <!-- **************************************************************************
-     hotovostn√≠ pokladna
-   ************************************************************************** -->
+	<!-- **************************************************************************
+		 hotovostnÌ pokladna
+	 ************************************************************************** -->
 
-  <xsd:complexType name="cashRegisterType">
-    <xsd:sequence>
-      <xsd:element name="actionType" type="csh:actionTypeType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Typ pr√°ce s dokladem. V√Ωchoz√≠ hodnota je p≈ôid√°n√≠ nov√©ho dokladu.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="cashRegisterHeader" type="csh:cashRegisterHeaderType" minOccurs="0"/>
-    </xsd:sequence>
-    <xsd:attribute name="version" type="csh:cshVersionType" use="required"/>
-  </xsd:complexType>
+	<xsd:complexType name="cashRegisterType">
+		<xsd:sequence>
+			<xsd:element name="actionType" type="csh:actionTypeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Typ pr·ce s dokladem. V˝chozÌ hodnota je p¯id·nÌ novÈho dokladu.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cashRegisterHeader" type="csh:cashRegisterHeaderType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="version" type="csh:cshVersionType" use="required"/>
+	</xsd:complexType>
 
-  <xsd:simpleType name="cshVersionType">
-    <xsd:annotation>
-      <xsd:documentation>Verze, kter√© jsou dostupn√© k tomuto dokladu. Podrobnosti k jednotliv√Ωm verz√≠m najdete na www.stormware.cz/xml</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="2.0"/>
-    </xsd:restriction>
-  </xsd:simpleType>
+	<xsd:simpleType name="cshVersionType">
+		<xsd:annotation>
+			<xsd:documentation>Verze, kterÈ jsou dostupnÈ k tomuto dokladu. Podrobnosti k jednotliv˝m verzÌm najdete na www.stormware.cz/xml</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="2.0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-  <xsd:complexType name="actionTypeType">
-    <xsd:choice>
-      <xsd:element name="add" type="ftr:requestExtIdActionType">
-        <xsd:annotation>
-          <xsd:documentation>Vlo≈æen√≠ nov√©ho z√°znamu. V√Ωchoz√≠ hodnota.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="update" type="ftr:requestExtIdActionType">
-        <xsd:annotation>
-          <xsd:documentation>Aktualizace dokladu.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="delete" type="ftr:requestExtIdType">
-        <xsd:annotation>
-          <xsd:documentation>Odstranƒõn√≠ dokladu.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-    </xsd:choice>
-  </xsd:complexType>
+	<xsd:complexType name="actionTypeType">
+		<xsd:choice>
+			<xsd:element name="add" type="ftr:requestExtIdActionType">
+				<xsd:annotation>
+					<xsd:documentation>VloûenÌ novÈho z·znamu. V˝chozÌ hodnota.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="update" type="ftr:requestExtIdActionType">
+				<xsd:annotation>
+					<xsd:documentation>Aktualizace dokladu.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="delete" type="ftr:requestExtIdType">
+				<xsd:annotation>
+					<xsd:documentation>OdstranÏnÌ dokladu.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
 
-  <xsd:complexType name="cashRegisterHeaderType">
-    <xsd:all>
-      <xsd:element name="id" type="typ:idType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>ID z√°znamu (pouze pro export).</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
-        <xsd:annotation>
-          <xsd:documentation>
-            Odkaz na z√°znam v extern√≠ datab√°zi. V datab√°zi se nach√°z√≠ speci√°ln√≠ tabulka obsahuj√≠c√≠
-            vazbu mezi agendou a extern√≠ datab√°z√≠.
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="ids" type="typ:string10" minOccurs="1">
-        <xsd:annotation>
-          <xsd:documentation>Zkratka pokladny.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="name" minOccurs="1">
-        <xsd:annotation>
-          <xsd:documentation>N√°zev pokladny.</xsd:documentation>
-        </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="typ:nonEmptyString">
-            <xsd:maxLength value="24"/>
-          </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="account" type="typ:refType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Analytick√Ω √∫ƒçet.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="cashier" type="typ:refType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Pokladn√≠.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="currencyCashRegister" type="csh:currencyCashRegisterType" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Valutov√° hotovostn√≠ pokladna. Pokud je uveden tento element, bude vytvo≈ôena valutov√° pokladna.V ostatn√≠ch p≈ô√≠padech tuzemsk√° pokladna.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="cancelled" type="xsd:date" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Datum zru≈°en√≠ pokladny.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="FM" type="typ:boolean" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Doklad FM (Pouze Pohoda SK).</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="note" type="xsd:string" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Pozn√°mka</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-    </xsd:all>
-  </xsd:complexType>
-
-
-  <!--valutov√° pokladna-->
-  <xsd:complexType name="currencyCashRegisterType">
-    <xsd:all>
-      <xsd:element name="currency" type="typ:refType" minOccurs="1">
-        <xsd:annotation>
-          <xsd:documentation>Mƒõna pokladny.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="rate" type="csh:rateType" minOccurs="1">
-        <xsd:annotation>
-          <xsd:documentation>Kurs pou≈æit√Ω pro valutovou pokladnu (denn√≠/pevn√Ω).</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-    </xsd:all>
-  </xsd:complexType>
-
-  <!--kurs valutov√© pokladny-->
-  <xsd:simpleType name="rateType">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="daily">
-        <xsd:annotation>
-          <xsd:documentation>Denn√≠ kurs.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="fixed">
-        <xsd:annotation>
-          <xsd:documentation>Pevn√Ω kurs.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:enumeration>
-    </xsd:restriction>
-  </xsd:simpleType>
+	<xsd:complexType name="cashRegisterHeaderType">
+		<xsd:all>
+			<xsd:element name="id" type="typ:idType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID z·znamu (pouze pro export).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
+				<xsd:annotation>
+					<xsd:documentation>
+						Odkaz na z·znam v externÌ datab·zi. V datab·zi se nach·zÌ speci·lnÌ tabulka obsahujÌcÌ
+						vazbu mezi agendou a externÌ datab·zÌ.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ids" type="typ:string10" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Zkratka pokladny.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>N·zev pokladny.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="typ:nonEmptyString">
+						<xsd:maxLength value="24"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="account" type="typ:refType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Analytick˝ ˙Ëet.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cashier" type="typ:refType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>PokladnÌ.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="currencyCashRegister" type="csh:currencyCashRegisterType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Valutov· hotovostnÌ pokladna. Pokud je uveden tento element, bude vytvo¯ena valutov· pokladna.V ostatnÌch p¯Ìpadech tuzemsk· pokladna.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cancelled" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Datum zruöenÌ pokladny.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FM" type="typ:boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Doklad FM (Pouze Pohoda SK).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="note" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Pozn·mka</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
 
 
+	<!--valutov· pokladna-->
+	<xsd:complexType name="currencyCashRegisterType">
+		<xsd:all>
+			<xsd:element name="currency" type="typ:refType" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>MÏna pokladny.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="rate" type="csh:rateType" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Kurs pouûit˝ pro valutovou pokladnu (dennÌ/pevn˝).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
 
-  <!-- RESPONSE -->
+	<!--kurs valutovÈ pokladny-->
+	<xsd:simpleType name="rateType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="daily">
+				<xsd:annotation>
+					<xsd:documentation>DennÌ kurs.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixed">
+				<xsd:annotation>
+					<xsd:documentation>Pevn˝ kurs.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
 
-  <xsd:element name="cashRegisterResponse" type="csh:cashRegisterResponseType"/>
 
-  <xsd:complexType name="cashRegisterResponseType">
-    <xsd:complexContent>
-      <xsd:extension  base="rdc:documentResponseType"/>
-    </xsd:complexContent>
-  </xsd:complexType>
+
+	<!-- RESPONSE -->
+
+	<xsd:element name="cashRegisterResponse" type="csh:cashRegisterResponseType"/>
+
+	<xsd:complexType name="cashRegisterResponseType">
+		<xsd:complexContent>
+			<xsd:extension  base="rdc:documentResponseType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
 
 </xsd:schema>
