@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  Tento soubor neni originalni. Vytvoril jsem ho rucne, abych ho mohl pouzit pro validaci responsePacku i dataPacku najednou. Premysl Donat -->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"
+  xmlns:rsp="http://www.stormware.cz/schema/version_2/response.xsd">
+
+  <xsd:import namespace="http://www.stormware.cz/schema/version_2/data.xsd" schemaLocation="data.xsd"/>
+  <xsd:import namespace="http://www.stormware.cz/schema/version_2/response.xsd" schemaLocation="response.xsd"/>
+
+</xsd:schema>
