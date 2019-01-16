@@ -625,7 +625,7 @@ Filtr používaný pro export záznamů z agendy Inventurní seznamy -->
       <xsd:enumeration value="zakazky"/>
       <xsd:enumeration value="zahranicni_cestovni_prikazy"/>
       <xsd:enumeration value="zasilky"/>
-     </xsd:restriction>
+    </xsd:restriction>
   </xsd:simpleType>
 
 <!-- ************************************************************************
@@ -661,7 +661,7 @@ Filtr používaný pro export záznamů z agendy Inventurní seznamy -->
 <!-- ****************************************************************************** -->
 <xsd:complexType name="requestItemType">
   <xsd:sequence>
-    <xsd:element name="filter" type="ftr:filterIDType" minOccurs="0">
+    <xsd:element name="filter" type="ftr:filterExtIdType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Seznam polí podle kterých se bude filtrovat.</xsd:documentation>
       </xsd:annotation>

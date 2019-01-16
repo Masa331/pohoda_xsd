@@ -9,4 +9,5 @@ do
   `mv ./iconv.tmp $FILE`
 
   `sed -i 's/encoding="Windows-1250"/encoding="UTF-8"/g' $FILE`
+  `sed -i 's/encoding="windows-1250"/encoding="UTF-8"/g' $FILE`
 done

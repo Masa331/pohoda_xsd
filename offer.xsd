@@ -144,6 +144,11 @@
         <xsd:documentation>Interní poznámka.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="histRate" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Doklad má položky obsahující historickou sazbu DPH. Jen pro export.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
       <xsd:annotation>
         <xsd:documentation>Označení záznamu v programu POHODA, sloupec "X". Výchozí hodnota je "označený záznam".</xsd:documentation>
@@ -253,6 +258,16 @@
     <xsd:element name="typeServiceMOSS" type="typ:MOSStype" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Druh služby (MOSS).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PDP" type="xsd:boolean" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Příznak Přenesení daňové povinnosti (pouze pro Vydané nabídky).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="CodePDP" type="typ:string4" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Kód zboží (pouze pro Vydané nabídky v SK verzi).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="centre" type="typ:refType" minOccurs="0">

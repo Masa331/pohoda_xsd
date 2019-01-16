@@ -13,6 +13,8 @@
       xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd"
       xmlns:lCon="http://www.stormware.cz/schema/version_2/list_contract.xsd"
       xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd"      
+      xmlns:lCen="http://www.stormware.cz/schema/version_2/list_centre.xsd"
+      xmlns:lAcv="http://www.stormware.cz/schema/version_2/list_activity.xsd"
       xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
       xmlns:vyd="http://www.stormware.cz/schema/version_2/vydejka.xsd"
       xmlns:pri="http://www.stormware.cz/schema/version_2/prijemka.xsd"
@@ -36,6 +38,8 @@
       xmlns:nms="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
       xmlns:pay="http://www.stormware.cz/schema/version_2/payment.xsd"
       xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      xmlns:gdp="http://www.stormware.cz/schema/version_2/GDPR.xsd"
+      xmlns:est="http://www.stormware.cz/schema/version_2/establishment.xsd"
       xmlns="http://www.stormware.cz/schema/version_2/data.xsd"
       
       targetNamespace="http://www.stormware.cz/schema/version_2/data.xsd"
@@ -52,6 +56,8 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/list_addBook.xsd" schemaLocation="list_addBook.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/list_contract.xsd" schemaLocation="list_contract.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/list_stock.xsd" schemaLocation="list_stock.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/list_centre.xsd" schemaLocation="list_centre.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/list_activity.xsd" schemaLocation="list_activity.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/accountingunit.xsd" schemaLocation="accountingunit.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/vydejka.xsd" schemaLocation="vydejka.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/prijemka.xsd" schemaLocation="prijemka.xsd"/>
@@ -74,6 +80,8 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/numericalSeries.xsd" schemaLocation="numericalSeries.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/payment.xsd" schemaLocation="payment.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/mKasa.xsd" schemaLocation="mKasa.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/GDPR.xsd" schemaLocation="GDPR.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/establishment.xsd" schemaLocation="establishment.xsd"/>  
 
 <!-- **************************************************************************
     root element must be <dataPack>
@@ -105,11 +113,18 @@
        </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
-  <xsd:attribute name="ico" type="typ:icoType" use="required">
+  <xsd:attribute name="ico" type="typ:icoType">
     <xsd:annotation>
       <xsd:documentation>
-        IČ firmy, pro kterou je XML určeno. Hodnota musí souhlasit s IČ zadané firmy.           
+        IČ firmy, pro kterou je XML určeno. Hodnota musí souhlasit s IČ zadané firmy. Má vyšší prioritu než atribut "key".        
        </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+  <xsd:attribute name="key" type="typ:string64">
+    <xsd:annotation>
+      <xsd:documentation>
+        Jedinečný identifikátor účetnictví firmy, pro kterou je XML určeno. Pokud není uveden atribut "ico" (nebo je prázdný), hodnota musí souhlasit s "klíčem" zadané firmy.
+      </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
   <xsd:attribute name="period" type="typ:periodType">
@@ -191,6 +206,7 @@
     <xsd:element ref="ipm:intParamDetail"/>
     <xsd:element ref="ilt:inventoryLists"/>
     <xsd:element ref="nms:numericalSeries"/>
+    <xsd:element ref="gdp:GDPR"/>
     <!--  export dokladů -->
     <xsd:element ref="lst:listAccountancyRequest"/>
     <xsd:element ref="lAdb:listAddressBookRequest"/>
@@ -228,6 +244,10 @@
     <xsd:element ref="lst:listActionPriceRequest"/>
     <xsd:element ref="lst:listPaymentRequest"/>
     <xsd:element ref="lst:listNumericalSeriesRequest"/>
+    <xsd:element ref="lst:listGDPRRequest"/>
+    <xsd:element ref="lst:listEstablishmentRequest"/>
+    <xsd:element ref="lCen:listCentreRequest"/>
+    <xsd:element ref="lAcv:listActivityRequest"/>
     <xsd:element ref="mKasa:mKasaRequest"/>
     <xsd:element ref="prn:print"/>
     <xsd:element ref="sEET:sendEET"/>

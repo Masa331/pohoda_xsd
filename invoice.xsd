@@ -38,6 +38,13 @@
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="invoiceHeader" type="inv:invoiceHeaderType" minOccurs="0"/>
+    <xsd:element name="invoiceRetentions" type="inv:invoiceRetentionsType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Údaje o pozastávkách k vydané nebo přijaté faktuře. Pouze pro export.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="invoiceDetail" type="inv:invoiceDetailType" minOccurs="0"/>
     <xsd:element name="invoiceSummary" type="inv:invoiceSummaryType" minOccurs="0"/>
     <xsd:element name="EET" type="typ:EETType" minOccurs="0"/>
@@ -260,6 +267,16 @@
           <xsd:group ref="typ:myGroupOfAccount"/>       
       </xsd:complexType>  
     </xsd:element>
+    <xsd:element name="messageForRecipient" type="typ:string35" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Zpráva pro příjemce (pouze pro export Přijatých faktur, Přijatých zálohových faktur a Ostatních závazků).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="dateOfPaymentOrder" type="xsd:date" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Datum vystavení příkazu k úhradě (pouze pro export Přijatých faktur, Přijatých zálohových faktur a Ostatních závazků).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="paymentTerminal" type="typ:boolean" minOccurs="0" default="false">
       <xsd:annotation>
         <xsd:documentation>Příznak  dokladu "Placeno přes terminál".Pouze pro doklad, který má nastaven typ úhrady "Platební kartou".</xsd:documentation>
@@ -300,7 +317,7 @@
         <xsd:documentation>Účetní období (MOSS).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="carrier" type="typ:refType" minOccurs="0">
+    <xsd:element name="carrier" type="typ:carrierType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Dopravce (pouze vydané faktury a vydané zálohové faktury). </xsd:documentation>
       </xsd:annotation>
@@ -318,6 +335,16 @@
     <xsd:element name="liquidation" type="typ:liquidationType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Stav likvidace faktury. Pouze pro export, při importu je ignorováno.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="applied" type="typ:currencyType" minOccurs="0">      
+        <xsd:annotation>
+          <xsd:documentation>Hodnota pole Uplatněno. Pouze vydané a přijaté zálohové faktury. Jen pro export.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="histRate" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Doklad má položky obsahující historickou sazbu DPH. Jen pro export.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
@@ -348,6 +375,15 @@
   </xsd:all>
 </xsd:complexType>
 
+  <xsd:complexType name="invoiceRetentionsType">
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="invoiceRetention" type="inv:invoiceRetentionType" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Údaje o pozastávce k vydané nebo přijaté faktuře. Pouze pro export.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+     </xsd:sequence>
+  </xsd:complexType>
 
   <xsd:complexType name="invoiceDetailType" mixed="true">
     <xsd:choice minOccurs="1" maxOccurs="unbounded">
@@ -406,11 +442,19 @@
         </xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="linkedDocument" type="typ:linkedDocumentType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Vazba na doklad. Informace o vazbě položky exportovaného dokladu na položku jiného dokladu. Např. Faktura - Objednávka. Faktury - Vydaná zálohová faktura. Faktura - Výdejka (pouze pro export).
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>ID položky dokladu (jen pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="extId" type="typ:string64" minOccurs="0"/>
     <xsd:element name="text" type="typ:string90" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Text položky.</xsd:documentation>
@@ -506,6 +550,16 @@
         <xsd:documentation>Členění KV DPH (pouze SK verze).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="PDP" type="xsd:boolean" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Příznak Přenesení daňové povinnosti (pouze pro Vydané faktury, Vydané zálohové faktury a Ostatní pohledávky).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="CodePDP" type="typ:string4" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Kód zboží (pouze pro Vydané faktury, Vydané zálohové faktury a Ostatní pohledávky v SK verzi).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="centre" type="typ:refType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Středisko.</xsd:documentation>
@@ -554,6 +608,7 @@
           <xsd:documentation>ID položky dokladu (jen pro export).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+      <xsd:element name="extId" type="typ:string64" minOccurs="0"/>
       <xsd:element name="sourceDocument" type="typ:sourceDocumentType" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Pokud není tato hodnota uvedena, nastaví se ruční odpočet zálohy.</xsd:documentation>
@@ -564,8 +619,9 @@
           <xsd:documentation>Množství.</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
-          <xsd:restriction base="xsd:integer">
-            <xsd:enumeration value="1"/>
+          <xsd:restriction base="xsd:float">
+            <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="1"/>
           </xsd:restriction>
         </xsd:simpleType>
       </xsd:element>
@@ -602,6 +658,11 @@
       <xsd:element name="note" type="typ:string90" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Poznámka.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Párový symbol. Používá se jen v účetníctví (dřívé PU).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="accounting" type="typ:refType" minOccurs="0">
@@ -780,7 +841,42 @@
     </xsd:all>
   </xsd:complexType>
 
-
+  <!-- Údaje pro pozastávky k faktuře-->
+  <xsd:complexType name="invoiceRetentionType">
+    <xsd:all>
+      <xsd:element name="date" type="xsd:date" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Datum pozastávky.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="dateDue" type="xsd:date" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Datum splatnosti pozastávky.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="homeCurrency" type="typ:currencyType" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Výše pozastávky v domácí měně.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="liquidation" type="typ:liquidationType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Informace o likvidaci pozastávky.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="text" type="typ:string64" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Text pozastávky.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="accounting" type="typ:refType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Předkontace pozastávky.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  
   <xsd:simpleType name="invoiceTypeType">
   <xsd:annotation>
     <xsd:documentation>Typ faktury.</xsd:documentation>

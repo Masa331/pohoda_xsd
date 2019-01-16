@@ -44,11 +44,18 @@
        </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
-  <xsd:attribute name="ico" type="typ:icoType" use="required">
+  <xsd:attribute name="ico" type="typ:icoType">
     <xsd:annotation>
       <xsd:documentation>
-        IČ firmy, pro kterou je XML určeno. Hodnota musí souhlasit s IČ zadané firmy.           
-       </xsd:documentation>
+        IČ firmy, pro kterou je XML určeno. Hodnota musí souhlasit s IČ zadané firmy. Má vyšší prioritu než atribut "key".
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+  <xsd:attribute name="key" type="typ:string64">
+    <xsd:annotation>
+      <xsd:documentation>
+        Jedinečný identifikátor účetnictví firmy, pro kterou je XML určeno. Pokud není uveden atribut "ico" (nebo je prázdný), hodnota musí souhlasit s "klíčem" zadané firmy.
+      </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
   <xsd:attribute name="period" type="typ:periodType">

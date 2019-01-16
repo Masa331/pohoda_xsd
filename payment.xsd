@@ -40,7 +40,15 @@
         <xsd:documentation>ID záznamu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="name" type="typ:string20" minOccurs="1">
+    <xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
+      <xsd:annotation>
+        <xsd:documentation>
+          Odkaz na záznam v externí databázi. V databázi se nachází speciální tabulka obsahující
+          vazbu mezi agendou a externí databází.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="name" type="typ:string32" minOccurs="1">
       <xsd:annotation>
         <xsd:documentation>Název formy úhrady.</xsd:documentation>
       </xsd:annotation>

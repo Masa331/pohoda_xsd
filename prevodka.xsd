@@ -83,9 +83,9 @@
         <xsd:documentation>Sklad.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="text" type="typ:string48" minOccurs="0">
+    <xsd:element name="text" type="typ:string240" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Text dokladu. Tento element je vyžadován při vytvoření dokladu.</xsd:documentation>
+        <xsd:documentation>Text dokladu. Tento element je vyžadován při vytvoření dokladu.</xsd:documentation> 
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="partnerIdentity" type="typ:address" minOccurs="0">

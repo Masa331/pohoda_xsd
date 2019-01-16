@@ -26,7 +26,10 @@
     <xsd:element name="formParameter" type="prm:parameterItemListType" minOccurs="0"/>
     <xsd:element name="itemParameter" type="prm:parameterItemListType" minOccurs="0"/>
     <xsd:element name="userForm" type="prm:formItemListType" minOccurs="0" maxOccurs="6"/>
-    <xsd:element name="userCode" type="prm:userCodeType" minOccurs="0"/>
+    <xsd:choice>
+      <xsd:element name="userCode" type="prm:userCodeType" minOccurs="0"/>
+      <xsd:element name="userCodePart" type="prm:userCodePartType" minOccurs="0"/>
+    </xsd:choice>
   </xsd:sequence>
   <xsd:attribute name="version" type="prm:prmVersionType" use="required">
   <xsd:annotation>
@@ -56,6 +59,7 @@
   </xsd:annotation>
   <xsd:restriction base="xsd:string">
     <xsd:enumeration value="2.0"/>
+    <xsd:enumeration value="2.1"/>
   </xsd:restriction>
 </xsd:simpleType>
 
@@ -144,6 +148,19 @@
     <xsd:maxLength value="64000"/>
   </xsd:restriction>
 </xsd:simpleType>
+
+<xsd:complexType name="userCodePartType">
+  <xsd:annotation>
+    <xsd:documentation>Zdrojový kód uživatelského rozšíření.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+    <xsd:element name="part0" type="prm:userCodeType" minOccurs="0"/>
+    <xsd:element name="part1" type="prm:userCodeType" minOccurs="0"/>
+    <xsd:element name="part2" type="prm:userCodeType" minOccurs="0"/>
+    <xsd:element name="part3" type="prm:userCodeType" minOccurs="0"/>
+    <xsd:element name="part4" type="prm:userCodeType" minOccurs="0"/>
+  </xsd:sequence>
+</xsd:complexType>
 
 <xsd:complexType name="userAgendaDefType">
   <xsd:annotation>

@@ -126,6 +126,11 @@
         <xsd:documentation>Interní poznámka.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="histRate" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Doklad má položky obsahující historickou sazbu DPH. Jen pro export.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
       <xsd:annotation>
         <xsd:documentation>Označení záznamu v programu POHODA, sloupec "X". Výchozí hodnota je "označený záznam".</xsd:documentation>

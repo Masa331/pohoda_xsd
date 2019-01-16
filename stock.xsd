@@ -383,14 +383,35 @@
         <xsd:documentation>Druh služby (MOSS).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+
+    <!-- PDP -->
     <xsd:element name="controlLimitTaxLiability" type="typ:boolean" minOccurs="0" default="false">
       <xsd:annotation>
         <xsd:documentation>Kontrola limitu pro režim přenesení daňové povinnosti (pouze CZ verze).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
 
-
-
+    <xsd:element name="PDP" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Příznak přenesení daňové povinnosti (pouze SK verze).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PDPclassificationVATIssue" type="typ:classificationVATType" minOccurs="0" nillable="true">
+      <xsd:annotation>
+        <xsd:documentation>Výdej  - členění DPH související s režimem přenesení daňové povinnosti (pouze SK verze).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>    
+    <xsd:element name="PDPclassificationKVDPHIssue" type="typ:refType" minOccurs="0" nillable="true">
+      <xsd:annotation>
+        <xsd:documentation>Výdej - členění KVDPH související s režimem přenesení daňové povinnosti (pouze SK verze).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="CodePDP" type="typ:string4" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Kód zboží související s režimem přenesení daňové povinnosti (pouze SK verze).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    
     <!-- Intrastat -->
     <xsd:element name="intrastat" type="stk:instrastatType" minOccurs="0">
       <xsd:annotation>
@@ -770,6 +791,11 @@
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>ID skladové zásoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="extId" type="typ:extIdType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>ID externího systému skladové zásoby.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="storage" type="typ:refTypeStorage" minOccurs="0">

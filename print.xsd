@@ -36,7 +36,7 @@
         <xsd:documentation>Výběr záznamu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="printerSettings" type="prn:printerSettingsType" minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="printerSettings" type="prn:printerSettingsType" maxOccurs="unbounded">
       <xsd:annotation>
         <xsd:documentation>Parametry tisku.</xsd:documentation>
       </xsd:annotation>
@@ -74,7 +74,7 @@
     </xsd:element>
     <xsd:element name="pdf" type="prn:PDFType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Uložení tiskové sestavy do PDF souboru. Pro vytvoření PDF souboru bude použita tiskárna "Stormware PDF Printer".</xsd:documentation>
+        <xsd:documentation>Uložení tiskové sestavy do PDF souboru.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="parameters" type="prn:parametersType" minOccurs="0"/>
@@ -83,9 +83,9 @@
 
   <xsd:complexType name="PDFType">
     <xsd:all>
-      <xsd:element name="fileName" type="typ:nonEmptyString" minOccurs="0" maxOccurs="1">
+      <xsd:element name="fileName" type="typ:nonEmptyString">
         <xsd:annotation>
-          <xsd:documentation>Název a umístění PDF souboru (př. "C:\PDF\faktura_c_FV160006.pdf").Pokud nebude element uveden, bude použito výchozí nastavení z programu POHODA.</xsd:documentation>
+          <xsd:documentation>Název a umístění PDF souboru (př. "C:\PDF\faktura_c_FV160006.pdf").</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:all>

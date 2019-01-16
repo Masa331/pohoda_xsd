@@ -57,6 +57,14 @@
         <xsd:documentation>ID záznamu. Používá se při requestu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
+      <xsd:annotation>
+        <xsd:documentation>
+          Odkaz na záznam v externí databázi. V databázi se nachází speciální tabulka obsahující
+          vazbu mezi agendou a externí databází.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="orderType" type="ord:orderTypeType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Typ objednávky. Tento element je vyžadován při vytvoření dokladu.</xsd:documentation>
@@ -114,7 +122,7 @@
         <xsd:documentation>Osobní adresa.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>  
-    <xsd:element name="paymentType" type="typ:paymentType" minOccurs="0">
+    <xsd:element name="paymentType" type="typ:paymentType" minOccurs="0" nillable="true">
       <xsd:annotation>
         <xsd:documentation>Forma úhrady. Implicitně je nastaveno 'příkazem'.</xsd:documentation>
       </xsd:annotation>
@@ -191,7 +199,12 @@
     </xsd:element>
     <xsd:element name="permamentDocument" type="typ:boolean" minOccurs="0" default="false">
       <xsd:annotation>
-        <xsd:documentation>Trvalý doklad. Příznak pro označení trvalé objednávky v programu POHODA. U takto označených dokladů se nebude sledovat přenesené množství a bude možné ji neustále přenášet do dokladů</xsd:documentation>
+        <xsd:documentation>Trvalý doklad. Příznak pro označení trvalé objednávky v programu POHODA. U takto označených dokladů se nebude sledovat přenesené množství a bude možné ji neustále přenášet do dokladů (nepoužívat v programu POHODA od verze 12 000, říjen 2018).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="permanentDocument" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Trvalý doklad. Příznak pro označení trvalé objednávky v programu POHODA. U takto označených dokladů se nebude sledovat přenesené množství a bude možné ji neustále přenášet do dokladů.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="note" type="xsd:string" minOccurs="0">
@@ -199,7 +212,7 @@
         <xsd:documentation>Poznámka.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="carrier" type="typ:refType" minOccurs="0">
+    <xsd:element name="carrier" type="typ:carrierType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Dopravce (pouze přijaté objednávky). </xsd:documentation>
       </xsd:annotation>
@@ -207,6 +220,11 @@
     <xsd:element name="intNote" type="xsd:string" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Interní poznámka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="histRate" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Doklad má položky obsahující historickou sazbu DPH. Jen pro export.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
@@ -265,6 +283,7 @@
         <xsd:documentation>ID položky dokladu (jen pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="extId" type="typ:string64" minOccurs="0"/>
     <xsd:element name="text" type="typ:string90" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Text položky.</xsd:documentation>
@@ -338,6 +357,16 @@
     <xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Údaje potřebné k nalezní skladové zásoby vložené do položky. Pokud zde tento element není, jedná se o textovou položku.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PDP" type="xsd:boolean" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Příznak Přenesení daňové povinnosti (pouze pro Přijaté objednávky).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="CodePDP" type="typ:string4" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Kód zboží (pouze pro Přijaté objednávky v SK verzi).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="centre" type="typ:refType" minOccurs="0">

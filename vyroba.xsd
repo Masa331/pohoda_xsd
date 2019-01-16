@@ -55,17 +55,32 @@
     </xsd:element>
     <xsd:element name="date" type="xsd:date" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Datum výroby. Pokud hodnota není uvedena použije se aktuální datum.</xsd:documentation>
+        <xsd:documentation>Datum vyskladnění (výdeje položek výrobku). Pokud hodnota není uvedena, použije se aktuální datum.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
       <xsd:element name="time" type="xsd:time" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Zadejte čas uskutečnění výroby výrobku. Pokud hodnota není uvedena, použije se aktuální čas.</xsd:documentation>
+        <xsd:documentation>Čas vyskladnění (výdeje položek výrobku). Pokud hodnota není uvedena, použije se aktuální čas.</xsd:documentation>
       </xsd:annotation>
-    </xsd:element>    
+    </xsd:element>
+    <xsd:element name="dateOfReceipt" type="typ:dateOrNull" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Datum výroby (příjmu výrobku). Pokud hodnota není uvedena, použije se datum vyskladnění.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="timeOfReceipt" type="xsd:time" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Čas výroby (příjmu výrobku). Pokud hodnota není uvedena, použije se čas vyskladnění.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Párovací symbol.</xsd:documentation>
+        <xsd:documentation>Párovací symbol pro párování dokladu v saldu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="acc" type="typ:numberAccountType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Účet pro naskladnění výrobku na jiný výnosový účet</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="text" type="typ:string48" minOccurs="0">
@@ -157,7 +172,7 @@
   </xsd:all>
 </xsd:complexType>
 
-<!-- RESPONSE -->
+  <!-- RESPONSE -->
 
 <xsd:element name="vyrobaResponse" type="vyr:vyrobaResponseType"/>
 

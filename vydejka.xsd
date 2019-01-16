@@ -101,7 +101,7 @@
         <xsd:documentation>Cenová hladina odběratele.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="paymentType" type="typ:paymentType" minOccurs="0">
+    <xsd:element name="paymentType" type="typ:paymentType" minOccurs="0" nillable="true">
       <xsd:annotation>
         <xsd:documentation>Forma úhrady. Implicitně je nastaveno 'příkazem'.</xsd:documentation>
       </xsd:annotation>
@@ -131,7 +131,7 @@
         <xsd:documentation>Zakázka.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="carrier" type="typ:refType" minOccurs="0">
+    <xsd:element name="carrier" type="typ:carrierType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Dopravce. </xsd:documentation>
       </xsd:annotation>
@@ -164,6 +164,11 @@
     <xsd:element name="intNote" type="xsd:string" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Interní poznámka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="histRate" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Doklad má položky obsahující historickou sazbu DPH. Jen pro export.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="markRecord" type="typ:boolean" minOccurs="0" default="true">
@@ -305,6 +310,16 @@
     <xsd:element name="acc" type="typ:numberAccountType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Účet. Jen u účtování zásob způsobem A.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PDP" type="xsd:boolean" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Příznak Přenesení daňové povinnosti.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="CodePDP" type="typ:string4" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Kód zboží (pouze v SK verzi).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="centre" type="typ:refType" minOccurs="0">

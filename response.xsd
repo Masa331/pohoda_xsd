@@ -5,6 +5,8 @@
       xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd"
       xmlns:lCon="http://www.stormware.cz/schema/version_2/list_contract.xsd"
       xmlns:lStk="http://www.stormware.cz/schema/version_2/list_stock.xsd"
+      xmlns:lCen="http://www.stormware.cz/schema/version_2/list_centre.xsd"
+      xmlns:lAcv="http://www.stormware.cz/schema/version_2/list_activity.xsd"
       xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
       xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd"
       xmlns:vch="http://www.stormware.cz/schema/version_2/voucher.xsd"
@@ -39,6 +41,10 @@
       xmlns:prn="http://www.stormware.cz/schema/version_2/print.xsd"
       xmlns:sEET="http://www.stormware.cz/schema/version_2/sendEET.xsd"            
       xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      xmlns:gdp="http://www.stormware.cz/schema/version_2/GDPR.xsd"
+      xmlns:est="http://www.stormware.cz/schema/version_2/establishment.xsd"
+      xmlns:cen="http://www.stormware.cz/schema/version_2/centre.xsd"
+      xmlns:acv="http://www.stormware.cz/schema/version_2/activity.xsd"
       xmlns="http://www.stormware.cz/schema/version_2/response.xsd"
       targetNamespace="http://www.stormware.cz/schema/version_2/response.xsd"
       elementFormDefault="qualified"
@@ -50,6 +56,8 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/list_addBook.xsd" schemaLocation="list_addBook.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/list_contract.xsd" schemaLocation="list_contract.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/list_stock.xsd" schemaLocation="list_stock.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/list_centre.xsd" schemaLocation="list_centre.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/list_activity.xsd" schemaLocation="list_activity.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/accountingunit.xsd" schemaLocation="accountingunit.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/invoice.xsd"  schemaLocation="invoice.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/voucher.xsd"  schemaLocation="voucher.xsd"/>
@@ -83,6 +91,10 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/print.xsd" schemaLocation="print.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/sendEET.xsd" schemaLocation="sendEET.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/mKasa.xsd" schemaLocation="mKasa.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/GDPR.xsd" schemaLocation="GDPR.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/establishment.xsd" schemaLocation="establishment.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/centre.xsd" schemaLocation="centre.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/activity.xsd" schemaLocation="activity.xsd"/>
 
 <!-- **************************************************************************
     root element must be <responsePack>
@@ -106,6 +118,13 @@
     <xsd:annotation>
       <xsd:documentation>
         IČ firmy, která XML zpracovala.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+  <xsd:attribute name="key" type="typ:string64">
+    <xsd:annotation>
+      <xsd:documentation>
+        Jedinečný identifikátor účetnictví firmy, která XML zpracovala.
       </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
@@ -144,6 +163,7 @@
     <xsd:element ref="lst:listUserCodeResponse"/>
     <xsd:element ref="sup:supplierResponse"/>
     <xsd:element ref="ctg:categoryResponse"/>
+    <xsd:element ref="gdp:GDPRResponse"/>
 
     <!-- export dat z programu -->
     <xsd:element ref="lst:listCentre"/>
@@ -190,7 +210,11 @@
     <xsd:element ref="lst:listInventoryLists"/>
     <xsd:element ref="lst:listPayment"/>
     <xsd:element ref="lst:listNumericalSeries"/>
-
+    <xsd:element ref="lst:listGDPR"/>
+    <xsd:element ref="lst:listEstablishment"/>
+    <xsd:element ref="lCen:listCentre"/>
+    <xsd:element ref="lAcv:listActivity"/>
+    
   </xsd:choice> 
   <xsd:attribute name="version" type="xsd:string" use="required"/>
     <xsd:attribute name="id" type="xsd:string" use="required"/>

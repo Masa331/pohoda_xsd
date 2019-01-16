@@ -46,6 +46,15 @@
     <xsd:maxLength value="3"/>
   </xsd:restriction>
 </xsd:simpleType>
+
+<xsd:simpleType name="string4">
+  <xsd:annotation>
+    <xsd:documentation>Řetězec o délce 4 znaky.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:maxLength value="4"/>
+  </xsd:restriction>
+</xsd:simpleType> 
   
 <xsd:simpleType name="string6">
   <xsd:annotation>
@@ -247,6 +256,15 @@
   </xsd:restriction>
 </xsd:simpleType>
 
+<xsd:simpleType name="string75">
+  <xsd:annotation>
+    <xsd:documentation>Řetězec o délce 75 znaků.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:maxLength value="75"/>
+  </xsd:restriction>
+</xsd:simpleType>  
+  
 <xsd:simpleType name="string80">
   <xsd:annotation>
     <xsd:documentation>Řetězec o délce 80 znaků.</xsd:documentation>
@@ -739,7 +757,7 @@
     <xsd:element name="dic" type="typ:dicType" minOccurs="0"/>
     <xsd:element name="VATPayerType" type="typ:VATPayerTypeType" minOccurs="0">
      <xsd:annotation>
-       <xsd:documentation>Typ plátce DPH (pouze CZ verze).</xsd:documentation>
+       <xsd:documentation>Typ plátce DPH.</xsd:documentation>
      </xsd:annotation>
     </xsd:element>
     <xsd:element name="icDph" type="typ:icDphType" minOccurs="0"/>
@@ -761,6 +779,16 @@
      </xsd:annotation>
     </xsd:element>
    </xsd:all>
+  <xsd:attribute name="linkToAddress" type="xsd:boolean" default="false">
+    <xsd:annotation>
+      <xsd:documentation>
+        Při nastavení atributu na hodnotu "true" bude vytvořena vazba adresy dokladu na Adresář programu POHODA. 
+        Vyhledání adresy v Adresáři programu POHODA bude dle elementů "ico", "dic", "icdph" (pro POHODA SK), "company" a "name". 
+        K vyhledání se použije první neprázdný element (podle pořadí uvedeného v předchozí větě). 
+        K vytvoření vazby adresy dokladu na Adresář dojde pouze tehdy, pokud bude nalezena pouze 1 adresa.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
 </xsd:complexType>
 
 <xsd:complexType name="shipToAddressType">
@@ -778,6 +806,7 @@
         <xsd:documentation>ID dodací adresy (jen pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+        <xsd:element name="extId" type="typ:string64" minOccurs="0"/>
     <xsd:element name="company" type="typ:stringCompany" minOccurs="0"/>
     <xsd:element name="division" type="typ:string32" minOccurs="0"/>
     <xsd:element name="name" type="typ:string32" minOccurs="0"/>    
@@ -980,6 +1009,12 @@
   </xsd:all>
 </xsd:complexType>
 
+<xsd:complexType name="carrierType">  
+  <xsd:all>
+    <xsd:element name="id" type="typ:idType" minOccurs="0" />
+    <xsd:element name="ids" type="typ:string20" minOccurs="0" />
+  </xsd:all>
+</xsd:complexType>
 
 <xsd:complexType name="accountingType">
   <xsd:annotation>
@@ -1056,7 +1091,7 @@
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
-    <xsd:element name="ids" type="typ:string20" minOccurs="0" />
+    <xsd:element name="ids" type="typ:string32" minOccurs="0" />
     <xsd:element name="paymentType" minOccurs="0" >
       <xsd:simpleType>
         <xsd:restriction base="xsd:string">
@@ -1908,14 +1943,24 @@
         <xsd:documentation>Formulář agendy Přijaté zálohové faktury.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
-    <xsd:enumeration value="offer">
+    <xsd:enumeration value="issuedOffer">
       <xsd:annotation>
-        <xsd:documentation>Formulář agendy Nabídky.</xsd:documentation>
+        <xsd:documentation>Formulář agendy Vydané nabídky.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
-    <xsd:enumeration value="enquiry">
+    <xsd:enumeration value="receivedOffer">
       <xsd:annotation>
-        <xsd:documentation>Formulář agendy Poptávky.</xsd:documentation>
+        <xsd:documentation>Formulář agendy Přijaté nabídky.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="issuedEnquiry">
+      <xsd:annotation>
+        <xsd:documentation>Formulář agendy Vydané poptávky.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="receivedEnquiry">
+      <xsd:annotation>
+        <xsd:documentation>Formulář agendy Přijaté poptávky.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
     <xsd:enumeration value="receivedOrder">
@@ -1928,6 +1973,118 @@
         <xsd:documentation>Formulář agendy Vydané objednávky.</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
+  </xsd:restriction>
+</xsd:simpleType>
+  
+<xsd:simpleType name="agendaType">
+  <xsd:annotation>
+    <xsd:documentation>Agendy dokladu programu POHODA.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+
+    <!--Fakturace-->
+    <xsd:enumeration value="issuedInvoice">
+      <xsd:annotation>
+        <xsd:documentation>Vydaná faktura.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="issuedAdvanceInvoice">
+      <xsd:annotation>
+        <xsd:documentation>Vydaná zálohová faktura.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="receivable">
+      <xsd:annotation>
+        <xsd:documentation>Ostatní pohledávka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="receivedInvoice">
+      <xsd:annotation>
+        <xsd:documentation>Přijatá faktura.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="receivedAdvanceInvoice">
+      <xsd:annotation>
+        <xsd:documentation>Přijatá zálohová faktura.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="commitment">
+      <xsd:annotation>
+        <xsd:documentation>Ostatní závazek.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+          
+    <!--Objednávky-->
+    <xsd:enumeration value="issuedOrder">
+      <xsd:annotation>
+        <xsd:documentation>Vydaná objednávka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="receivedOrder">
+      <xsd:annotation>
+        <xsd:documentation>Přijatá objednávka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+          
+      <!--Nabídky-->
+    <xsd:enumeration value="issuedOffer">
+      <xsd:annotation>
+        <xsd:documentation>Vydaná nabídka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="receivedOffer">
+      <xsd:annotation>
+        <xsd:documentation>Přijatá nabídka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+          
+    <!--Poptávky-->
+    <xsd:enumeration value="issuedEnquiry">
+      <xsd:annotation>
+        <xsd:documentation>Vydaná poptávka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="receivedEnquiry">
+      <xsd:annotation>
+        <xsd:documentation>Přijatá poptávka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+          
+    <!--Příjemka-->
+    <xsd:enumeration value="receiptVoucher">
+      <xsd:annotation>
+        <xsd:documentation>Příjemka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+
+    <!--Výdejka-->
+    <xsd:enumeration value="issueSlip">
+      <xsd:annotation>
+        <xsd:documentation>Výdejka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+
+    <!--Převod-->
+    <xsd:enumeration value="transfer">
+      <xsd:annotation>
+        <xsd:documentation>Převodka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+
+    <!--Reklamace-->
+    <xsd:enumeration value="claims">
+      <xsd:annotation>
+        <xsd:documentation>Reklamace.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+
+    <!--Servis-->
+    <xsd:enumeration value="service">
+      <xsd:annotation>
+        <xsd:documentation>Servis.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    
   </xsd:restriction>
 </xsd:simpleType>
 
@@ -2158,6 +2315,11 @@
         <xsd:documentation>ID zdrojového dokladu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="extId" type="typ:extIdType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Externí identifikátor dokladu (Pouze pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="number" type="typ:string32" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Číslo zdrojového dokladu.</xsd:documentation>
@@ -2207,14 +2369,85 @@
         <xsd:documentation>Agenda zdrojového dokladu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="sourceItemId" type="typ:idType">
+    <xsd:element name="sourceItemId" type="typ:idType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>ID položky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="sourceItemExtId" type="typ:extIdType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Externí identifikátor položky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="settingsSourceDocumentOrderItem" type="typ:settingsSourceDocumentOrderItemType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Nastavení příznaků na zdrojovém dokladu po vytvoření vazby přes položky dokladu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>
 </xsd:complexType>
 
+<xsd:complexType name="settingsSourceDocumentOrderItemType">
+  <xsd:choice>
+    <xsd:element name="linkOrderItemToInvoice" type="typ:linkOrderItemToInvoiceType" default="4">
+      <xsd:annotation>
+        <xsd:documentation>Nastavení příznaku "Vyřízeno" na přijaté objednávce při vazbě: "Objednávka -> Faktura přes položky dokladu".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:choice>
+</xsd:complexType>
+
+<xsd:simpleType name="linkOrderItemToInvoiceType">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="4">
+      <xsd:annotation>
+        <xsd:documentation>Po přenosu přijaté objednávky do vydané faktury nastavit na objednávce příznak "Vyřízeno".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="2">
+      <xsd:annotation>
+        <xsd:documentation>Po přenosu přijaté objednávky do vydané faktury nenastavovat na objednávce příznak "Vyřízeno".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<!--Vazba položky exportovaného dokladu na jiný doklad. Vazba je tvořena přes položky dokladů.-->
+<xsd:complexType name="linkedDocumentType">
+  <xsd:all>
+    <xsd:element name="sourceAgenda" type="typ:agendaType">
+      <xsd:annotation>
+        <xsd:documentation>Typ/Agenda zdrojového dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="sourceDocument" type="typ:sourceDocumentType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Doklad.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="sourceDocumentItem" type="typ:sourceDocumentItemType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Položka dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:all>
+</xsd:complexType>
+
+<xsd:complexType name="sourceDocumentItemType">
+  <xsd:all>
+    <xsd:element name="sourceItemId" type="typ:idType">
+      <xsd:annotation>
+        <xsd:documentation>ID položky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="sourceItemExtId" type="typ:extIdType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Externí identifikátor položky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:all>
+</xsd:complexType>
+  
 <xsd:complexType name="cancelDocumentType">
   <xsd:sequence>
     <xsd:element name="sourceDocument" type="typ:sourceDocumentType">
@@ -2449,7 +2682,7 @@
           <xsd:documentation>Číslo dokladu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="dateOfSale" type="xsd:dateTime" minOccurs="1">
+      <xsd:element name="dateOfSale" type="typ:dateTimeZoneType" minOccurs="1">
         <xsd:annotation>
           <xsd:documentation>Datum tržby (včetně časového posunu).</xsd:documentation>
         </xsd:annotation>
@@ -2471,7 +2704,7 @@
       </xsd:element>
       <xsd:element name="FIK" type="typ:FIKType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>FIK. Nemusí být uvedeno při použití režimu 'simplifield'.</xsd:documentation>
+          <xsd:documentation>FIK. Nemusí být uvedeno při použití režimu 'simplified'.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="establishment" type="typ:string48" minOccurs="1">
@@ -2491,12 +2724,12 @@
       </xsd:element>
       <xsd:element name="dateOfSend" type="xsd:dateTime" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Datum odeslání. Nemusí být uvedeno při použití režimu 'simplifield'.</xsd:documentation>
+          <xsd:documentation>Datum odeslání. Nemusí být uvedeno při použití režimu 'simplified'.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="dateOfAcceptance" type="xsd:dateTime" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Datum přijetí. Nemusí být uvedeno při použití režimu 'simplifield'.</xsd:documentation>
+          <xsd:documentation>Datum přijetí. Nemusí být uvedeno při použití režimu 'simplified'.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="testMode" type="typ:boolean" minOccurs="0" default="false">
@@ -2504,12 +2737,12 @@
           <xsd:documentation>Testovací režim.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="VATIdOfPayer" type="typ:dicType" minOccurs="0">
+      <xsd:element name="VATIdOfPayer" type="typ:CZDICType" minOccurs="1">
         <xsd:annotation>
           <xsd:documentation>DIČ poplatníka.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="VATIdOfAuthPayer" type="typ:dicType" minOccurs="0">
+      <xsd:element name="VATIdOfAuthPayer" type="typ:CZDICType" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>DIČ pověřujícího poplatníka.</xsd:documentation>
         </xsd:annotation>
@@ -2609,7 +2842,7 @@
           <xsd:documentation>Běžný.</xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="simplifield">
+      <xsd:enumeration value="simplified">
         <xsd:annotation>
           <xsd:documentation>Zjednodušený.</xsd:documentation>
         </xsd:annotation>
@@ -2694,6 +2927,12 @@
       <xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}">
       </xsd:pattern>
       <xsd:length value="36"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CZDICType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="CZ[0-9]{8,10}"/>
     </xsd:restriction>
   </xsd:simpleType>
 
