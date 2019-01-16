@@ -12,4 +12,7 @@ Schemas update for Pohoda XSD v2 release 12 100.
 
 ## Links
 
-https://www.stormware.cz/pohoda/xml/seznamschemat/
+* https://www.stormware.cz/pohoda/xml/seznamschemat/
+* https://www.stormware.cz/pohoda/xml/dokladyimport/
+* https://www.stormware.cz/pohoda/xml/dokladyexport/
+
