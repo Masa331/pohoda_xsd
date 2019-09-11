@@ -237,6 +237,11 @@
           <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+    <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data zdanitelného plnění. (pouze CZ verze)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="homeCurrency" type="typ:typeCurrencyHome" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kč. V případě použití cizí měny, je tuzemská částka při importu ignorována.</xsd:documentation>

@@ -21,6 +21,14 @@
 
 <xsd:complexType name="vydejkaType">
   <xsd:sequence>
+    <xsd:element name="links" type="typ:linksType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Pomocí tohoto bloku lze vytvořit nový doklad z jiného dokladu. Vloží se celý doklad.
+          Vložený doklad lze upravit pomocí jednotlivých elementů u dokladu.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="vydejkaHeader" type="vyd:vydejkaHeaderType" minOccurs="0"/>
     <xsd:element name="vydejkaDetail" type="vyd:vydejkaDetailType" minOccurs="0"/>
     <xsd:element name="vydejkaSummary" type="vyd:vydejkaSummaryType" minOccurs="0"/>
@@ -71,7 +79,7 @@
         <xsd:documentation>Číslo objednávky na jejímž základě byla výdejka vystavena.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="dateOrder" type="xsd:date" minOccurs="0">
+    <xsd:element name="dateOrder" type="typ:dateOrNull" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Datum objednávky.</xsd:documentation>
       </xsd:annotation>
@@ -131,7 +139,7 @@
         <xsd:documentation>Zakázka.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="carrier" type="typ:carrierType" minOccurs="0">
+    <xsd:element name="carrier" type="typ:carrierType" minOccurs="0" nillable="true">
       <xsd:annotation>
         <xsd:documentation>Dopravce. </xsd:documentation>
       </xsd:annotation>
@@ -207,6 +215,11 @@
           <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+    <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data vystavení dokladu. (pouze CZ verze)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="homeCurrency" type="typ:typeCurrencyHome" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kč. V případě použití cizí měny, je tuzemská částka při importu ignorována.</xsd:documentation>
@@ -222,6 +235,13 @@
 
 <xsd:complexType name="vydejkaItemType">
   <xsd:all>
+    <xsd:element name="link" type="typ:linkItemType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Pomocí tohoto bloku lze vytvořit položku z jiného dokladu. Vložený doklad lze upravit pomocí zadaných parametrů u dokladu.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>ID položky dokladu (jen pro export).</xsd:documentation>
@@ -305,6 +325,11 @@
     <xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Údaje potřebné k nalezení skladové zásoby vložené do položky. Pokud zde tento element není, jedná se o textovou položku.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="linkToStock" type="typ:linkToStockType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Identifikátor zásoby u textových položek s vazbou na sklad (pouze pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="acc" type="typ:numberAccountType" minOccurs="0">

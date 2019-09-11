@@ -15,7 +15,8 @@
     <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
   </xsd:annotation>
   <xsd:restriction base="xsd:string">
-    <xsd:enumeration value="1.0"/>    
+    <xsd:enumeration value="1.0"/>
+    <xsd:enumeration value="2.0"/>
   </xsd:restriction>
 </xsd:simpleType>
 
@@ -96,6 +97,36 @@
         <xsd:documentation>Text dokladu položky salda.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="amountMD" type="typ:currencyType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Částka MD (do verze 2.0).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="amountD" type="typ:currencyType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Částka D (do verze 2.0).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="amountRemain" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Částka zůstatku (do verze 2.0).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="homeCurrency" type="bal:homeCurrencyType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Částky v CZK (od verze 2.0).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="foreignCurrency" type="bal:foreignCurrencyType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Částky v cizí měně (od verze 2.0).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="homeCurrencyType">
+  <xsd:all>
     <xsd:element name="amountMD" type="typ:currencyType" >
       <xsd:annotation>
         <xsd:documentation>Částka MD.</xsd:documentation>
@@ -110,8 +141,42 @@
       <xsd:annotation>
         <xsd:documentation>Částka zůstatku.</xsd:documentation>
       </xsd:annotation>
-    </xsd:element>    
-  </xsd:sequence>
+    </xsd:element>
+  </xsd:all>
 </xsd:complexType>
-  
+
+<xsd:complexType name="foreignCurrencyType">
+  <xsd:all>
+    <xsd:element name="currency" type="typ:refType">
+      <xsd:annotation>
+        <xsd:documentation>ID - odkaz na cizí měnu, IDS - kód měny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="amountMD" type="typ:currencyType" >
+      <xsd:annotation>
+        <xsd:documentation>Částka MD (cizí měna).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="amountD" type="typ:currencyType" >
+      <xsd:annotation>
+        <xsd:documentation>Částka D (cizí měna).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="amountRemain">
+      <xsd:annotation>
+        <xsd:documentation>Částka zůstatku (cizí měna).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="rate" type="xsd:float" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Kurz použitý pro výpočet částek v cízí měně.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="amount" type="xsd:integer" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Množství cizí měny pro kurzový přepočet.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:all>
+</xsd:complexType>
 </xsd:schema>

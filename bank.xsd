@@ -213,7 +213,12 @@
           <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="homeCurrency" type="typ:typeCurrencyHome" minOccurs="0">
+    <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37 (pouze CZ verze pro JU nebo DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="homeCurrency" type="typ:typeCurrencyHome" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kč.</xsd:documentation>
       </xsd:annotation>

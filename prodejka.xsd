@@ -23,8 +23,9 @@
   <xsd:sequence>
     <xsd:element name="prodejkaHeader" type="pro:prodejkaHeaderType" minOccurs="0"/>
     <xsd:element name="prodejkaDetail" type="pro:prodejkaDetailType" minOccurs="0"/>
+    <xsd:element name="prodejkaPayments" type="pro:paymentsType" minOccurs="0"/>
     <xsd:element name="prodejkaSummary" type="pro:prodejkaSummaryType" minOccurs="0"/>
-      <xsd:element name="EET" type="typ:EETType" minOccurs="0"/>
+    <xsd:element name="EET" type="typ:EETType" minOccurs="0"/>
     <xsd:element name="print" type="prn:agendaPrintType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Po vytvoření záznamu se provede jeho tisk.</xsd:documentation>
@@ -169,6 +170,16 @@
   </xsd:sequence>
 </xsd:complexType>
 
+<xsd:complexType name="paymentsType">
+  <xsd:sequence>
+    <xsd:element name="paymentItem" type="pro:paymentItemType" maxOccurs="unbounded">
+      <xsd:annotation>
+        <xsd:documentation>Úhrady dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:sequence>
+</xsd:complexType>
+
 <xsd:complexType name="prodejkaSummaryType">
   <xsd:all>
     <xsd:element name="roundingDocument" type="typ:typeRoundingDocument" minOccurs="0">
@@ -186,6 +197,11 @@
         <xsd:documentation>Vypočíst DPH ze zaokrouhlení. Pokud není uvedeno, nastaví se hodnota z Globálního nastavení.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data vystavení dokladu. (pouze CZ verze)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="homeCurrency" type="typ:typeCurrencyHome" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kč.</xsd:documentation>
@@ -194,7 +210,114 @@
   </xsd:all>
 </xsd:complexType>
 
-<xsd:complexType name="prodejkaItemType">
+<xsd:complexType name="paymentItemType">
+  <xsd:all>
+    <xsd:element name="paymentType" type="typ:refType">
+      <xsd:annotation>
+        <xsd:documentation>Forma úhrady</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="text" type="typ:string255" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Text (pouze pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="received" type="typ:currencyType">
+      <xsd:annotation>
+        <xsd:documentation>Přijato.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="receivedHomeCurrency" type="typ:currencyType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Přijato (pouze pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>    
+    <xsd:element name="paymentAdvanced" type="pro:paymentAdvancedType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Typ platby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="returned" type="typ:currencyType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Vráceno (pouze pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="note" type="typ:string255" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Poznámka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:all>
+</xsd:complexType>
+
+  <xsd:complexType name="paymentAdvancedType">
+    <xsd:choice>     
+      <xsd:group ref="pro:voucherPaymentGroup">
+        <xsd:annotation>
+          <xsd:documentation>Typ Stravenka.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:group>
+
+      <xsd:group ref="pro:foreignPaymentGroup">
+        <xsd:annotation>
+          <xsd:documentation>Typ Cizí měna.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:group>
+      <xsd:group ref="pro:creditcardPaymentGroup">
+        <xsd:annotation>
+          <xsd:documentation>Typ Platební karta.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:group>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:group name="voucherPaymentGroup">
+    <xsd:sequence>
+      <xsd:element name="valueFoodVoucher" type="typ:currencyType">
+        <xsd:annotation>
+          <xsd:documentation>Hodnota stravenky.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="foreignPaymentGroup">
+    <xsd:sequence>
+      <xsd:element name="rate" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Kurs použitý pro výpočet částek v cízí měně.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="amount" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Množství cizí měny pro kursový přepočet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="creditcardPaymentGroup">
+    <xsd:sequence>
+      <xsd:element name="paymentTerminal" type="typ:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Uhrazeno přes platební terminál.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="symVar" type="typ:symVarType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Variabilní symbol.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="account" type="typ:accountType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Účet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+
+  <xsd:complexType name="prodejkaItemType">
   <xsd:all>
     <xsd:element name="text" type="typ:string90" minOccurs="0">
       <xsd:annotation>
@@ -241,7 +364,7 @@
         <xsd:documentation>Kč.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-      <xsd:element name="note" type="typ:string90" minOccurs="0">
+    <xsd:element name="note" type="typ:string90" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Poznámka.</xsd:documentation>
       </xsd:annotation>

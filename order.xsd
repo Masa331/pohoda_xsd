@@ -263,6 +263,11 @@
           <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+    <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data vystavení dokladu. (pouze CZ verze)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="homeCurrency" type="typ:typeCurrencyHome" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kč. V případě použití cizí měny, je tuzemská částka při importu ignorována.</xsd:documentation>
@@ -356,7 +361,12 @@
     </xsd:element>
     <xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Údaje potřebné k nalezní skladové zásoby vložené do položky. Pokud zde tento element není, jedná se o textovou položku.</xsd:documentation>
+        <xsd:documentation>Údaje potřebné k nalezení skladové zásoby vložené do položky. Pokud zde tento element není, jedná se o textovou položku.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="linkToStock" type="typ:linkToStockType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Identifikátor zásoby u textových položek s vazbou na sklad (pouze pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="PDP" type="xsd:boolean" minOccurs="0">

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd" xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd" xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd" xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd" xmlns="http://www.stormware.cz/schema/version_2/mKasa.xsd" targetNamespace="http://www.stormware.cz/schema/version_2/mKasa.xsd" elementFormDefault="qualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+      xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
+      xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/mKasa.xsd"
+      elementFormDefault="qualified"
+>
 
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
@@ -78,6 +86,8 @@
       <xsd:enumeration value="SkSt"/>
       <xsd:enumeration value="SkKat"/>
       <xsd:enumeration value="SKz"/>
+      <xsd:enumeration value="PHzauc"/>
+      <xsd:enumeration value="Ucet"/>
     </xsd:restriction>
   </xsd:simpleType>
 
@@ -148,7 +158,7 @@
 
   <xsd:complexType name="kasaInfoType">
     <xsd:sequence>
-      <xsd:element name="id" type="typ:idType"/>
+      <xsd:element name="id" type ="typ:idType"/>
       <xsd:element name="name" type="mKasa:nameType"/>
       <xsd:element name="description" type="xsd:string"/>
       <xsd:element name="deviceGuid" type="mKasa:deviceGuidType"/>

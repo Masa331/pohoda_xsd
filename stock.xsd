@@ -328,6 +328,16 @@
         <xsd:documentation>Výrobce skladové položky.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="unitOfMeasure" type="typ:unitType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Jednotka měrné ceny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="coefficientOfMeasure" type="xsd:float" minOccurs="0" nillable="true">
+      <xsd:annotation>
+        <xsd:documentation>Koeficient pro přepočet jednotky měrné ceny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="EETItem" type="typ:EETItemType" minOccurs="0">
         <xsd:annotation>
             <xsd:documentation>Typ položky EET (pouze CZ verze).</xsd:documentation>

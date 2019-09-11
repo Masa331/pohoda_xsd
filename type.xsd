@@ -435,7 +435,14 @@
   </xsd:all>
 </xsd:complexType>
 
-<xsd:complexType name="actionTypeItem">
+<xsd:complexType name="linkToStockType">
+  <xsd:all>
+    <xsd:element name="id" type="typ:idType" minOccurs="0" />    
+    <xsd:element name="extId" type="typ:extIdType" minOccurs="0" />
+  </xsd:all>
+</xsd:complexType>
+  
+  <xsd:complexType name="actionTypeItem">
   <xsd:choice>
     <xsd:element name="add" type="xsd:string">
       <xsd:annotation>
@@ -524,7 +531,7 @@
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Odkaz na číselnou řadu. Vyšší prioritu má elemet "id".</xsd:documentation>
+        <xsd:documentation>Odkaz na číselnou řadu. Vyšší prioritu má element "id".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="ids" type="typ:idsType" minOccurs="0">
@@ -554,7 +561,7 @@
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Odkaz na číselnou řadu. Vyšší prioritu má elemet "id".</xsd:documentation>
+        <xsd:documentation>Odkaz na číselnou řadu. Vyšší prioritu má element "id".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="ids" type="typ:idsType" minOccurs="0">
@@ -586,7 +593,7 @@
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Odkaz na číselnou řadu. Vyšší prioritu má elemet "id".</xsd:documentation>
+        <xsd:documentation>Odkaz na číselnou řadu. Vyšší prioritu má element "id".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="ids" type="typ:idsType" minOccurs="0">
@@ -625,7 +632,7 @@
     <xsd:documentation>Výrobní číslo.</xsd:documentation>
   </xsd:annotation>
   <xsd:restriction base="xsd:string">
-    <xsd:maxLength value="40"/>
+    <xsd:maxLength value="48"/>
   </xsd:restriction>
 </xsd:simpleType>
 
@@ -633,7 +640,7 @@
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Odkaz na adresu. Vyšší prioritu má elemet "id".</xsd:documentation>
+        <xsd:documentation>Odkaz na adresu. Vyšší prioritu má element "id".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>
@@ -689,7 +696,7 @@
 
 <xsd:simpleType name="symVarType">
   <xsd:annotation>
-    <xsd:documentation>Variabilni symbol.</xsd:documentation>
+    <xsd:documentation>Variabilní symbol.</xsd:documentation>
   </xsd:annotation>
   <xsd:restriction base="xsd:string">
     <xsd:maxLength value="20"/>
@@ -698,7 +705,7 @@
 
 <xsd:simpleType name="symConstType">
   <xsd:annotation>
-    <xsd:documentation>Konstantni symbol.</xsd:documentation>
+    <xsd:documentation>Konstantní symbol.</xsd:documentation>
   </xsd:annotation>
   <xsd:restriction base="xsd:string">
     <xsd:maxLength value="20"/>
@@ -728,7 +735,7 @@
   <xsd:sequence>
     <xsd:element name="id" type="typ:idType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id".</xsd:documentation>
+        <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="extId" type="typ:extIdType" minOccurs="0" maxOccurs="unbounded">
@@ -749,7 +756,7 @@
    <xsd:all>
     <xsd:element name="company" type="typ:stringCompany" minOccurs="0"/>
     <xsd:element name="division" type="typ:string32" minOccurs="0"/>
-    <xsd:element name="name" type="typ:string32" minOccurs="0"/>    
+    <xsd:element name="name" type="typ:string64" minOccurs="0"/>    
     <xsd:element name="city" type="typ:string45" minOccurs="0"/>
     <xsd:element name="street" type="typ:string64" minOccurs="0"/>
     <xsd:element name="zip" type="typ:string15" minOccurs="0"/>
@@ -809,7 +816,7 @@
         <xsd:element name="extId" type="typ:string64" minOccurs="0"/>
     <xsd:element name="company" type="typ:stringCompany" minOccurs="0"/>
     <xsd:element name="division" type="typ:string32" minOccurs="0"/>
-    <xsd:element name="name" type="typ:string32" minOccurs="0"/>    
+    <xsd:element name="name" type="typ:string64" minOccurs="0"/>    
     <xsd:element name="city" type="typ:string45" minOccurs="0"/>
     <xsd:element name="street" type="typ:string64" minOccurs="0"/>
     <xsd:element name="zip" type="typ:string15" minOccurs="0"/>
@@ -946,7 +953,7 @@
 
 <xsd:complexType name="refTypeLong">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id".</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id".</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
@@ -956,7 +963,7 @@
 
 <xsd:complexType name="refTypeStorage">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id".</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id".</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
@@ -966,7 +973,7 @@
 
 <xsd:complexType name="refTypeSupplierAddress">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id".</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id".</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
@@ -976,7 +983,7 @@
   
 <xsd:complexType name="refTypeRegVATinEU">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id".</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id".</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
@@ -1018,7 +1025,7 @@
 
 <xsd:complexType name="accountingType">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id", dále "ids."</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id", dále "ids."</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" >
@@ -1050,7 +1057,7 @@
 
 <xsd:complexType name="classificationVATType">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id", dále "ids".</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id", dále "ids".</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" >
@@ -1071,7 +1078,7 @@
         <xsd:restriction base="xsd:string">
           <xsd:enumeration value="inland">
             <xsd:annotation>
-              <xsd:documentation>Tuzemske plneni.</xsd:documentation>
+              <xsd:documentation>Tuzemské plněni.</xsd:documentation>
             </xsd:annotation>
           </xsd:enumeration>
           <xsd:enumeration value="nonSubsume">
@@ -1087,7 +1094,7 @@
 
 <xsd:complexType name="paymentType">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id", dále "ids".</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id", dále "ids".</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
@@ -1148,9 +1155,12 @@
 
 <xsd:complexType name="stockRefType">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na skladovou položku. Vazbu lze provést přes elementy: ID, IDS, EAN, PLU.
+    <xsd:documentation>
+      Odkaz na skladovou položku. Vazbu lze provést přes elementy: ID, IDS, EAN, PLU.
       Použijeme-li více elementů současně, je brán pouze element s nejvyšší prioritou, ostatní se při zpracování ignorují.
-      Priorita elementu je následující: ID,IDS,EAN,PLU".</xsd:documentation>
+      Priorita elementu je následující: ID,IDS,EAN,PLU".
+      V případě, že je vybrán jeden nebo více skladů sklad a zásoba je definována jinak než podle 'id', zásoba se vyhledá jen ve vybraném skladu.
+    </xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
@@ -1419,6 +1429,24 @@
     </xsd:restriction>
   </xsd:simpleType>
 
+  <xsd:simpleType name="typeCalculateVATInclusivePriceType">
+    <xsd:annotation>
+      <xsd:documentation>Způsoby výpočtu hodnoty DPH z částky včetně daně dle § 37.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="VATNewMethod">
+        <xsd:annotation>
+          <xsd:documentation>Nový výpočet od 1.4.2019.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="VATOriginalMethod">
+        <xsd:annotation>
+          <xsd:documentation>Původní výpočet (s koef. na 4 des. místa).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
 <!-- smazat, jiz se nepouziva - jen ve starych schematech -->
 <xsd:complexType name="priceType">
   <xsd:annotation>
@@ -1427,7 +1455,7 @@
   <xsd:all>
     <xsd:element name="price" type="typ:currencyType">
       <xsd:annotation>
-        <xsd:documentation>Částka v přislušné sazbě.</xsd:documentation>
+        <xsd:documentation>Částka v příslušné sazbě.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="priceVAT" type="typ:currencyType">
@@ -1528,12 +1556,12 @@
   <xsd:all>
     <xsd:element name="currency" type="typ:refType">
       <xsd:annotation>
-        <xsd:documentation>ID - odkaz na cizí měnu, IDS - kod měny.</xsd:documentation>
+        <xsd:documentation>ID - odkaz na cizí měnu, IDS - kód měny.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="rate" type="xsd:float" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Kurs použitý pro výpočet částek v cízí měně.</xsd:documentation>
+        <xsd:documentation>Kurs použitý pro výpočet částek v cizí měně.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="amount" type="xsd:integer" minOccurs="0">
@@ -1544,6 +1572,11 @@
     <xsd:element name="priceSum" type="typ:currencyType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Cena v cizí měně.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="round" type="typ:typeRound" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Zaokrouhlení (Pouze pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>
@@ -2290,7 +2323,7 @@
 
 <xsd:complexType name="linkElemetType">  
   <xsd:all>
-    <xsd:element name="sourceAgenda" type="typ:parameterAgendaFormType">
+    <xsd:element name="sourceAgenda" type="typ:agendaType">
       <xsd:annotation>
         <xsd:documentation>Agenda zdrojového dokladu.</xsd:documentation>
       </xsd:annotation>
@@ -2361,10 +2394,9 @@
     </xsd:restriction>
   </xsd:simpleType>
 
-
-  <xsd:complexType name="linkItemType">
+<xsd:complexType name="linkItemType">
   <xsd:all>
-    <xsd:element name="sourceAgenda" type="typ:parameterAgendaFormType">
+    <xsd:element name="sourceAgenda" type="typ:agendaType">
       <xsd:annotation>
         <xsd:documentation>Agenda zdrojového dokladu.</xsd:documentation>
       </xsd:annotation>
@@ -2384,6 +2416,11 @@
         <xsd:documentation>Nastavení příznaků na zdrojovém dokladu po vytvoření vazby přes položky dokladu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="settingsSourceDocumentItem" type="typ:settingsSourceDocumentItemType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Nastavení příznaků na zdrojovém dokladu po vytvoření vazby přes položky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:all>
 </xsd:complexType>
 
@@ -2394,9 +2431,24 @@
         <xsd:documentation>Nastavení příznaku "Vyřízeno" na přijaté objednávce při vazbě: "Objednávka -> Faktura přes položky dokladu".</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="linkOrderItemToIssueSlip" type="typ:linkOrderItemToIssueSlipType" default="4">
+      <xsd:annotation>
+        <xsd:documentation>Nastavení příznaku "Vyřízeno" na přijaté objednávce při vazbě: "Objednávka -> Výdejka přes položky dokladu".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:choice>
 </xsd:complexType>
 
+<xsd:complexType name="settingsSourceDocumentItemType">
+  <xsd:choice>
+    <xsd:element name="linkIssueSlipItemToInvoice" type="typ:linkIssueSlipItemToInvoiceType" default="4">
+      <xsd:annotation>
+        <xsd:documentation>Nastavení příznaku "Vyřízeno" na výdejce při vazbě: "Výdejka -> Vydaná faktura přes položky dokladu".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:choice>
+</xsd:complexType>
+  
 <xsd:simpleType name="linkOrderItemToInvoiceType">
   <xsd:restriction base="xsd:string">
     <xsd:enumeration value="4">
@@ -2407,6 +2459,36 @@
     <xsd:enumeration value="2">
       <xsd:annotation>
         <xsd:documentation>Po přenosu přijaté objednávky do vydané faktury nenastavovat na objednávce příznak "Vyřízeno".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="linkOrderItemToIssueSlipType">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="4">
+      <xsd:annotation>
+        <xsd:documentation>Po přenosu přijaté objednávky do výdejky nastavit na objednávce příznak "Vyřízeno".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="2">
+      <xsd:annotation>
+        <xsd:documentation>Po přenosu přijaté objednávky do výdejky nenastavovat na objednávce příznak "Vyřízeno".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="linkIssueSlipItemToInvoiceType">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="4">
+      <xsd:annotation>
+        <xsd:documentation>Po přenosu výdejky do vydané faktury nastavit na výdejce příznak "Vyřízeno".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="2">
+      <xsd:annotation>
+        <xsd:documentation>Po přenosu výdejky do vydané faktury nenastavovat na výdejce příznak "Vyřízeno".</xsd:documentation>
       </xsd:annotation>
     </xsd:enumeration>
   </xsd:restriction>
@@ -2531,7 +2613,7 @@
 
 <xsd:complexType name="labelType">
   <xsd:annotation>
-    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má elemet "id".</xsd:documentation>
+    <xsd:documentation>Odkaz na entitu. Vyšší prioritu má element "id".</xsd:documentation>
   </xsd:annotation>
   <xsd:all>
     <xsd:element name="id" type="typ:idType" minOccurs="0" />
@@ -2638,7 +2720,7 @@
       </xsd:enumeration>
       <xsd:enumeration value="notSend">
         <xsd:annotation>
-          <xsd:documentation>Neodesílat do EET. Uživatel určil změnou stavu, že ikdyž doklad plní podmínky pro vstup do EET, nechce jej tam odeslat.</xsd:documentation>
+          <xsd:documentation>Neodesílat do EET. Uživatel určil změnou stavu, že i když doklad plní podmínky pro vstup do EET, nechce jej tam odeslat.</xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
       <xsd:enumeration value="forSending">

@@ -33,6 +33,7 @@
       xmlns:nms="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
       xmlns:gdp="http://www.stormware.cz/schema/version_2/GDPR.xsd"
       xmlns:est="http://www.stormware.cz/schema/version_2/establishment.xsd"
+      xmlns:afp="http://www.stormware.cz/schema/version_2/accountingFormOfPayment.xsd"
       xmlns="http://www.stormware.cz/schema/version_2/list.xsd"
       targetNamespace="http://www.stormware.cz/schema/version_2/list.xsd"
       elementFormDefault="qualified"
@@ -70,7 +71,7 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/numericalSeries.xsd" schemaLocation="numericalSeries.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/GDPR.xsd" schemaLocation="GDPR.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/establishment.xsd" schemaLocation="establishment.xsd"/>
-
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/accountingFormOfPayment.xsd" schemaLocation="accountingFormOfPayment.xsd"/>
   
   <!-- ************************************************************************** -->
 <!-- root element REQUEST - požadavek na export -->
@@ -114,6 +115,7 @@
 <xsd:element name="listNumericalSeriesRequest" type="lst:listNumericalSeriesRequestType"/> <!-- Od verze 2.0 -->
 <xsd:element name="listGDPRRequest" type="lst:listGDPRRequestType"/> <!-- Od verze 2.0 -->
 <xsd:element name="listEstablishmentRequest" type="lst:listEstablishmentRequestType"/> <!-- Od verze 2.0 -->  
+<xsd:element name="listAccountingFormOfPaymentRequest" type="lst:listAccountingFormOfPaymentRequestType"/> <!-- Od verze 2.0 -->
 
 <!-- ************************************************************************** -->
 <!-- root element RESPONSE  - odpověď na export seznamů -->
@@ -160,6 +162,8 @@
 <xsd:element name="listNumericalSeries" type="lst:listNumericalSeriesType"/>
 <xsd:element name="listGDPR" type="lst:listGDPRType"/>
 <xsd:element name="listEstablishment" type="lst:listEstablishmentType"/>
+<xsd:element name="listAccountingFormOfPayment" type="lst:listAccountingFormOfPaymentType"/>
+
 
 
   <!-- **************************************************************************
@@ -957,6 +961,29 @@
 </xsd:simpleType>
 
 <!-- ****************************************************************************** -->
+<!-- Zaúčtování forem úhrad-->
+<xsd:complexType name="listAccountingFormOfPaymentRequestType">
+  <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    <xsd:element name="requestAccountingFormOfPayment" type="lst:requestAccountingFormOfPaymentType" />
+  </xsd:sequence>
+  <xsd:attribute name="version" type="lst:listAccountingFormOfPaymentVerType" use="required"/>
+  <xsd:attribute name="accountingFormOfPaymentVersion" type="afp:accountingFormOfPaymentVersionType" use="required">
+    <xsd:annotation>
+      <xsd:documentation>Požadovaná verze.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+</xsd:complexType>
+
+<xsd:simpleType name="listAccountingFormOfPaymentVerType">
+  <xsd:annotation>
+    <xsd:documentation>Verze, které jsou dostupné k této agendě. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<!-- ****************************************************************************** -->
 <xsd:complexType name="listCentreType">
   <xsd:complexContent>
     <xsd:extension base="rdc:listVersionType">
@@ -1350,6 +1377,18 @@
     <xsd:extension base="rdc:listVersionType">
       <xsd:choice>
         <xsd:element name="establishment" type="est:establishmentType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+  
+  
+<!-- Zaúčtování forem úhrad-->
+<xsd:complexType name="listAccountingFormOfPaymentType">
+  <xsd:complexContent>
+    <xsd:extension base="rdc:listVersionType">
+      <xsd:choice>
+        <xsd:element name="accountingFormOfPayment" type="afp:accountingFormOfPaymentTypeRoot" minOccurs="0" maxOccurs="unbounded"/>
       </xsd:choice>
     </xsd:extension>
   </xsd:complexContent>
@@ -1863,6 +1902,9 @@
 </xsd:complexType>
 
 <xsd:complexType name="requestEstablishmentType">
+</xsd:complexType>
+
+<xsd:complexType name="requestAccountingFormOfPaymentType">
 </xsd:complexType>
 
   <!-- ****************************************************************************** -->

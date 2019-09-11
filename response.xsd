@@ -214,6 +214,7 @@
     <xsd:element ref="lst:listEstablishment"/>
     <xsd:element ref="lCen:listCentre"/>
     <xsd:element ref="lAcv:listActivity"/>
+    <xsd:element ref="lst:listAccountingFormOfPayment"/>
     
   </xsd:choice> 
   <xsd:attribute name="version" type="xsd:string" use="required"/>

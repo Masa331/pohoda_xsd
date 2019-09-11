@@ -23,7 +23,7 @@
   <xsd:sequence>
     <xsd:element name="links" type="typ:linksType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Pomocí tohoto bloku lze vytvořit nový doklad z jiného dokladu. Pokud nejsou spedifikovány položky, vloží se celý doklad. 
+        <xsd:documentation>Pomocí tohoto bloku lze vytvořit nový doklad z jiného dokladu. Pokud nejsou specifikovány položky, vloží se celý doklad. 
               Vložený doklad lze upravit pomocí jednotlivých elementů u dokladu.
               Povolené jsou vazby: - přijatá objednávka do vydaných faktur.
         </xsd:documentation>
@@ -121,7 +121,7 @@
     </xsd:element>
     <xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Párový symbol. Používá se jen v účetníctví (dřívé PU).</xsd:documentation>
+        <xsd:documentation>Párový symbol. Používá se jen v účetnictví (dříve PU).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="date" type="xsd:date" minOccurs="0">
@@ -141,7 +141,7 @@
     </xsd:element>
     <xsd:element name="dateKHDPH" type="xsd:date" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Datum KH DPH. Pokud není datum KH DPH uveden, nebude na dokladu nastaven. Pouze pro doklady typu Přijaté faktura, Ostatní závazek (pouze CZ verze).</xsd:documentation>
+        <xsd:documentation>Datum KH DPH. Pokud není datum KH DPH uveden, nebude na dokladu nastaven. Pouze pro doklady typu Přijatá faktura, Ostatní závazek, Vydaná Faktura - opravný daňový doklad (pouze CZ verze).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
 
@@ -317,7 +317,7 @@
         <xsd:documentation>Účetní období (MOSS).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="carrier" type="typ:carrierType" minOccurs="0">
+    <xsd:element name="carrier" type="typ:carrierType" minOccurs="0" nillable="true">
       <xsd:annotation>
         <xsd:documentation>Dopravce (pouze vydané faktury a vydané zálohové faktury). </xsd:documentation>
       </xsd:annotation>
@@ -419,6 +419,11 @@
         <xsd:documentation>Vypočíst DPH ze zaokrouhlení. Pokud není uvedeno, nastaví se hodnota z Globálního nastavení.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data zdanitelného plnění nebo data vystavení dokladu. (pouze CZ verze)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>    
     <xsd:element name="homeCurrency" type="typ:typeCurrencyHome" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kč. V případě použití cizí měny, je tuzemská částka při importu ignorována.</xsd:documentation>
@@ -437,7 +442,7 @@
   <xsd:all>
     <xsd:element name="link" type="typ:linkItemType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Pomocí tohoto bloku lze vytvořit položku z jiného dokladu. Vložený doklad lze upravit pomocí zadanách parametrů u dokladu.
+        <xsd:documentation>Pomocí tohoto bloku lze vytvořit položku z jiného dokladu. Vložený doklad lze upravit pomocí zadaných parametrů u dokladu.
                             Povolené jsou vazby: - přijatá objednávka do vydaných faktur.
         </xsd:documentation>
       </xsd:annotation>
@@ -532,7 +537,12 @@
       </xsd:element>
     <xsd:element name="stockItem" type="typ:stockItemType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Údaje potřebné k nalezní skladové zásoby vložené do položky. Pokud zde tento element není, jedná se o textovou položku.</xsd:documentation>
+        <xsd:documentation>Údaje potřebné k nalezení skladové zásoby vložené do položky. Pokud zde tento element není, jedná se o textovou položku.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="linkToStock" type="typ:linkToStockType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Identifikátor zásoby u textových položek s vazbou na sklad (pouze pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="accounting" type="typ:refType" minOccurs="0">
@@ -662,7 +672,7 @@
       </xsd:element>
       <xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
         <xsd:annotation>
-          <xsd:documentation>Párový symbol. Používá se jen v účetníctví (dřívé PU).</xsd:documentation>
+          <xsd:documentation>Párový symbol. Používá se jen v účetnictví (dříve PU).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="accounting" type="typ:refType" minOccurs="0">

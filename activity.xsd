@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd" xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd" xmlns:acv="http://www.stormware.cz/schema/version_2/activity.xsd" xmlns="http://www.stormware.cz/schema/version_2/activity.xsd" targetNamespace="http://www.stormware.cz/schema/version_2/activity.xsd" elementFormDefault="qualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
+      xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
+      xmlns:acv="http://www.stormware.cz/schema/version_2/activity.xsd"
+      xmlns="http://www.stormware.cz/schema/version_2/activity.xsd"
+      targetNamespace="http://www.stormware.cz/schema/version_2/activity.xsd"
+      elementFormDefault="qualified">
 
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
@@ -28,7 +34,7 @@
           <xsd:documentation>ID záznamu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="extId" type="typ:extIdType" minOccurs="0">
+      <xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
         <xsd:annotation>
           <xsd:documentation>
             Odkaz na záznam v externí databázi. V databázi se nachází speciální tabulka obsahující
