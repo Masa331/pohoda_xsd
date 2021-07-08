@@ -149,7 +149,7 @@
     </xsd:element>
     <xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Párovací symbol</xsd:documentation>
+        <xsd:documentation>Párovací symbol (pouze JU nebo DE).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>    
     <xsd:element name="centre" type="typ:refType" minOccurs="0">
@@ -203,12 +203,12 @@
 
 <xsd:complexType name="bankSummaryType">
   <xsd:all>
-    <xsd:element name="roundingDocument" type="typ:typeRoundingDocument" minOccurs="0">
+    <xsd:element name="roundingDocument" type="bnk:typeRoundingDocument" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Zaokrouhlení celkové částky dokladu.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="roundingVAT" type="typ:typeRoundingVAT" minOccurs="0">
+      <xsd:element name="roundingVAT" type="bnk:typeRoundingVAT" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
         </xsd:annotation>
@@ -238,6 +238,41 @@
         <xsd:documentation>Text položky.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="quantity" type="xsd:float" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Množství. (pouze pro JU nebo DE)</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="unit" type="typ:unitType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Měrná jednotka (pouze pro JU nebo DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="coefficient" type="xsd:float" minOccurs="0" default="1.0">
+      <xsd:annotation>
+        <xsd:documentation>Koeficient (pouze pro JU nebo DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="payVAT" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Ceny jsou uvedeny: bez DPH, včetně DPH. Výchozí hodnota se týká pouze textové položky. Pro skladové položky bude brána výchozí hodnota dle nastavení v programu POHODA (pouze pro JU nebo DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="rateVAT" type="typ:vatRateType" minOccurs="0" default="none">
+      <xsd:annotation>
+        <xsd:documentation>Sazba DPH (pouze pro JU nebo DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="percentVAT" type="xsd:float" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Historická sazba v procentech. Povoluje se v Globálním nastavení (pouze pro JU nebo DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="discountPercentage" type="typ:typePercentage" minOccurs="0" default="0">
+      <xsd:annotation>
+        <xsd:documentation>Sleva v procentech. Pokud není uvedena, bere se jako hodnota slevy z priceLevel dokumentu. Pokud není definován ani priceLevel bere se jako NULOVÁ (pouze pro JU nebo DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="homeCurrency" type="bnk:typeCurrencyHomeItem" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Částka v Kč.</xsd:documentation>
@@ -246,6 +281,16 @@
     <xsd:element name="foreignCurrency" type="bnk:typeCurrencyForeignItem" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Částka v cizí měně.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="homeCurrencyJU" type="typ:typeCurrencyHomeItem" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Částka v Kč (pouze pro JU a DE).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="foreignCurrencyJU" type="typ:typeCurrencyForeignItem" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Částka v Kč (pouze pro JU a DE).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="note" type="typ:string90" minOccurs="0">
@@ -362,8 +407,34 @@
         </xsd:annotation>
       </xsd:element>
     </xsd:all>
- </xsd:complexType> 
+ </xsd:complexType>
 
+<xsd:simpleType name="typeRoundingDocument">
+  <xsd:annotation>
+    <xsd:documentation>Zaokrouhlení bankovního dokladu.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="none">
+      <xsd:annotation>
+        <xsd:documentation>Doklad nezaokrouhlovat</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+  </xsd:restriction>
+</xsd:simpleType> 
+  
+<xsd:simpleType name="typeRoundingVAT">
+  <xsd:annotation>
+    <xsd:documentation>Aktuální typy zaokrouhlení vypočítané hodnoty DPH v bance.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="none">
+      <xsd:annotation>
+        <xsd:documentation>DPH nezaokrouhlovat.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+  </xsd:restriction>
+</xsd:simpleType>
+  
 <!-- RESPONSE -->
 
 <xsd:element name="bankResponse" type="bnk:bankResponseType"/>

@@ -34,6 +34,11 @@
       xmlns:gdp="http://www.stormware.cz/schema/version_2/GDPR.xsd"
       xmlns:est="http://www.stormware.cz/schema/version_2/establishment.xsd"
       xmlns:afp="http://www.stormware.cz/schema/version_2/accountingFormOfPayment.xsd"
+      xmlns:vat="http://www.stormware.cz/schema/version_2/classificationVAT.xsd"
+      xmlns:rgn="http://www.stormware.cz/schema/version_2/registrationNumber.xsd"
+      xmlns:arch="http://www.stormware.cz/schema/version_2/archive.xsd"
+      xmlns:req="http://www.stormware.cz/schema/version_2/productRequirement.xsd"
+      xmlns:mov="http://www.stormware.cz/schema/version_2/movement.xsd"
       xmlns="http://www.stormware.cz/schema/version_2/list.xsd"
       targetNamespace="http://www.stormware.cz/schema/version_2/list.xsd"
       elementFormDefault="qualified"
@@ -72,6 +77,11 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/GDPR.xsd" schemaLocation="GDPR.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/establishment.xsd" schemaLocation="establishment.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/accountingFormOfPayment.xsd" schemaLocation="accountingFormOfPayment.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/classificationVAT.xsd" schemaLocation="classificationVAT.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/registrationNumber.xsd" schemaLocation="registrationNumber.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/archive.xsd" schemaLocation="archive.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/productRequirement.xsd" schemaLocation="productRequirement.xsd"/>   
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/movement.xsd" schemaLocation="movement.xsd"/>   
   
   <!-- ************************************************************************** -->
 <!-- root element REQUEST - požadavek na export -->
@@ -112,12 +122,17 @@
 <xsd:element name="listActionPriceRequest" type="lst:listActionPriceRequestType"/>
 <xsd:element name="listInventoryListsRequest" type="lst:listInventoryListsRequestType"/>
 <xsd:element name="listPaymentRequest" type="lst:listPaymentRequestType"/>
-<xsd:element name="listNumericalSeriesRequest" type="lst:listNumericalSeriesRequestType"/> <!-- Od verze 2.0 -->
-<xsd:element name="listGDPRRequest" type="lst:listGDPRRequestType"/> <!-- Od verze 2.0 -->
-<xsd:element name="listEstablishmentRequest" type="lst:listEstablishmentRequestType"/> <!-- Od verze 2.0 -->  
-<xsd:element name="listAccountingFormOfPaymentRequest" type="lst:listAccountingFormOfPaymentRequestType"/> <!-- Od verze 2.0 -->
+<xsd:element name="listNumericalSeriesRequest" type="lst:listNumericalSeriesRequestType"/>
+<xsd:element name="listGDPRRequest" type="lst:listGDPRRequestType"/>
+<xsd:element name="listEstablishmentRequest" type="lst:listEstablishmentRequestType"/>
+<xsd:element name="listAccountingFormOfPaymentRequest" type="lst:listAccountingFormOfPaymentRequestType"/>
+<xsd:element name="listClassificationVATRequest" type="lst:listClassificationVATRequestType"/>
+<xsd:element name="listGlobalSettingsRequest" type="lst:listGlobalSettingsRequestType"/>  
+<xsd:element name="listRegistrationNumberRequest" type="lst:listRegistrationNumberRequestType"/>
+<xsd:element name="listProductRequirementRequest" type="lst:listProductRequirementRequestType"/>
+<xsd:element name="listMovementRequest" type="lst:listMovementRequestType"/>  
 
-<!-- ************************************************************************** -->
+  <!-- ************************************************************************** -->
 <!-- root element RESPONSE  - odpověď na export seznamů -->
 <xsd:element name="listCentre" type="lst:listCentreType"/>
 <xsd:element name="listActivity" type="lst:listActivityType"/>
@@ -163,8 +178,11 @@
 <xsd:element name="listGDPR" type="lst:listGDPRType"/>
 <xsd:element name="listEstablishment" type="lst:listEstablishmentType"/>
 <xsd:element name="listAccountingFormOfPayment" type="lst:listAccountingFormOfPaymentType"/>
-
-
+<xsd:element name="listClassificationVAT" type="lst:listClassificationVATType"/>
+<xsd:element name="listGlobalSettings" type="lst:listGlobalSettingsType"/>
+<xsd:element name="listRegistrationNumber" type="lst:listRegistrationNumberType"/>
+<xsd:element name="listProductRequirement" type="lst:listProductRequirementType"/>
+<xsd:element name="listMovement" type="lst:listMovementType"/>
 
   <!-- **************************************************************************
     base types
@@ -983,7 +1001,122 @@
   </xsd:restriction>
 </xsd:simpleType>
 
+  <!-- ****************************************************************************** -->
+  <!-- Požadavek na export globálního nastavení -->
+  <xsd:complexType name="listGlobalSettingsRequestType">
+    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+      <xsd:element name="requestGlobalSettings" type="lst:requestrequestGlobalSettingsType" />
+    </xsd:sequence>
+    <xsd:attribute name="version" type="lst:listGlobalSettingsVerType" use="required"/>
+    <xsd:attribute name="globalSettingsVersion" type="arch:archiveVersionType" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Požadovaná verze.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:simpleType name="listGlobalSettingsVerType">
+    <xsd:annotation>
+      <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="2.0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
 <!-- ****************************************************************************** -->
+<!-- Seznam členění DPH-->
+<xsd:complexType name="listClassificationVATRequestType">
+  <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    <xsd:element name="requestClassificationVAT" type="lst:requestClassificationVATType" />
+  </xsd:sequence>
+  <xsd:attribute name="version" type="lst:listClassificationVATVerType" use="required"/>
+  <xsd:attribute name="classificationVATVersion" type="vat:classificationVATVersionType" use="required">
+    <xsd:annotation>
+      <xsd:documentation>Požadovaná verze.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+</xsd:complexType>
+
+<xsd:simpleType name="listClassificationVATVerType">
+  <xsd:annotation>
+    <xsd:documentation>Verze, které jsou dostupné k této agendě. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
+</xsd:simpleType>
+  
+<!-- ****************************************************************************** -->
+<!-- Evidenční čísla -->
+<xsd:complexType name="listRegistrationNumberRequestType">
+  <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    <xsd:element name="requestRegistrationNumber" type="ftr:requestRegistrationNumberType" />
+  </xsd:sequence>
+  <xsd:attribute name="version" type="lst:listRegistrationNumberVerType" use="required"/>
+  <xsd:attribute name="registrationNumberVersion" type="rgn:registrationNumberVersionType" use="required">
+    <xsd:annotation>
+      <xsd:documentation>Požadovaná verze.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+</xsd:complexType>
+
+<xsd:simpleType name="listRegistrationNumberVerType">
+  <xsd:annotation>
+    <xsd:documentation>Verze, které jsou dostupné k této agendě. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+  <!-- ****************************************************************************** -->
+  <!-- Požadavek na export výrobních požadavků -->
+  <xsd:complexType name="listProductRequirementRequestType">
+    <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+      <xsd:element name="requestProductRequirement" type="ftr:requestProductRequirementType" />
+    </xsd:sequence>
+    <xsd:attribute name="version" type="lst:listProductRequirementVerType" use="required"/>
+    <xsd:attribute name="productRequirementVersion" type="req:productRequirementVersionType" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Požadovaná verze.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:simpleType name="listProductRequirementVerType">
+    <xsd:annotation>
+      <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="2.0"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
+<!-- ****************************************************************************** -->
+<!-- Požadavek na export pohybů-->
+<xsd:complexType name="listMovementRequestType">
+  <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    <xsd:element name="requestMovement" type="ftr:requestMovementType" />
+  </xsd:sequence>
+  <xsd:attribute name="version" type="lst:listMovementVerType" use="required"/>
+  <xsd:attribute name="movementVersion" type="mov:movementVersionType" use="required">
+    <xsd:annotation>
+      <xsd:documentation>Požadovaná verze.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:attribute>
+</xsd:complexType>
+
+<xsd:simpleType name="listMovementVerType">
+  <xsd:annotation>
+    <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="2.0"/>
+  </xsd:restriction>
+</xsd:simpleType>  
+  
+  <!-- ****************************************************************************** -->
 <xsd:complexType name="listCentreType">
   <xsd:complexContent>
     <xsd:extension base="rdc:listVersionType">
@@ -1381,8 +1514,7 @@
     </xsd:extension>
   </xsd:complexContent>
 </xsd:complexType>
-  
-  
+    
 <!-- Zaúčtování forem úhrad-->
 <xsd:complexType name="listAccountingFormOfPaymentType">
   <xsd:complexContent>
@@ -1394,7 +1526,62 @@
   </xsd:complexContent>
 </xsd:complexType>
 
-<!-- ****************************************************************************** -->
+<!-- Export globální nastavení -->
+<xsd:complexType name="listGlobalSettingsType">
+  <xsd:complexContent>
+    <xsd:extension base="rdc:listVersionType">
+      <xsd:choice>
+        <xsd:element ref="arch:archive" minOccurs="0" />
+      </xsd:choice>      
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<!-- Seznam členění DPH-->
+<xsd:complexType name="listClassificationVATType">
+  <xsd:complexContent>
+    <xsd:extension base="rdc:listVersionType">
+      <xsd:choice>
+        <xsd:element name="classificationVAT" type="vat:classificationVATType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<!-- Evidenční čísla -->
+<xsd:complexType name="listRegistrationNumberType">
+  <xsd:complexContent>
+    <xsd:extension base="rdc:listVersionType">
+      <xsd:choice>
+        <xsd:element name="registrationNumber" type="rgn:registrationNumberType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<!-- Výrobní požadavky-->
+<xsd:complexType name="listProductRequirementType">
+  <xsd:complexContent>
+    <xsd:extension base="rdc:listVersionType">
+      <xsd:choice>
+        <xsd:element name="productRequirement" type="req:productRequirementType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<!-- Pohyby -->
+<xsd:complexType name="listMovementType">
+  <xsd:complexContent>
+    <xsd:extension base="rdc:listVersionType">
+      <xsd:choice>
+        <xsd:element name="movement" type="mov:movementType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+  <!-- ****************************************************************************** -->
 <xsd:complexType name="requestParameterType">
   <xsd:attribute name="idsAgenda" type="typ:parameterAgendaType" use="required"/>
   <xsd:attribute name="idsUserAgenda" type="typ:string10"/>
@@ -1538,9 +1725,19 @@
     <xsd:enumeration value="bankIssued">
           <xsd:annotation><xsd:documentation>Banka výdej.</xsd:documentation></xsd:annotation></xsd:enumeration>
     <xsd:enumeration value="fixedAssets">
-          <xsd:annotation><xsd:documentation>Dlouhodobý majetek.</xsd:documentation></xsd:annotation></xsd:enumeration>
+          <xsd:annotation><xsd:documentation>Dlouhodobý majetek (pouze pro účetnictví typu "PU").</xsd:documentation></xsd:annotation></xsd:enumeration>
     <xsd:enumeration value="leasingAssets">
-          <xsd:annotation><xsd:documentation>Leasingový majetek.</xsd:documentation></xsd:annotation></xsd:enumeration>
+          <xsd:annotation><xsd:documentation>Leasingový majetek (pouze pro účetnictví typu "PU").</xsd:documentation></xsd:annotation></xsd:enumeration>
+    <xsd:enumeration value="exchangeRateDifferences">
+      <xsd:annotation>
+        <xsd:documentation>Kurzové rozdíly (pouze pro účetnictví typu "PU").</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
+    <xsd:enumeration value="accrualsAndDeferrals">
+      <xsd:annotation>
+        <xsd:documentation>Časové rozlišení (pouze pro účetnictví typu "PU").</xsd:documentation>
+      </xsd:annotation>
+    </xsd:enumeration>
   </xsd:restriction>
 </xsd:simpleType>
 
@@ -1602,7 +1799,8 @@
   <xsd:complexContent>
     <xsd:extension base="lst:itemType">
         <xsd:attribute name="accounting" type="xsd:string" use="required"/>
-        <xsd:attribute name="agenda" type="xsd:string" use="required"/>
+        <xsd:attribute name="agenda" type="xsd:string"/>
+      <xsd:attribute name="accountingType" type="xsd:string"/>
     </xsd:extension>
   </xsd:complexContent>
 </xsd:complexType>
@@ -1647,6 +1845,11 @@
     <xsd:attribute name="idStore" type="typ:idType">
       <xsd:annotation>
         <xsd:documentation>"//lst:listStorage/lst:itemStorage" (první "itemStorage") je název skladu, následují názvy větví.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>    
+    <xsd:attribute name="allowNegInvBalance" type="typ:boolean">
+      <xsd:annotation>
+        <xsd:documentation>Příznak "Povolit stav zásob do mínusu" skladu, do kterého členění patří. Uveden pouze u první úrovně členění, tedy skladu.</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>    
     <xsd:attribute name="name" type="xsd:string">
@@ -1907,6 +2110,12 @@
 <xsd:complexType name="requestAccountingFormOfPaymentType">
 </xsd:complexType>
 
+<xsd:complexType name="requestClassificationVATType">
+</xsd:complexType>
+
+<xsd:complexType name="requestrequestGlobalSettingsType">
+</xsd:complexType>
+  
   <!-- ****************************************************************************** -->
 <xsd:element name="listUserCodeResponse" type="lst:listUserCodeResponseType">
   <xsd:annotation>

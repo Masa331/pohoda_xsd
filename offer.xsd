@@ -49,6 +49,14 @@
         <xsd:documentation>ID záznamu. Používá se jen při exportu dokladu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="extId" type="typ:extIdType" minOccurs="0" >
+      <xsd:annotation>
+        <xsd:documentation>
+          Odkaz na záznam v externí databázi. V databázi se nachází speciální tabulka obsahující
+          vazbu mezi agendou a externí databází.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="offerType" type="ofr:offerTypeType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Typ nabídky.</xsd:documentation>
@@ -124,6 +132,11 @@
         <xsd:documentation>Účetní období (MOSS).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="permanentDocument" type="typ:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Trvalý doklad. Příznak pro označení trvalé nabídky. U takto označených dokladů se nebude sledovat přenesené množství a bude možné ji neustále přenášet do dokladů.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="isExecuted" type="typ:boolean" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Vyřízeno. Používá se jen při exportu dokladu.</xsd:documentation>
@@ -170,21 +183,31 @@
 <xsd:complexType name="offerDetailType">
   <xsd:sequence>
     <xsd:element name="offerItem" type="ofr:offerItemType" maxOccurs="unbounded"/>
+    <xsd:element name="roundingItem" type="typ:roundingItemType" minOccurs="0" maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>Položka dokladu - výpočet DPH ze zaokrouhlení (pouze pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="offerSummaryType">
   <xsd:all>
     <xsd:element name="roundingDocument" type="typ:typeRoundingDocument" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Zaokrouhlení celkové částky dokladu.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="roundingVAT" type="typ:typeRoundingVAT" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
+      <xsd:annotation>
+        <xsd:documentation>Zaokrouhlení celkové částky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="roundingVAT" type="typ:typeRoundingVAT" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Vypočíst DPH ze zaokrouhlení.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data vystavení dokladu. (pouze CZ verze)</xsd:documentation>
@@ -210,6 +233,7 @@
         <xsd:documentation>ID položky dokladu (jen pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="extId" type="typ:string64" minOccurs="0"/>
     <xsd:element name="text" type="typ:string90" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Text položky.</xsd:documentation>
@@ -273,6 +297,11 @@
     <xsd:element name="CodePDP" type="typ:string4" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kód zboží (pouze pro Vydané nabídky v SK verzi).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="recyclingContrib" type="typ:recyclingContribType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Recyklační příspěvek položky. Pokud při importu dokladu tento element není na položce uveden, bude na skladové položce dokladu nastaven dle skladové zásoby. U textové položky nebude nastaven.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="centre" type="typ:refType" minOccurs="0">

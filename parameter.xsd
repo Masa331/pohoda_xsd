@@ -99,6 +99,12 @@
           </xsd:annotation>
         </xsd:element>
     <xsd:element name="list" type="typ:refType" minOccurs="0"/>
+    <xsd:element name="write" type="typ:boolean" minOccurs="0" default="true"/>
+    <xsd:element name="row" type="xsd:integer" minOccurs="0" default="1">
+      <xsd:annotation>
+        <xsd:documentation>Řádek v tabulce položek dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="use0" type="typ:boolean" minOccurs="0" default="false"/>
     <xsd:element name="use1" type="typ:boolean" minOccurs="0" default="false"/>
     <xsd:element name="use2" type="typ:boolean" minOccurs="0" default="false"/>

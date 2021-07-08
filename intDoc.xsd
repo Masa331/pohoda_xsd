@@ -222,21 +222,31 @@
 <xsd:complexType name="intDocDetailType">
   <xsd:sequence>
     <xsd:element name="intDocItem" type="int:intDocItemType" maxOccurs="unbounded"/>
+    <xsd:element name="roundingItem" type="typ:roundingItemType" minOccurs="0" maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>Položka dokladu - výpočet DPH ze zaokrouhlení (pouze pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
 <xsd:complexType name="intDocSummaryType">
   <xsd:all>
     <xsd:element name="roundingDocument" type="typ:typeRoundingDocument" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Zaokrouhlení celkové částky dokladu.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="roundingVAT" type="typ:typeRoundingVAT" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
+      <xsd:annotation>
+        <xsd:documentation>Zaokrouhlení celkové částky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="roundingVAT" type="typ:typeRoundingVAT" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Vypočíst DPH ze zaokrouhlení.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data zdanitelného plnění. (pouze CZ verze)</xsd:documentation>

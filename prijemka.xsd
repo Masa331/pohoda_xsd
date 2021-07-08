@@ -146,6 +146,11 @@
         <xsd:documentation>Volitelný parametr.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="validate" type="typ:typeValidate" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Podmíněná kontrola dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:all>
 </xsd:complexType>
 
@@ -156,7 +161,12 @@
         <xsd:annotation>
           <xsd:documentation>Definice "Textové" nebo "Skladové" položky dokladu.</xsd:documentation>
         </xsd:annotation>
-      </xsd:element>  
+      </xsd:element>
+      <xsd:element name="roundingItem" type="typ:roundingItemType" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Položka dokladu - výpočet DPH ze zaokrouhlení (pouze pro export).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
       <xsd:element name="prijemkaAccessoryChargesItem" type="pri:prijemkaAccessoryChargesItemType" minOccurs="0" maxOccurs="unbounded">
         <xsd:annotation>
           <xsd:documentation>Definice položky dokladu typu "Vedlejší náklady".</xsd:documentation>
@@ -168,16 +178,21 @@
 
   <xsd:complexType name="prijemkaSummaryType">
   <xsd:all>
-      <xsd:element name="roundingDocument" type="typ:typeRoundingDocument" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Zaokrouhlení celkové částky dokladu.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element name="roundingVAT" type="typ:typeRoundingVAT" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
+    <xsd:element name="roundingDocument" type="typ:typeRoundingDocument" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Zaokrouhlení celkové částky dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="roundingVAT" type="typ:typeRoundingVAT" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0" default="false">
+      <xsd:annotation>
+        <xsd:documentation>Vypočíst DPH ze zaokrouhlení.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Způsob výpočtu hodnoty DPH z částky včetně daně dle § 37. Pokud není element uveden, použije se způsob výpočtu dle data vystavení dokladu. (pouze CZ verze)</xsd:documentation>

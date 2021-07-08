@@ -17,7 +17,7 @@
   <xsd:sequence>
       <xsd:element name="importDetails"  type="rdc:importDetailsType" minOccurs="0">
         <xsd:annotation>
-        <xsd:documentation>Chyby a uporoznění vzniklé při načtení dokladu.</xsd:documentation>
+        <xsd:documentation>Chyby a upozornění vzniklé při načtení dokladu.</xsd:documentation>
       </xsd:annotation>
       </xsd:element>
       <xsd:element name="producedDetails"  type="rdc:producedDetailsType" minOccurs="0">
@@ -66,7 +66,7 @@
       </xsd:annotation>
     </xsd:element>
    </xsd:sequence>
-</xsd:complexType>
+</xsd:complexType> 
 
   <xsd:simpleType name="actionTypeEnum">    
     <xsd:restriction base="xsd:string">
@@ -76,6 +76,8 @@
       <xsd:enumeration value="print"/>
       <xsd:enumeration value="link"/>
       <xsd:enumeration value="sendEET"/>
+      <xsd:enumeration value="accountingSalesVouchers"/>
+      <xsd:enumeration value="isdoc"/>
     </xsd:restriction>
   </xsd:simpleType>
 
@@ -174,7 +176,7 @@
 
 <xsd:complexType name="partsType">
   <xsd:annotation>
-        <xsd:documentation>Název rozděleleného souboru.</xsd:documentation>
+        <xsd:documentation>Název rozděleného souboru.</xsd:documentation>
   </xsd:annotation>
   <xsd:sequence>
     <xsd:element name="part" type="xsd:string"  minOccurs="0"  maxOccurs="unbounded"/>

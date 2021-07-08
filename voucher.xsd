@@ -21,6 +21,14 @@
 
   <xsd:complexType name="voucherType">
     <xsd:sequence>
+      <xsd:element name="cancelDocument" type="typ:cancelDocumentType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+            Pomocí tohoto bloku bude vytvořen storno doklad. V programu POHODA bude vyhledán doklad, který má být stornován, pokud bude nalezen, bude k němu vytvořen stornující doklad.
+            Vložený doklad lze upravit pomocí jednotlivých elementů v voucherHeader (ostatní elementy budou ignorovány).
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
       <xsd:element name="voucherHeader" type="vch:voucherHeaderType" minOccurs="0"/>
       <xsd:element name="voucherDetail" type="vch:voucherDetailType" minOccurs="0"/>
       <xsd:element name="voucherSummary" type="vch:voucherSummaryType" minOccurs="0"/>
@@ -100,7 +108,7 @@
           <xsd:documentation>Datum zdanitelného plnění</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="dateKHDPH" type="xsd:date" minOccurs="0">
+      <xsd:element name="dateKHDPH" type="typ:dateOrNull" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Datum KH DPH. Pokud není datum KH DPH uveden, nebude na dokladu nastaven. Pouze pro doklady typu výdej (pouze CZ verze).</xsd:documentation>
         </xsd:annotation>
@@ -230,6 +238,11 @@
       <xsd:element name="voucherLiquidationItem" type="vch:voucherliquidationItemType" minOccurs="0" maxOccurs="unbounded">
         <xsd:annotation>
           <xsd:documentation>Definice položek pro likvidaci dokladu (Pohledávky/Závazku). Pouze pro import.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="roundingItem" type="typ:roundingItemType" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Položka dokladu - výpočet DPH ze zaokrouhlení (pouze pro export).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:sequence>
@@ -443,6 +456,11 @@
           <xsd:documentation>Kód zboží (pouze pro příjmový pokladní doklad v SK verzi).</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+      <xsd:element name="recyclingContrib" type="typ:recyclingContribType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Recyklační příspěvek položky. Pokud při importu dokladu tento element není na položce uveden, bude na skladové položce dokladu nastaven dle skladové zásoby. U textové položky nebude nastaven.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
       <xsd:element name="centre" type="typ:refType" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Středisko.</xsd:documentation>
@@ -483,9 +501,9 @@
           <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0">
+      <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0" default="false">
         <xsd:annotation>
-          <xsd:documentation>Vypočíst DPH ze zaokrouhlení. Pokud není uvedeno, nastaví se hodnota z Globálního nastavení.</xsd:documentation>
+          <xsd:documentation>Vypočíst DPH ze zaokrouhlení.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">

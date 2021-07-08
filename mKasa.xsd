@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
       xmlns:rdc="http://www.stormware.cz/schema/version_2/documentresponse.xsd"
       xmlns:acu="http://www.stormware.cz/schema/version_2/accountingunit.xsd"
+      xmlns:arch="http://www.stormware.cz/schema/version_2/archive.xsd"
       xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
       xmlns="http://www.stormware.cz/schema/version_2/mKasa.xsd"
       targetNamespace="http://www.stormware.cz/schema/version_2/mKasa.xsd"
@@ -12,6 +13,7 @@
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/type.xsd" schemaLocation="type.xsd"/>
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/documentresponse.xsd" schemaLocation="documentresponse.xsd"/>
   <xsd:import namespace="http://www.stormware.cz/schema/version_2/accountingunit.xsd" schemaLocation="accountingunit.xsd"/>
+  <xsd:import namespace="http://www.stormware.cz/schema/version_2/archive.xsd" schemaLocation="archive.xsd"/>
 
 
   <!-- ************************************************************************** -->
@@ -41,9 +43,9 @@
       <xsd:element name="overwriteDeviceGuid" type="typ:boolean">
         <xsd:annotation>
           <xsd:documentation>
-            Má se aktualizovat Guid zařížení, na kterém se používá mKasa.
+            MĂˇ se aktualizovat Guid zaĹ™Ă­ĹľenĂ­, na kterĂ©m se pouĹľĂ­vĂˇ mKasa.
             Guid se aktualizuje jen pokud je agenda Kasa.
-            Pokud se Guid liší a element je false nebo agenda není Kasa, vrací se chyba.
+            Pokud se Guid liĹˇĂ­ a element je false nebo agenda nenĂ­ Kasa, vracĂ­ se chyba.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -51,8 +53,15 @@
       <xsd:element name="myLastId" type="xsd:int">
         <xsd:annotation>
           <xsd:documentation>
-            Nejvyšší ID, které mKasa obdržela za danou agendu. Nenulová hodnota má význam jen u agend AD, SKz.
-            Používá se pro stránkovaní. Poslední stránka neobsahuje žádné záznamy z požadované agendy.
+            NejvyĹˇĹˇĂ­ ID, kterĂ© mKasa obdrĹľela za danou agendu. NenulovĂˇ hodnota mĂˇ vĂ˝znam jen u agend AD, SKz, SkzVC.
+            PouĹľĂ­vĂˇ se pro strĂˇnkovanĂ­. PoslednĂ­ strĂˇnka neobsahuje ĹľĂˇdnĂ© zĂˇznamy z poĹľadovanĂ© agendy.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DiffExport" type="typ:boolean" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+            Exportovat jen zmÄ›nÄ›nĂ© zĂˇznamy, mĂˇ vĂ˝znam jen u agend SKz, SkzVC.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -67,8 +76,8 @@
       <xsd:element name="overwriteDeviceGuid" type="typ:boolean">
         <xsd:annotation>
           <xsd:documentation>
-            Má se aktualizovat Guid zařížení, na kterém se používá mKasa.
-            Pokud se Guid liší a element je false, vrací se chyba.
+            MĂˇ se aktualizovat Guid zaĹ™Ă­ĹľenĂ­, na kterĂ©m se pouĹľĂ­vĂˇ mKasa.
+            Pokud se Guid liĹˇĂ­ a element je false, vracĂ­ se chyba.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -86,6 +95,7 @@
       <xsd:enumeration value="SkSt"/>
       <xsd:enumeration value="SkKat"/>
       <xsd:enumeration value="SKz"/>
+      <xsd:enumeration value="SKzVC"/>
       <xsd:enumeration value="PHzauc"/>
       <xsd:enumeration value="Ucet"/>
     </xsd:restriction>
@@ -131,6 +141,13 @@
       <xsd:element name="companyInfo" type="mKasa:companyInfoType"/>
       <xsd:element name="kasaInfo" type="mKasa:kasaInfoType"/>
       <xsd:element name="pohodaRestriction" type="mKasa:pohodaRestrictionType"/>
+      <xsd:element name="globalSettings">
+        <xsd:complexType>
+          <xsd:sequence>
+             <xsd:element ref="arch:archive"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -178,14 +195,21 @@
       <xsd:element name="lockPin" type="typ:boolean"/>
       <xsd:element name="administration" type="typ:boolean"/>
       <xsd:element name="administrationPass" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="createCustomer" type="xsd:boolean" minOccurs="0"/>
       <xsd:element name="changePrize" type="typ:boolean"/>
       <xsd:element name="textItems" type="typ:boolean"/>
+      <xsd:element name="depositsWithdrawals" type="typ:boolean"/>
       <xsd:element name="delayedDocument" type="typ:boolean"/>
+      <xsd:element name="AgendaHistory" type="typ:boolean"/>
+      <xsd:element name="createSKPV" type="typ:boolean"/>
       <xsd:element name="changeEet" type="typ:boolean"/>
       <xsd:element name="deleteRecords" type="typ:boolean"/>
       <xsd:element name="exportXml" type="typ:boolean"/>
       <xsd:element name="createBackup" type="typ:boolean"/>
       <xsd:element name="restoreBackup" type="typ:boolean"/>
+      <xsd:element name="createCashRegisterDoc" type="typ:boolean"/>
+      <xsd:element name="accountDayByDay" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="canDoDiffExport" type="xsd:boolean" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
 

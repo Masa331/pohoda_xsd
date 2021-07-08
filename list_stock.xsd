@@ -27,6 +27,11 @@
         <xsd:documentation>Atributy určují filtr pro export zásob. Pokud není zadán žádný filtr, vyexportují se všechny zásoby.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="restrictionData" type="lStk:restrictionDataType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Omezení exportu dat.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:sequence>
   <xsd:attribute name="version" type="lStk:listRequestStockVerType" use="required"/>
   <xsd:attribute name="stockVersion" type="stk:stkVersionType" use="required">
@@ -36,7 +41,72 @@
   </xsd:attribute>
 </xsd:complexType>
 
-<xsd:simpleType name="listRequestStockVerType">
+<xsd:complexType name="restrictionDataType">
+  <xsd:all>
+    <xsd:element name="relatedFiles" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat záznamy ze záložky Související soubory.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="relatedLinks" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat záznamy ze záložky Související odkazy.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="pictures" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat záznamy ze záložky Obrázky.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="categories" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat záznamy ze záložky Kategorie</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>    
+    <xsd:element name="relatedStocks" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat záznamy ze záložky související zboží.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="alternativeStocks" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat záznamy ze záložky Alternativní zboží.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="intParameters" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat záznamy ze záložky Parametry.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="stockItem" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat položky zásoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="stockAttach" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat svázané zásoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="stockSerialNumber" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat evidenční čísla.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="stockPriceItem" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat prodejní ceny.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="stockParameters" type="typ:boolean" default="true" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Exportovat volitelné parametry.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:all>
+</xsd:complexType>
+
+  <xsd:simpleType name="listRequestStockVerType">
   <xsd:annotation>
     <xsd:documentation>Verze, které jsou dostupné k tomuto dokladu. Podrobnosti k jednotlivým verzím najdete na www.stormware.cz/xml</xsd:documentation>
   </xsd:annotation>

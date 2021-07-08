@@ -21,11 +21,24 @@
 
 <xsd:complexType name="prodejkaType">
   <xsd:sequence>
+    <xsd:element name="cancelDocument" type="typ:cancelDocumentType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Pomocí tohoto bloku bude vytvořen storno doklad. V programu POHODA bude vyhledán doklad, který má být stornován, pokud bude nalezen, bude k němu vytvořen stornující doklad.
+          Vložený doklad lze upravit pomocí jednotlivých elementů v prodejkaHeader a eKasa (ostatní elementy budou ignorovány).
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="prodejkaHeader" type="pro:prodejkaHeaderType" minOccurs="0"/>
     <xsd:element name="prodejkaDetail" type="pro:prodejkaDetailType" minOccurs="0"/>
     <xsd:element name="prodejkaPayments" type="pro:paymentsType" minOccurs="0"/>
     <xsd:element name="prodejkaSummary" type="pro:prodejkaSummaryType" minOccurs="0"/>
     <xsd:element name="EET" type="typ:EETType" minOccurs="0"/>
+    <xsd:element name="eKasa" type="pro:eKasaType" minOccurs="0">
+        <xsd:annotation>
+            <xsd:documentation>Informace pro eKasu (pouze SK verze).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>  
     <xsd:element name="print" type="prn:agendaPrintType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Po vytvoření záznamu se provede jeho tisk.</xsd:documentation>
@@ -167,6 +180,11 @@
 <xsd:complexType name="prodejkaDetailType">
   <xsd:sequence>
     <xsd:element name="prodejkaItem" type="pro:prodejkaItemType" maxOccurs="unbounded"/>
+    <xsd:element name="roundingItem" type="typ:roundingItemType" minOccurs="0" maxOccurs="1">
+      <xsd:annotation>
+        <xsd:documentation>Položka dokladu - výpočet DPH ze zaokrouhlení (pouze pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:sequence>
 </xsd:complexType>
 
@@ -192,9 +210,9 @@
         <xsd:documentation>Zaokrouhlení DPH.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0">
+    <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0" default="false">
       <xsd:annotation>
-        <xsd:documentation>Vypočíst DPH ze zaokrouhlení. Pokud není uvedeno, nastaví se hodnota z Globálního nastavení.</xsd:documentation>
+        <xsd:documentation>Vypočíst DPH ze zaokrouhlení.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
@@ -212,7 +230,7 @@
 
 <xsd:complexType name="paymentItemType">
   <xsd:all>
-    <xsd:element name="paymentType" type="typ:refType">
+    <xsd:element name="paymentType" type="typ:paymentType">
       <xsd:annotation>
         <xsd:documentation>Forma úhrady</xsd:documentation>
       </xsd:annotation>
@@ -319,6 +337,18 @@
 
   <xsd:complexType name="prodejkaItemType">
   <xsd:all>
+    <xsd:element name="refundItem" type="typ:sourceDocumentItemType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Odkaz na refundovanou položku. Zkontroluje se, zda je možné provést refundaci. Pokud ano, vytvoří se vazba na refundované položce. Nepřenášejí se žádná políčka z refundované položky.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="id" type="typ:idType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>ID položky dokladu (jen pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="text" type="typ:string90" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Text položky.</xsd:documentation>
@@ -362,6 +392,11 @@
       <xsd:element name="homeCurrency" type="typ:typeCurrencyHomeItem" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Kč.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="recyclingContrib" type="typ:recyclingContribType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Recyklační příspěvek položky. Pokud při importu dokladu tento element není na položce uveden, bude na skladové položce dokladu nastaven dle skladové zásoby. U textové položky nebude nastaven.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="note" type="typ:string90" minOccurs="0">
@@ -419,6 +454,11 @@
               <xsd:documentation>Typ položky EET (pouze CZ verze).</xsd:documentation>
           </xsd:annotation>
       </xsd:element>
+        <xsd:element name="eKasaItem" type="pro:eKasaItemType" minOccurs="0">
+            <xsd:annotation>
+                <xsd:documentation>Položka eKasa (pouze SK verze).</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
       <xsd:element name="parameters" type="typ:parametersType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Volitelný parametr.</xsd:documentation>
@@ -449,7 +489,58 @@
     </xsd:enumeration>
   </xsd:restriction>
 </xsd:simpleType>
+  
+<!-- eKasa -->
+<xsd:complexType name="eKasaType">
+    <xsd:annotation>
+      <xsd:documentation>Informace pro eKasu (pouze SK verze).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <xsd:element name="eKasaID" type="typ:string34" minOccurs="0">
+            <xsd:annotation>
+                <xsd:documentation>Unikátny identifikátor dokladu.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="eKasaOKP" type="typ:string44" minOccurs="0">
+            <xsd:annotation>
+                <xsd:documentation>OKP (Overovací kód podnikateľa).</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="eKasaParNumber" type="xsd:integer" minOccurs="0">
+            <xsd:annotation>
+                <xsd:documentation>Poradové číslo paragónu.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="eKasaDateOfPar" type="xsd:dateTime" minOccurs="0">
+            <xsd:annotation>
+                <xsd:documentation>Dátum a čas vytvorenia paragónu.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="printFM" type="typ:boolean" minOccurs="0" default="false">
+            <xsd:annotation>
+                <xsd:documentation>Tlač na FM.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
 
+<xsd:complexType name="eKasaItemType">
+    <xsd:annotation>
+        <xsd:documentation>Informace pro eKasu na položce dokladu (pouze SK verze).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <xsd:element name="refId" type="typ:string44" minOccurs="0">
+          <xsd:annotation>
+              <xsd:documentation>Unikátny identifikátor pôvodného dokladu - eKasa (používa sa pri vrátení tovaru).</xsd:documentation>
+          </xsd:annotation>
+      </xsd:element>
+        <xsd:element name="refundType" type="typ:eKasaRefundType" minOccurs="0">
+          <xsd:annotation>
+              <xsd:documentation>eKasa typ vrátenia.</xsd:documentation>
+          </xsd:annotation>
+      </xsd:element>  
+    </xsd:sequence>
+</xsd:complexType>
 
   <!-- RESPONSE -->
 

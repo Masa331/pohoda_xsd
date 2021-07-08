@@ -39,12 +39,15 @@
       xmlns:nms="http://www.stormware.cz/schema/version_2/numericalSeries.xsd"
       xmlns:pay="http://www.stormware.cz/schema/version_2/payment.xsd"
       xmlns:prn="http://www.stormware.cz/schema/version_2/print.xsd"
+      xmlns:isd="http://www.stormware.cz/schema/version_2/isdoc.xsd"
       xmlns:sEET="http://www.stormware.cz/schema/version_2/sendEET.xsd"            
       xmlns:mKasa="http://www.stormware.cz/schema/version_2/mKasa.xsd"
       xmlns:gdp="http://www.stormware.cz/schema/version_2/GDPR.xsd"
       xmlns:est="http://www.stormware.cz/schema/version_2/establishment.xsd"
       xmlns:cen="http://www.stormware.cz/schema/version_2/centre.xsd"
       xmlns:acv="http://www.stormware.cz/schema/version_2/activity.xsd"
+      xmlns:asv="http://www.stormware.cz/schema/version_2/accountingSalesVouchers.xsd"
+      xmlns:req="http://www.stormware.cz/schema/version_2/productRequirement.xsd"
       xmlns="http://www.stormware.cz/schema/version_2/response.xsd"
       targetNamespace="http://www.stormware.cz/schema/version_2/response.xsd"
       elementFormDefault="qualified"
@@ -89,14 +92,17 @@
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/inventoryLists.xsd" schemaLocation="inventoryLists.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/payment.xsd" schemaLocation="payment.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/print.xsd" schemaLocation="print.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/isdoc.xsd" schemaLocation="isdoc.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/sendEET.xsd" schemaLocation="sendEET.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/mKasa.xsd" schemaLocation="mKasa.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/GDPR.xsd" schemaLocation="GDPR.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/establishment.xsd" schemaLocation="establishment.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/centre.xsd" schemaLocation="centre.xsd"/>
 <xsd:import namespace="http://www.stormware.cz/schema/version_2/activity.xsd" schemaLocation="activity.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/accountingSalesVouchers.xsd" schemaLocation="accountingSalesVouchers.xsd"/>
+<xsd:import namespace="http://www.stormware.cz/schema/version_2/productRequirement.xsd" schemaLocation="productRequirement.xsd"/>
 
-<!-- **************************************************************************
+  <!-- **************************************************************************
     root element must be <responsePack>
      ************************************************************************** -->
 <xsd:element name="responsePack" type="rsp:responsePackType"/>
@@ -157,6 +163,7 @@
     <xsd:element ref="sto:storeResponse" />
     <xsd:element ref="grs:groupStocksResponse" />
     <xsd:element ref="prn:printResponse" />
+    <xsd:element ref="isd:isdocResponse" />
     <xsd:element ref="sEET:sendEETResponse" />
     <xsd:element ref="mKasa:mKasaResponse"/>
     <xsd:element ref="ilt:inventoryListsResponse"/>
@@ -164,6 +171,9 @@
     <xsd:element ref="sup:supplierResponse"/>
     <xsd:element ref="ctg:categoryResponse"/>
     <xsd:element ref="gdp:GDPRResponse"/>
+    <xsd:element ref="asv:accountingSalesVouchersResponse"/>
+    <xsd:element ref="req:productRequirementResponse"/>
+    <xsd:element ref="bnk:bankResponse"/>
 
     <!-- export dat z programu -->
     <xsd:element ref="lst:listCentre"/>
@@ -215,7 +225,11 @@
     <xsd:element ref="lCen:listCentre"/>
     <xsd:element ref="lAcv:listActivity"/>
     <xsd:element ref="lst:listAccountingFormOfPayment"/>
-    
+    <xsd:element ref="lst:listClassificationVAT"/>
+    <xsd:element ref="lst:listGlobalSettings"/>
+    <xsd:element ref="lst:listRegistrationNumber"/>
+    <xsd:element ref="lst:listProductRequirement"/>
+    <xsd:element ref="lst:listMovement"/>
   </xsd:choice> 
   <xsd:attribute name="version" type="xsd:string" use="required"/>
     <xsd:attribute name="id" type="xsd:string" use="required"/>

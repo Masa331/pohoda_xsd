@@ -37,6 +37,12 @@
         </xsd:annotation>
       </xsd:element>
 
+      <xsd:element name="allowNegInvBalance" type="typ:boolean" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Povolit stav zásob do minusu.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
       <xsd:element name="storekeeper" type="typ:refType" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Skladník.</xsd:documentation>

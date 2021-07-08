@@ -86,7 +86,7 @@
           <xsd:documentation>Email.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="web" type="typ:string32" minOccurs="0">
+      <xsd:element name="web" type="typ:string96" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Adresa www stránek.</xsd:documentation>
         </xsd:annotation>
