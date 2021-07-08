@@ -62,7 +62,7 @@
     </xsd:element>
     <xsd:element name="symPar" type="typ:symVarType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Párový symbol. Používá se jen v účetníctví (dřívé PU).</xsd:documentation>
+        <xsd:documentation>Párový symbol. Používá se jen v účetnictví (dříve PU).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="text" type="xsd:string" minOccurs="0">

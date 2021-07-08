@@ -29,7 +29,7 @@
     <xsd:element name="transformation" type="dat:transformationType" minOccurs="0">
     <xsd:annotation>
         <xsd:documentation>Transformace vstupu a výstupu (od verze "1.1" elementu "dataPack").
-          Transformaci pro včechny zpracovávané soubory lze nastavit v INI souboru.
+          Transformaci pro všechny zpracovávané soubory lze nastavit v INI souboru.
           Nejdříve se provede transformace zadané v INI souboru, poté transformace zadaná v XML.
         </xsd:documentation>
       </xsd:annotation>
@@ -40,7 +40,7 @@
   <xsd:attribute name="id" type="typ:string64" use="required">
     <xsd:annotation>
       <xsd:documentation>
-        ID dokladu, podle této hodnoty a hodnoty "id" v "dataPackItem" se kontolují duplicity importovaných dokladů.          
+        ID dokladu, podle této hodnoty a hodnoty "id" v "dataPackItem" se kontrolují duplicity importovaných dokladů.           
        </xsd:documentation>
     </xsd:annotation>
   </xsd:attribute>
@@ -98,7 +98,7 @@
     <xsd:element name="input" type="xsd:string" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Cesta k vstupní transformaci. Výsledkem bude nový soubor s koncovkou "_trn_i2.xml", který se použije pro zpracování.
-            Název je zadán včetně cesty, buď abslolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
+            Název je zadán včetně cesty, buď absolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
             nebo relativně - vztaženo k adresáři Pohody (např: "Info/XSL/export.xsl")."
          </xsd:documentation>
       </xsd:annotation>
@@ -106,7 +106,7 @@
     <xsd:element name="output" type="xsd:string" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Cesta k výstupní transformaci. Výsledkem bude nový soubor s koncovkou "_trn_o2.xml".
-            Název je zadán včetně cesty, buď abslolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
+            Název je zadán včetně cesty, buď absolutně (např: "C:\Program Files\Stormware\Pohoda\Info\XSL\export.xsl")
             nebo relativně - vztaženo k adresáři Pohody (např: "Info/XSL/export.xsl")."
          </xsd:documentation>
       </xsd:annotation>

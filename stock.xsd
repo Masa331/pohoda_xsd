@@ -301,6 +301,11 @@
         <xsd:documentation>Stav zásoby v reklamaci (jen pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="service" type="xsd:float" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Servis (jen pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     
     <!-- záložka Doplňkové údaje -->
     <xsd:element name="shortName" type="typ:string24" minOccurs="0">
@@ -348,6 +353,11 @@
             <xsd:documentation>DIČ pověřujícího poplatníka (pouze CZ verze).</xsd:documentation>
         </xsd:annotation>
     </xsd:element>
+    <xsd:element name="eKasaItem" type="stk:eKasaItemType" minOccurs="0">
+        <xsd:annotation>
+            <xsd:documentation>Položky eKasa (pouze SK verze).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>   
     <xsd:element name="yield" type="typ:numberAccountType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Výnos. Účet pro účtování výnosů z prodeje zásoby.</xsd:documentation>
@@ -385,7 +395,7 @@
     </xsd:element>  
     <xsd:element name="acc" type="typ:numberAccountType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Účtování metodou A - analitický účet zásoby.</xsd:documentation>
+        <xsd:documentation>Účtování metodou A - analytický účet zásoby.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="typeServiceMOSS" type="typ:MOSStype" minOccurs="0">
@@ -421,7 +431,13 @@
         <xsd:documentation>Kód zboží související s režimem přenesení daňové povinnosti (pouze SK verze).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
-    
+
+    <xsd:element name="recyclingContrib" type="stk:recyclingContribType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Recyklační příspěvek zásoby.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+
     <!-- Intrastat -->
     <xsd:element name="intrastat" type="stk:instrastatType" minOccurs="0">
       <xsd:annotation>
@@ -478,18 +494,6 @@
       </xsd:annotation>
     </xsd:element>
     
-    <xsd:element name="relatedFiles" type="stk:relatedFilesType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Související soubory.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    
-    <xsd:element name="relatedLinks" type="stk:relatedLinksType" minOccurs="0">
-      <xsd:annotation>
-        <xsd:documentation>Související soubory.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:element>
-    
     <!-- Cizí názvy zásoby -->
     <xsd:element name="foreignName1" type="typ:string90" minOccurs="0">
       <xsd:annotation>
@@ -533,14 +537,24 @@
         <xsd:documentation>Kategorie internetového obchodu u zásoby. Pouze pro export.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="relatedFiles" type="stk:relatedFilesType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Související soubory.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="relatedLinks" type="stk:relatedLinksType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Související odkazy.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="relatedStocks" type="stk:relatedStocksType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Seznam ID souvisejícíh zásob. Pouze pro export.</xsd:documentation>
+        <xsd:documentation>Seznam ID souvisejících zásob. Pouze pro export.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="alternativeStocks" type="stk:alternativeStocksType" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Aternativní zásoby. Pouze pro export.</xsd:documentation>
+        <xsd:documentation>Alternativní zásoby. Pouze pro export.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="intParameters" type="stk:intParametersType" minOccurs="0">
@@ -589,6 +603,11 @@
         <xsd:documentation>Popis souvisejícího souboru. Povinné pole v programu POHODA. Pokud není zadáno nebo není unikátní, bude programem Pohoda automaticky vygenerován text: Soubor_(1) .. n.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="order" type="xsd:integer" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Pořadí (jen pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:all>
 </xsd:complexType>
 
@@ -607,12 +626,17 @@
         <xsd:documentation>Popis souvisejícího odkazu. Povinné pole v programu POHODA. Pokud není zadáno nebo není unikátní, bude programem Pohoda automaticky vygenerován text: Odkaz_(1) .. n.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="order" type="xsd:integer" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Pořadí (jen pro export).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:all>
 </xsd:complexType>
 
 
 
-<!-- popis Obrazky(description of pictures) -->
+<!-- popis Obrázky(description of pictures) -->
 <xsd:complexType name="picturesType">
   <xsd:sequence>
     <xsd:element name="picture" type="stk:pictureType" maxOccurs="unbounded"/>
@@ -660,14 +684,14 @@
 <!-- popis Souvisejících zásoby(description Related stock) -->
 <xsd:complexType name="relatedStocksType">
   <xsd:annotation>
-    <xsd:documentation>Seznam ID souvisejícíh zásob.</xsd:documentation>
+    <xsd:documentation>Seznam ID souvisejících zásob.</xsd:documentation>
   </xsd:annotation>
   <xsd:sequence>
     <xsd:element name="idStocks" type="typ:orderStockItemType" minOccurs="0" maxOccurs="unbounded" />
   </xsd:sequence>
 </xsd:complexType>
 
-<!-- popis Aternativních zásob (description alternative stocks) -->
+<!-- popis Alternativních zásob (description alternative stocks) -->
 <xsd:complexType name="alternativeStocksType">
   <xsd:annotation>
     <xsd:documentation>Seznam ID alternativních zásob.</xsd:documentation>
@@ -719,7 +743,7 @@
   <xsd:sequence>
     <xsd:element name="intParameterValue" type="stk:intParameterValueType" minOccurs="0" maxOccurs="unbounded">
     <xsd:annotation>
-        <xsd:documentation>Hodnota intrnetového parametru, je různá dle typu.</xsd:documentation>
+        <xsd:documentation>Hodnota internetového parametru, je různá dle typu.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:sequence>
@@ -734,7 +758,7 @@
     </xsd:element>    
     <xsd:element name="parameterValue" type="typ:string255" minOccurs="0">
     <xsd:annotation>
-        <xsd:documentation>Hodnota parametru, zavísí na typu. Pokud je zadáno u parametru typu seznam a zároveň není zadáno ID, musí být tato hodnota v databázi unikátní.</xsd:documentation>
+        <xsd:documentation>Hodnota parametru, závisí na typu. Pokud je zadáno u parametru typu seznam a zároveň není zadáno ID, musí být tato hodnota v databázi unikátní.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="parameterOrder" type="typ:idType" minOccurs="0">
@@ -785,7 +809,7 @@
     </xsd:element>
     <xsd:element name="edit" type="typ:boolean" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Úprava. Pokud volba Úprava nebude na záložce Svázané zatržena, budou se ceny automaticky aktulizovat dle provedených změn na skladové kartě.</xsd:documentation>
+        <xsd:documentation>Úprava. Pokud volba Úprava nebude na záložce Svázané zatržena, budou se ceny automaticky aktualizovat dle provedených změn na skladové kartě.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="stockPriceItem" type="stk:stockPriceItemType" minOccurs="0">
@@ -840,7 +864,7 @@
     </xsd:element>
     <xsd:element name="stockOrder" type="xsd:integer" minOccurs="0">
       <xsd:annotation>
-        <xsd:documentation>Pořadí položek.</xsd:documentation>
+        <xsd:documentation>Pořadí položek (jen pro export).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:sequence>
@@ -890,7 +914,7 @@
 
 <xsd:simpleType name="stockTypeType">
   <xsd:annotation>
-    <xsd:documentation>Typ skladové zásoby. Zatim jsou podporované jen jednoduché zásoby - bez položek.</xsd:documentation>
+    <xsd:documentation>Typ skladové zásoby. Zatím jsou podporované jen jednoduché zásoby - bez položek.</xsd:documentation>
   </xsd:annotation>
   <xsd:restriction base="xsd:string">
     <xsd:enumeration value="card">
@@ -969,6 +993,21 @@
   </xsd:restriction>
 </xsd:simpleType>
 
+<xsd:complexType name="recyclingContribType">
+  <xsd:sequence>
+    <xsd:element name="recyclingContribType" type="typ:refType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Recyklační příspěvek.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="coefficientOfRecyclingContrib" type="xsd:float" nillable="1" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Koeficient pro přepočet měrné jednotky.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+  </xsd:sequence>
+</xsd:complexType>
+  
 <xsd:complexType name="instrastatType">
   <xsd:sequence>
     <xsd:element name="goodsCode" type="typ:string8" minOccurs="0">
@@ -1003,6 +1042,21 @@
     </xsd:element>
   </xsd:sequence>
 </xsd:complexType>
+  
+<!-- eKasa -->
+<xsd:complexType name="eKasaItemType">
+    <xsd:annotation>
+        <xsd:documentation>Informace pro eKasu na zásobě (pouze SK verze).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+        <xsd:element name="refundType" type="typ:eKasaRefundType" minOccurs="0">
+            <xsd:annotation>
+                <xsd:documentation>eKasa typ vrátenia.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+  
 
 <!-- RESPONSE -->
 

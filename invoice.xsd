@@ -397,9 +397,13 @@
           <xsd:documentation>Definice položky dokladu typu "Odpočet zálohy"/"Ruční odpočet zálohy". Používá se pouze v agendě Vydaná, Přijatá faktura.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+      <xsd:element name="roundingItem" type="typ:roundingItemType" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Položka dokladu - výpočet DPH ze zaokrouhlení (pouze pro export).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
     </xsd:choice>
   </xsd:complexType>
-
 
   <xsd:complexType name="invoiceSummaryType">
   <xsd:all>
@@ -413,10 +417,10 @@
       <xsd:annotation>
         <xsd:documentation>Zaokrouhlení DPH. Pokud není uvedeno zaokrouhlení, nastaví se hodnoty z Globálního nastavení.</xsd:documentation>
       </xsd:annotation>
-    </xsd:element>
-    <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0">
+    </xsd:element>    
+    <xsd:element name="calculateVAT" type="xsd:boolean" minOccurs="0" default="false">
       <xsd:annotation>
-        <xsd:documentation>Vypočíst DPH ze zaokrouhlení. Pokud není uvedeno, nastaví se hodnota z Globálního nastavení.</xsd:documentation>
+        <xsd:documentation>Vypočíst DPH ze zaokrouhlení.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
     <xsd:element name="typeCalculateVATInclusivePrice" type="typ:typeCalculateVATInclusivePriceType" minOccurs="0">
@@ -570,6 +574,11 @@
         <xsd:documentation>Kód zboží (pouze pro Vydané faktury, Vydané zálohové faktury a Ostatní pohledávky v SK verzi).</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="recyclingContrib" type="typ:recyclingContribType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Recyklační příspěvek položky. Pokud při importu dokladu tento element není na položce uveden, bude na skladové položce dokladu nastaven dle skladové zásoby. U textové položky nebude nastaven.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="centre" type="typ:refType" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Středisko.</xsd:documentation>
@@ -660,7 +669,7 @@
           <xsd:documentation>Kč.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="foreignCurrency" type="typ:typeCurrencyHomeItem2" minOccurs="0">
+      <xsd:element name="foreignCurrency" type="typ:typeCurrencyForeignItem2" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Cizí měna.</xsd:documentation>
         </xsd:annotation>

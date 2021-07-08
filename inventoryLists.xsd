@@ -109,6 +109,11 @@
           <xsd:documentation>Kód položky.</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
+      <xsd:element name="name" type="typ:string90" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Název položky.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
       <xsd:element name="text" type="typ:string90" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Text položky.</xsd:documentation>

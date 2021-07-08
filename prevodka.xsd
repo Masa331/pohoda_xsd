@@ -21,6 +21,14 @@
   
 <xsd:complexType name="prevodkaType">
   <xsd:sequence>
+    <xsd:element name="links" type="typ:linksType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Pomocí tohoto bloku lze vytvořit nový doklad z jiného dokladu. Vloží se celý doklad.
+          Vložený doklad lze upravit pomocí jednotlivých elementů u dokladu.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
     <xsd:element name="prevodkaHeader" type="pre:prevodkaHeaderType" minOccurs="0"/>
     <xsd:element name="prevodkaDetail" type="pre:prevodkaDetailType" minOccurs="0"/>
     <xsd:element name="print" type="prn:agendaPrintType" minOccurs="0">
@@ -133,6 +141,11 @@
         <xsd:documentation>Volitelný parametr.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
+    <xsd:element name="validate" type="typ:typeValidate" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Podmíněná kontrola dokladu.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
   </xsd:all>
 </xsd:complexType>
 
@@ -144,6 +157,13 @@
 
 <xsd:complexType name="prevodkaItemType">
   <xsd:all>
+    <xsd:element name="link" type="typ:linkItemType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>
+          Pomocí tohoto bloku lze vytvořit položku z jiného dokladu. Vložený doklad lze upravit pomocí zadanách parametrů u dokladu.
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
       <xsd:element name="quantity" type="xsd:float" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Množství.</xsd:documentation>
@@ -157,6 +177,11 @@
     <xsd:element name="note" type="typ:string90" minOccurs="0">
       <xsd:annotation>
         <xsd:documentation>Poznámka.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="parameters" type="typ:parametersType" minOccurs="0">
+      <xsd:annotation>
+        <xsd:documentation>Volitelné parametry.</xsd:documentation>
       </xsd:annotation>
     </xsd:element>
   </xsd:all>

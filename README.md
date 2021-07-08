@@ -6,6 +6,10 @@ Schemas are downloaded from official websites, normalized, and encoded in UTF-8
 
 ## Changelog
 
+### 8.7.2021
+
+Schemas update
+
 ### 11.9.2019
 
 Schemas update
